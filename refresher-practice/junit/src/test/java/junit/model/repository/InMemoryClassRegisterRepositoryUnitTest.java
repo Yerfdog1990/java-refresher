@@ -1,8 +1,6 @@
 package junit.model.repository;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 
 import java.util.*;
@@ -26,6 +24,13 @@ public class InMemoryClassRegisterRepositoryUnitTest {
         repository.save(new ClassRegister(4,student4,RegistrationStatus.PRESENT));
     }
 
+    @AfterAll
+    static void tearDown() {
+        repository.deleteById(1);
+        repository.deleteById(2);
+        repository.deleteById(3);
+        repository.deleteById(4);
+    }
     @Test
     void givenEmptyRepository_WhenFindAll_ThenRetrieveEmptyList() {
         //Given
