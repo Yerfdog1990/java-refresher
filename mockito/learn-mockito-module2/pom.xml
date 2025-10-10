@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Mockito' Course: Advanced Mockito Techniques</description>
+    <name>advanced-mockito-techniques</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>lmock-advanced-mockito-techniques</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>mockito-spies-start</module>
+        <module>mockito-spies-end</module>
+        <module>advanced-stubbing-techniques-start</module>
+        <module>advanced-stubbing-techniques-end</module>
+        <module>exception-handling-start</module>
+        <module>exception-handling-end</module>
+        <module>advanced-cases-start</module>
+        <module>advanced-cases-end</module>
+    </modules>
+</project>
