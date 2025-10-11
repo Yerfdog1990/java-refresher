@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Mockito' Course: Testing Practices and Methodologies</description>
+    <name>testing-practices-and-methodologies</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>lmock-testing-practices-and-methodologies</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>bdd-with-mockito-start</module>
+        <module>bdd-with-mockito-end</module>
+        <module>common-mockito-pitfalls-start</module>
+        <module>common-mockito-pitfalls-end</module>
+    </modules>
+</project>
