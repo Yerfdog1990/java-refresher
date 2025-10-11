@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Hibernate and JPA' Course: Introduction to Hibernate and JPA</description>
+    <name>introduction-to-hibernate-and-jpa</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>lhj-introduction-to-hibernate-and-jpa</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>the-project-overview</module>
+        <module>setting-up-hibernate-and-jpa-start</module>
+        <module>setting-up-hibernate-and-jpa-end</module>
+    </modules>
+</project>
