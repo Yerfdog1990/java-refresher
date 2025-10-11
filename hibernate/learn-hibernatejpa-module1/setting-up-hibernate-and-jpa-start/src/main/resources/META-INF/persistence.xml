@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="LHJ">
+        <!-- Specifying the JPA Provider -->
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!-- Define the classes -->
+        <class>com.baeldung.lhj.persistence.model.Worker</class>
+        <properties>
+            <!-- Connecting to the Database -->
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.pool_size" value="5"/>
+            <!-- Managing Schema Generation -->
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <!-- Enabling SQL Logging -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>
