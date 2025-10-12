@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+    <persistence-unit name="LHJ">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- Define the classes -->
+        <class>com.baeldung.lhj.persistence.model.Campaign</class>
+        <class>com.baeldung.lhj.persistence.model.Task</class>
+        <class>com.baeldung.lhj.persistence.model.Worker</class>
+        <class>com.baeldung.lhj.persistence.model.PermissionWorker</class>
+        
+        <!-- comment the Campaign class row and uncomment one of the classes below to see the different ID configurations -->
+        <!-- <class>com.baeldung.lhj.persistence.model.CampaignWithUUID</class> -->
+        <!-- <class>com.baeldung.lhj.persistence.model.CampaignWithSequence</class> -->
+        <!-- <class>com.baeldung.lhj.persistence.model.CampaignWithTable</class> -->
+
+        <properties>
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE"/>
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.pool_size" value="5"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+        </properties>
+    </persistence-unit>
+</persistence>
