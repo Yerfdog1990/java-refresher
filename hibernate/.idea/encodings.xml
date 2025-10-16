@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module1/setting-up-hibernate-and-jpa-end/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module1/setting-up-hibernate-and-jpa-end/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module1/setting-up-hibernate-and-jpa-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module1/setting-up-hibernate-and-jpa-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module1/the-project-overview/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module1/the-project-overview/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/advanced-id-mapping-end/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/advanced-id-mapping-end/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/advanced-id-mapping-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/advanced-id-mapping-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/entity-mappings-end/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/entity-mappings-end/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/entity-mappings-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/entity-mappings-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-advanced-end/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-advanced-end/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-advanced-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-advanced-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-introduction-end/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-introduction-end/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-introduction-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/inheritance-mapping-introduction-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-enum-date-end/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-enum-date-end/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-enum-date-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-enum-date-start/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-relationships-end/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-relationships-end/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-relationships-start/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/learn-hibernatejpa-module2/mapping-relationships-start/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
