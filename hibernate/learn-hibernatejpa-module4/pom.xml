@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Hibernate and JPA' Course: Exploring Hibernate and JPA Features</description>
+    <name>exploring-hibernate-and-jpa-features</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>lhj-exploring-hibernate-and-jpa-features</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>basics-of-transactions-start</module>
+        <module>basics-of-transactions-end</module>
+        <module>basic-caching-mechanisms-start</module>
+        <module>basic-caching-mechanisms-end</module>
+        <module>lazy-vs-eager-fetching-start</module>
+        <module>lazy-vs-eager-fetching-end</module>
+    </modules>
+</project>
