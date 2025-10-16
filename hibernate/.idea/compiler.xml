@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="entity-mappings-start" />
+        <module name="inheritance-mapping-advanced-start" />
+        <module name="mapping-enum-date-start" />
+        <module name="inheritance-mapping-advanced-end" />
+        <module name="entity-mappings-end" />
+        <module name="mapping-relationships-end" />
+        <module name="advanced-id-mapping-end" />
+        <module name="setting-up-hibernate-and-jpa-end" />
+        <module name="inheritance-mapping-introduction-end" />
+        <module name="advanced-id-mapping-start" />
+        <module name="inheritance-mapping-introduction-start" />
+        <module name="mapping-relationships-start" />
+        <module name="setting-up-hibernate-and-jpa-start" />
+        <module name="mapping-enum-date-end" />
+        <module name="the-project-overview" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
