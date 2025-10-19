@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/lesson3-operators_expression/lesson3-operators_expression.iml" filepath="$PROJECT_DIR$/lesson3-operators_expression/lesson3-operators_expression.iml" />
       <module fileurl="file://$PROJECT_DIR$/lesson4-conditional_statements/lesson4-conditional_statements.iml" filepath="$PROJECT_DIR$/lesson4-conditional_statements/lesson4-conditional_statements.iml" />
       <module fileurl="file://$PROJECT_DIR$/lesson5-iterative_statements/lesson5-iterative_statements.iml" filepath="$PROJECT_DIR$/lesson5-iterative_statements/lesson5-iterative_statements.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson6_arrays/lesson6_arrays.iml" filepath="$PROJECT_DIR$/lesson6_arrays/lesson6_arrays.iml" />
     </modules>
   </component>
 </project>
