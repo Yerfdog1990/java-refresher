@@ -1,11 +1,15 @@
 package com.baeldung.ls.service.impl;
 
+import org.springframework.stereotype.Service;
+
+
 import java.util.Optional;
 
 import com.baeldung.ls.persistence.model.Project;
 import com.baeldung.ls.persistence.repository.IProjectRepository;
 import com.baeldung.ls.service.IProjectService;
 
+@Service
 public class ProjectServiceImpl implements IProjectService {
 
     private IProjectRepository projectRepository;
