@@ -1,0 +1,34 @@
+
+spring:
+  cloud:
+    function:
+     definition: enrichLogMessage;processLogs;highlightLogs
+    stream:
+      function.routing.enabled: true
+      bindings:
+        enrichLogMessage-in-0:
+          destination: queue.log.messages
+          group: test-group
+          binder: local_rabbit
+        enrichLogMessage-out-0:
+          destination: queue.pretty.log.messages
+          binder: local_rabbit
+
+      binders:
+        local_rabbit:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
+
+server:
+  port: 0
+management:
+  health:
+    binders:
+      enabled: true
