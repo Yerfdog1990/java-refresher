@@ -1,0 +1,41 @@
+package circular_dependency;
+
+import com.circular_dependency.CircularDependencyA;
+import com.circular_dependency.CircularDependencyB;
+import com.circular_dependency.TestConfig;
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { TestConfig.class })
+public class CircularDependencyIntegrationTest {
+
+    @Autowired
+    ApplicationContext context;
+
+    @Bean
+    public CircularDependencyA getCircularDependencyA() {
+        return new CircularDependencyA();
+    }
+
+    @Bean
+    public CircularDependencyB getCircularDependencyB() {
+        return new CircularDependencyB();
+    }
+
+    @Test
+    public void givenCircularDependency_whenSetterInjection_thenItWorks() {
+        CircularDependencyA circA = context.getBean(CircularDependencyA.class);
+
+        String actualMessage = circA.getMessage();
+
+        String expectedMessage = "Hello World";
+        Assertions.assertThat(actualMessage).isEqualTo(expectedMessage);
+    }
+}
