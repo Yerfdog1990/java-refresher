@@ -9,6 +9,7 @@ public class MovieApp {
         // Create the IoC container
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
+
         // Retrieve the main bean
         MovieShop movieShop  = context.getBean(MovieShop.class);
 
