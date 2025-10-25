@@ -2,7 +2,7 @@ package day6.string;
 
 import java.util.Arrays;
 
-public class StringBasics {
+public class StringMethods {
     public static void main(String[] args) {
         // 1.Creating a String variable
         String str1 = "Hello";
