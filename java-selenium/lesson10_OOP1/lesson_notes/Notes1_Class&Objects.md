@@ -348,13 +348,13 @@ public class Test {
 
 ---
 ## **10. Compare Object creation and Object initialization**
-| Concept of Comparison | Object Creation | Object Initialization |
+| Concept | Object Creation | Object Initialization |
 | --- | --- | --- |
-| Definition | Allocation of memory for a new object | Setting initial values to the object's fields |
-| When it happens | When you use the new keyword, clone(), or reflection | After memory allocation, during object creation |
-| What it does | Allocates memory for the object, sets default values (0, false, null, etc.), returns a reference to the memory location | Initializes instance variables, can include validation logic, can perform setup operations |
-| Example | `java Student s1;                  // Just a reference, no object created s1 = new Student(1, "Alice"); // Object creation happens here` | `java public Student(int id, String name) {  // This is initialization     this.id = id;     this.name = name; }` |
-
+| Definition | The process of allocating memory for the object (including its fields) on the heap. | The process of setting meaningful starting values to the object's fields after memory has been allocated. |
+| Order | Happens First (Memory Allocation) | Happens Second (Setting Values) |
+| Default Values | Sets the default values for all fields (e.g., 0 for numbers, null for references, false for booleans). | Sets the actual desired values as defined by constructors or initializer blocks. |
+| Control | Primarily handled by the JVM (Java Virtual Machine) when the new keyword is used. | Primarily controlled by the programmer through constructors and instance initializer blocks. |
+| Occurrence | Happens only once per object's lifetime. | Can technically happen multiple times if methods or setters are used, but the primary initialization happens once during construction. |
 ## **11. Key Takeaways**
 
 * **Class** is a blueprint; **Object** is its instance.
