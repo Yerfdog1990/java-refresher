@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The &quot;Learn Spring&quot; Course Module 4</description>
+    <name>learn-spring-m4</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>learn-spring-m4</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>m4-boot-auto-configuration-start</module>
+        <module>m4-boot-auto-configuration-end</module>
+        <module>m4-actuators-in-boot-start</module>
+        <module>m4-actuators-in-boot-end</module>
+        <module>actuator-custom-health-indicator-start</module>
+        <module>actuator-custom-health-indicator-end</module>
+    </modules>
+
+</project>
