@@ -1,16 +1,26 @@
 package com.baeldung.ls.persistence.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Random;
 
+@Entity
 public class Project {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;
 
     private LocalDate dateCreated;
+
+    public Project() {
+    }
 
     public Project(Long id, String name, LocalDate dateCreated) {
         if(Objects.isNull(id)) {
