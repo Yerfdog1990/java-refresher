@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.baeldung.ls.persistence.model.Project;
 
 @SpringBootTest
-@Disabled
 public class ProjectRepositoryIntegrationTest {
 
     @Autowired
