@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "SpringMVC2",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
