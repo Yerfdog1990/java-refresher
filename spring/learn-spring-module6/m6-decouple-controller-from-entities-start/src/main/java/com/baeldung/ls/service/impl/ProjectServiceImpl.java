@@ -31,5 +31,4 @@ public class ProjectServiceImpl implements IProjectService {
         }
         return projectRepository.save(project);
     }
-
 }
