@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.baeldung.ls.persistence.model.Project;
@@ -37,6 +38,17 @@ public class ProjectController {
         return "projects";
     }
 
+    @GetMapping("/new")
+    public String newProject(Model model) {
+        model.addAttribute("project", new ProjectDto());
+        return "new-project";
+    }
+
+    @PostMapping
+    public String saveProject(ProjectDto projectDto) {
+        projectService.save(convertToEntity(projectDto));
+        return "redirect:/projects";
+    }
     //
 
     protected ProjectDto convertToDto(Project entity) {

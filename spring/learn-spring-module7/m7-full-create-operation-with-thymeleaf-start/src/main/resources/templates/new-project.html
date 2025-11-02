@@ -1,0 +1,12 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:lang="${#locale.language}">
+<head>
+    <title>Add Projects</title>
+</head>
+<body>
+    <form method="POST" th:action="@{/projects}" th:object="${project}">
+        <label for="name">Name</label>
+        <input type="text" id="name" th:field="*{name}" />
+        <input type="submit" value="Save Project"/>
+    </form>
+</body>
+</html>
