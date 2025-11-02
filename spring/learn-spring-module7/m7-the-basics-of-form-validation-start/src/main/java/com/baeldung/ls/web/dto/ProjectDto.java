@@ -1,5 +1,6 @@
 package com.baeldung.ls.web.dto;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -7,6 +8,7 @@ public class ProjectDto {
 
     private Long id;
 
+    @NotBlank
     private String name;
 
     private LocalDate dateCreated;
