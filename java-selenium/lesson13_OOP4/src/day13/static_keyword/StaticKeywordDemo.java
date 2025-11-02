@@ -1,4 +1,4 @@
-package day14.static_keyword;
+package day13.static_keyword;
 
 import java.util.Arrays;
 
