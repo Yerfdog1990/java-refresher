@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.baeldung.ls.events.ProjectCreatedEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -20,6 +23,9 @@ import com.baeldung.ls.web.dto.TaskDto;
 @Controller
 @RequestMapping(value = "/projects")
 public class ProjectController {
+
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
 
     private IProjectService projectService;
 
@@ -44,8 +50,8 @@ public class ProjectController {
 
     @PostMapping
     public String addProject(ProjectDto project) {
-        projectService.save(convertToEntity(project));
-
+        Project newProject = projectService.save(convertToEntity(project));
+        eventPublisher.publishEvent(new ProjectCreatedEvent(newProject.getId()));
         return "redirect:/projects";
     }
 
