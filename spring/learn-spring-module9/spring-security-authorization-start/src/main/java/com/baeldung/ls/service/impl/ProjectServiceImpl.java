@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -36,6 +37,7 @@ public class ProjectServiceImpl implements IProjectService {
         return projectRepository.save(project);
     }
 
+    @PreAuthorize("hasRole('MANAGER')")
     @Override
     public Iterable<Project> findAll() {
         return projectRepository.findAll();
