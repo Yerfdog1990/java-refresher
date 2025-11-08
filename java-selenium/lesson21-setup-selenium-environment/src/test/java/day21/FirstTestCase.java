@@ -8,8 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FirstTestCase {
 
+
     @Test
-    public void givenUrl_when_getTitle_thenSuccess() {
+    public void givenUrl_whenGetTitle_thenSuccess() {
         // Step 1: Launch the safari browser
         System.out.println("Launching the browser...");
         // SafariDriver driver = new SafariDriver();
