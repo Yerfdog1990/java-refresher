@@ -28,7 +28,7 @@ public class ProjectRepositoryIntegrationTest {
         Project newProject = new Project("First Project", LocalDate.now());
         projectRepository.save(newProject);
 
-        Optional<Project> retreivedProject = projectRepository.findById(newProject.getId());
-        assertEquals(retreivedProject.get(), newProject);
+        Optional<Project> retrievedProject = projectRepository.findById(newProject.getId());
+        assertEquals(retrievedProject.get(), newProject);
     }
 }
