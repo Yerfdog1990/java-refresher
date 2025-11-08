@@ -6,9 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="lesson21-setup-selenium-environment" />
         <module name="lesson20-collections" />
-        <module name="lesson21-selenium-environment" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lesson21-selenium-environment" target="24" />
+    </bytecodeTargetLevel>
   </component>
 </project>

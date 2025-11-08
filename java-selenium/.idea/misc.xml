@@ -8,7 +8,14 @@
         <option value="$PROJECT_DIR$/lesson20-selenimum-environment/pom.xml" />
         <option value="$PROJECT_DIR$/lesson20-collections/pom.xml" />
         <option value="$PROJECT_DIR$/lesson21-selenium-environment/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson21-set-selenium-environment/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson21-setup-selenium-environment/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/lesson21-selenium-environment/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="24" project-jdk-type="JavaSDK">
