@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The &quot;Learn Spring Data&quot; Course - Module 2: Spring Data Repositories</description>
+    <name>learn-spring-data-spring-data-repositories</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>learn-spring-data.spring-data-repositories</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>spring-data-jpa-setup-start</module>
+        <module>spring-data-jpa-setup-end</module>
+        <module>introduction-to-spring-data-jpa-repositories-start</module>
+        <module>introduction-to-spring-data-jpa-repositories-end</module>
+        <module>testing-spring-data-repositories-start</module>
+        <module>testing-spring-data-repositories-end</module>
+        <module>derived-query-methods-start</module>
+        <module>derived-query-methods-end</module>
+        <module>deep-dive-into-derived-query-methods-start</module>
+        <module>deep-dive-into-derived-query-methods-end</module>
+        <module>save-methods-start</module>
+        <module>save-methods-end</module>
+        <module>delete-methods-start</module>
+        <module>delete-methods-end</module>
+    </modules>
+
+</project>
