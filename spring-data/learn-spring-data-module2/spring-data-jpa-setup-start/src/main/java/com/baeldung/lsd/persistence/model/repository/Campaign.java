@@ -1,4 +1,4 @@
-package com.baeldung.lsd.persistence.model;
+package com.baeldung.lsd.persistence.model.repository;
 
 import java.util.HashSet;
 import java.util.Objects;
