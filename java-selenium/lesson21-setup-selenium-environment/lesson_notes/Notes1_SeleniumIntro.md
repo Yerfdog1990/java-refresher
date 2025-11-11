@@ -316,12 +316,12 @@ mvn clean test
 
 ## **10. Best Practices**
 
-✅ **Use the Right Locator:** Prefer `ID` or `Name` for stability.
-✅ **Apply Waits Correctly:** Use **implicit** or **explicit waits**, not `Thread.sleep()`.
-✅ **Keep Tests Generic:** Avoid hardcoding browsers; parameterize them.
-✅ **Use Assertions:** Validate expected vs. actual results with TestNG or JUnit.
-✅ **Capture Screenshots:** Useful for debugging and reporting failures.
-✅ **Follow Page Object Model:** Separate locators and actions for maintainability.
+- ✅ **Use the Right Locator:** Prefer `ID` or `Name` for stability.
+- ✅ **Apply Waits Correctly:** Use **implicit** or **explicit waits**, not `Thread.sleep()`.
+- ✅ **Keep Tests Generic:** Avoid hardcoding browsers; parameterize them.
+- ✅ **Use Assertions:** Validate expected vs. actual results with TestNG or JUnit.
+- ✅ **Capture Screenshots:** Useful for debugging and reporting failures.
+- ✅ **Follow Page Object Model:** Separate locators and actions for maintainability.
 
 ---
 

@@ -22,7 +22,7 @@
             <version>4.16.1</version>
         </dependency>
 
-        <!-- JUnit 5 dependency -->
+        <!-- Testing -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -30,13 +30,20 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- JUnit 5 Engine dependency -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.9.2</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Logging -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
+        </dependency>
+
     </dependencies>
 
 </project>
