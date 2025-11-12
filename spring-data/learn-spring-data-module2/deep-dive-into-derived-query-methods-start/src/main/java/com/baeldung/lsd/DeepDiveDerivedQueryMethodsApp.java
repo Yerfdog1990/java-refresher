@@ -1,5 +1,8 @@
 package com.baeldung.lsd;
 
+import com.baeldung.lsd.persistence.model.Campaign;
+import com.baeldung.lsd.persistence.model.Task;
+import com.baeldung.lsd.persistence.model.TaskStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.baeldung.lsd.persistence.repository.CampaignRepository;
 import com.baeldung.lsd.persistence.repository.TaskRepository;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootApplication
 public class DeepDiveDerivedQueryMethodsApp implements ApplicationRunner {
@@ -26,7 +32,31 @@ public class DeepDiveDerivedQueryMethodsApp implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        
+        Iterable<Campaign> campaigns = campaignRepository.findByNameStartingWith("Campaign");
+        LOG.info("Campaigns name starting with Campaign:");
+        campaigns.forEach(campaign -> LOG.info("{}", campaign));
+
+        Iterable<Campaign> percentSignCampaigns = campaignRepository.findByNameStartingWith("%");
+        LOG.info("campaigns name starting with \"%\"\n{}", percentSignCampaigns);
+
+        Iterable<Campaign> allCampaigns = campaignRepository.findByNameStartingWith("");
+        LOG.info("Campaigns name starting with \"\"");
+        allCampaigns.forEach(campaign -> LOG.info("{}", campaign));
+
+        List<Task> tasksStrictlyDue = taskRepository.findByDueDateGreaterThan(LocalDate.of(2025, 2, 10));
+        LOG.info("Number of Tasks due strictly after: \"2025-02-10\"\n{}", tasksStrictlyDue.size());
+
+        List<Task> tasksDue = taskRepository.findByDueDateGreaterThanEqual(LocalDate.of(2025, 2, 10));
+        LOG.info("Number of Tasks due after: \"2025-02-10\"\n{}", tasksDue.size());
+
+        List<Task> overdueTasks = taskRepository.findByDueDateBeforeAndStatusEquals(LocalDate.now(), TaskStatus.TO_DO);
+        LOG.info("Overdue Tasks:\n{}", overdueTasks);
+
+        List<Task> tasksByAssignee = taskRepository.findByAssigneeFirstName("John");
+        LOG.info("Tasks assigned to John\n{}", tasksByAssignee);
+
+        Iterable<Campaign> distinctCampaigns = campaignRepository.findDistinctByTasksNameContaining("Task");
+        distinctCampaigns.forEach(campaign -> LOG.info("distinct campaigns with Task name containing \"Task\": {}", campaign));
     }
 
 
