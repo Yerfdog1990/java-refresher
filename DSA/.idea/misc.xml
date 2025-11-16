@@ -7,10 +7,12 @@
       <list>
         <option value="$PROJECT_DIR$/chapter1-introduction/pom.xml" />
         <option value="$PROJECT_DIR$/chapter3-bigONotation/pom.xml" />
+        <option value="$PROJECT_DIR$/chapter2-algorithm_complexity/pom.xml" />
+        <option value="$PROJECT_DIR$/chapter3-bigO_notation/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" project-jdk-name="24" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
