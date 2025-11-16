@@ -9,5 +9,8 @@
         <module name="chapter1-introduction" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="chapter2-algorithm_complexity" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
