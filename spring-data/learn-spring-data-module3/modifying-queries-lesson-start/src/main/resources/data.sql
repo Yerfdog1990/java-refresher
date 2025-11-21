@@ -8,3 +8,7 @@ INSERT INTO Task(id, uuid, name, due_date, description, campaign_id, status) VAL
 INSERT INTO Task(id, uuid, name, due_date, description, campaign_id, status) VALUES (default, uuid(), 'Task 2', '2025-02-10', 'Task 2 Description', 1, 0);
 INSERT INTO Task(id, uuid, name, due_date, description, campaign_id, status) VALUES (default, uuid(), 'Task 3', '2025-03-16', 'Task 3 Description', 1, 0);
 INSERT INTO Task(id, uuid, name, due_date, description, campaign_id, status, assignee_id) VALUES (default, uuid(), 'Task 4', '2025-06-25', 'Task 4 Description', 2, 0, 1);
+
+INSERT INTO Task(id, uuid, name, due_date, description, campaign_id, status)
+VALUES (5, uuid(), 'Task 5', '2025-05-17', 'Task 5 Description', 1, 3);
+
