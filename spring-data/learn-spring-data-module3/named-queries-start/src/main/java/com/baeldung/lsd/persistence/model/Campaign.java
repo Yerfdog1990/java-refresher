@@ -4,17 +4,24 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
+@NamedQuery(name = "Campaign.namedQueryCampaignsWithIdGreaterThan",
+        query = "select c from Campaign c where c.id > :id")
+
+@NamedQuery(name = "Campaign.findCampaignsWithIdLessThan",
+        query = "select c from Campaign c where c.id < :id")
+
+@NamedQuery(name = "Campaign.updateCampaignDescriptionById",
+        query = "update Campaign set description = :newDescription  where id = :id")
+
+@NamedNativeQuery(
+        name = "Campaign.findCampaignsWithDescriptionShorterThan",
+        query = "select * from Campaign c where LENGTH(c.description) <= :length",
+        resultClass = Campaign.class)
 @Entity
+@Table(name = "campaign")
 public class Campaign {
 
     @Id
@@ -27,6 +34,7 @@ public class Campaign {
 
     private String name;
 
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @OneToMany(mappedBy = "campaign", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
