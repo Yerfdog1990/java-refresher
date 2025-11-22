@@ -8,10 +8,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lesson21-setup-selenium-environment" />
         <module name="lesson25-xpath_axes" />
-        <module name="lesson24-xpaths" />
         <module name="lesson23-css-selectors" />
         <module name="lesson22-locators" />
         <module name="lesson20-collections" />
+        <module name="lesson24-xpaths" />
+        <module name="lesson26-webelement_methods" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
