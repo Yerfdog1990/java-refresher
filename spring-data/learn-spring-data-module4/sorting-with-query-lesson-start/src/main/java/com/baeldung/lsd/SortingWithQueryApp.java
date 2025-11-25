@@ -1,5 +1,6 @@
 package com.baeldung.lsd;
 
+import com.baeldung.lsd.persistence.model.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.baeldung.lsd.persistence.repository.TaskRepository;
+import org.springframework.data.domain.Sort;
+
+import java.util.List;
 
 @SpringBootApplication
 public class SortingWithQueryApp implements ApplicationRunner {
@@ -24,6 +28,28 @@ public class SortingWithQueryApp implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+        List<Task> customQueryResults = taskRepository.allTasksSortedByDueDate();
+
+        LOG.info("All Tasks sorted by due date descending order :");
+        customQueryResults.forEach(t -> LOG.info("{}", t));
+
+
+        Sort sortByDueDateDesc = Sort.by(Sort.Direction.DESC, "dueDate");
+        List<Task> customQueryWithSortParamResults = taskRepository.allTasks(sortByDueDateDesc);
+        LOG.info("All Tasks sorted by due date descending order:");
+        customQueryWithSortParamResults.forEach(t -> LOG.info("{}", t));
+
+
+        Sort sortByAsignee = Sort.by(Sort.Direction.DESC, "assignee.lastName");
+        List<Task> queryWithOrderByAndSortParamResults = taskRepository.allTasksSortedByDueDate(sortByAsignee);
+        LOG.info("All Tasks sorted by due date descending order and assignee last name in descending order:");
+        queryWithOrderByAndSortParamResults.forEach(t -> LOG.info("{}", t));
+
+
+        List<Task> nativeQueryTasksSortedByDueDateDescResults = taskRepository.allTasksSortedByDueDateDesc();
+        LOG.info("All Tasks sorted by due date descending order with native query:");
+        nativeQueryTasksSortedByDueDateDescResults.forEach(t -> LOG.info("{}", t));
 
     }
 
