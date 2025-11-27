@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "pagination",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
