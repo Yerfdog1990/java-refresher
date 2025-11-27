@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lesson21-setup-selenium-environment" />
         <module name="lesson25-xpath_axes" />
+        <module name="lesson27-waiting_methods" />
         <module name="lesson23-css-selectors" />
         <module name="lesson22-locators" />
         <module name="lesson20-collections" />
