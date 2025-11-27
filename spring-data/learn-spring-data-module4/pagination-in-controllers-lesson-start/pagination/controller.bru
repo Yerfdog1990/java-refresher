@@ -1,0 +1,21 @@
+meta {
+  name: controller
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/campaigns/1/tasks?page=0&size=2
+  body: none
+  auth: inherit
+}
+
+params:query {
+  page: 0
+  size: 2
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
