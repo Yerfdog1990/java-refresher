@@ -1,11 +1,17 @@
 package com.baeldung.lsd.persistence.model;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+import com.baeldung.lsd.persistence.events.TaskUpdated;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.AfterDomainEventPublication;
+import org.springframework.data.domain.DomainEvents;
 
 @Entity
 public class Task {
@@ -31,6 +37,8 @@ public class Task {
 
     @ManyToOne
     private Worker assignee;
+
+    private static final Logger LOG = LoggerFactory.getLogger(Task.class);
 
     public Task() {
     }
@@ -126,4 +134,13 @@ public class Task {
         return Objects.equals(getUuid(), other.getUuid());
     }
 
+    @DomainEvents
+    public List<Object> domainEvents() {
+        return List.of(new TaskUpdated(this));
+    }
+
+    @AfterDomainEventPublication
+    void callback() {
+        LOG.info("Task Domain Events Published!");
+    }
 }
