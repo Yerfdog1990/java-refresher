@@ -1,5 +1,6 @@
 package com.baeldung.lsd;
 
+import com.baeldung.lsd.persistence.model.Campaign;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,15 @@ public class AuditingApp implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        Campaign campaign = new Campaign("C4", "Audited Campaign", "This campaign has auditable fields");
+        campaign = campaignRepository.save(campaign);
+        LOG.info("New Campaign Auditing Data:{}", campaign.getAuditingData());
 
+        // Update the Campaign
+        Thread.sleep(2000);
+        campaign.setName("Updated Campaign");
+        campaign = campaignRepository.save(campaign);
+        LOG.info("Updated Campaign Auditing Data:{}", campaign.getAuditingData());
     }
 
 }
