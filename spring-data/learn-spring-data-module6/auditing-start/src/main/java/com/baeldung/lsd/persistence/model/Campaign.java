@@ -1,12 +1,18 @@
 package com.baeldung.lsd.persistence.model;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import com.baeldung.lsd.persistence.audits.AuditingData;
 import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Campaign {
 
@@ -21,6 +27,9 @@ public class Campaign {
     private String name;
 
     private String description;
+
+    @Embedded
+    private AuditingData auditingData = new AuditingData();
 
     @OneToMany(mappedBy = "campaign", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Task> tasks = new HashSet<>();
@@ -72,6 +81,14 @@ public class Campaign {
 
     public void setTasks(Set<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public AuditingData getAuditingData() {
+        return auditingData;
+    }
+
+    public void setAuditingData(AuditingData auditingData) {
+        this.auditingData = auditingData;
     }
 
     @Override
