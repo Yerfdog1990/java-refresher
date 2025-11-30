@@ -26,10 +26,10 @@ public class Task {
 
     private TaskStatus status;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Campaign campaign;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Worker assignee;
 
     public Task() {

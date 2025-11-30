@@ -8,6 +8,20 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.NaturalId;
 
 @Entity
+@NamedEntityGraph(
+        name = "campaign-with-tasks",
+        attributeNodes = {
+                @NamedAttributeNode(value = "tasks", subgraph = "task-assignee")
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name="task-assignee",
+                        attributeNodes = {
+                                @NamedAttributeNode("assignee")
+                        }
+                )
+        }
+)
 public class Campaign {
 
     @Id
@@ -22,7 +36,7 @@ public class Campaign {
 
     private String description;
 
-    @OneToMany(mappedBy = "campaign", orphanRemoval = true, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "campaign", orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Task> tasks = new HashSet<>();
 
     public Campaign(String code, String name, String description) {
