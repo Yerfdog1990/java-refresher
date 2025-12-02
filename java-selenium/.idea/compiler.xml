@@ -12,6 +12,7 @@
         <module name="lesson23-css-selectors" />
         <module name="lesson22-locators" />
         <module name="lesson20-collections" />
+        <module name="lesson28-browser-navigation-commands" />
         <module name="lesson24-xpaths" />
         <module name="lesson26-webelement_methods" />
       </profile>
