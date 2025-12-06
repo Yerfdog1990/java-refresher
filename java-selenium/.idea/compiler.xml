@@ -15,6 +15,7 @@
         <module name="lesson28-browser-navigation-commands" />
         <module name="lesson24-xpaths" />
         <module name="lesson26-webelement_methods" />
+        <module name="lesson29-handlingcheckboxes" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
