@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: l3-spring-security-annotations
+
