@@ -29,11 +29,11 @@ Form login is the most common authentication mechanism in Spring Security. When 
 
 ## **3. Redirecting to the Login Page (High-Level Flow)**
 
-**Space for Diagram**
+![img.png](img.png)
 
 ---
 
-### **Step-by-step explanation (Figure 1)**
+### **Step-by-step explanation**
 
 1. **User accesses a protected URL (e.g., `/private` or `/admin`).**
    The request is unauthenticated.
@@ -54,11 +54,11 @@ Form login is the most common authentication mechanism in Spring Security. When 
 
 ## **4. How Username/Password Login Is Processed**
 
-**Space for Diagram**
+![img_1.png](img_1.png)
 
 ---
 
-### **Step-by-step explanation (Figure 2)**
+### **Step-by-step explanation**
 
 1. **User submits credentials** via POST `/login` or a custom URL such as `/perform_login`.
    `UsernamePasswordAuthenticationFilter` reads `username` and `password` from the form and creates a `UsernamePasswordAuthenticationToken`.

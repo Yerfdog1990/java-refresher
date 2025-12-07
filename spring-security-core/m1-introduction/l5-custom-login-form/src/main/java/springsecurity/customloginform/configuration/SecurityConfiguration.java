@@ -40,7 +40,7 @@ public class SecurityConfiguration {
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutUrl("/logout")  // Changed to the default Spring Security logout URL
+                        .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
                         .deleteCookies("JSESSIONID")
                         .invalidateHttpSession(true)
