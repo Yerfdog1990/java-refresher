@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Anonymous Page</title>
+</head>
+<body>
+<h1>Welcome Guest</h1>
+<p>This is a public page.</p>
+
+<a th:href="@{/login}">Login</a>
+or
+<a th:href="@{/homepage}">View Public Content</a>
+</body>
+</html>
