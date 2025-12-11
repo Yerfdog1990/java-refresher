@@ -1,1 +1,0 @@
-Use `` mvn help:effective-pom`` to see the final generated pom.

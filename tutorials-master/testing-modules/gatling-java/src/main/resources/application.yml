@@ -1,9 +1,0 @@
-management:
-  endpoints:
-    web:
-      base-path: /private
-      exposure:
-        include: prometheus
-        exclude: metrics
-      path-mapping:
-        prometheus: metrics
