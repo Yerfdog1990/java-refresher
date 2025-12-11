@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+<title>Layout</title>
+
+<link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <a class="brand" th:href="@{/}"> Home </a>
+                <ul class="nav">
+                    <li><a th:href="@{/}" href="users.html"> Users </a></li>
+                </ul>
+                <ul class="nav pull-right">
+                    <li><a th:href="@{/doLogout}" class="menu-right" > Logout </a></li>
+                </ul>
+            </div>
+        </div>
+        <h1 layout:fragment="header">Layout</h1>
+        <div layout:fragment="content">Fake content</div>
+    </div>
+</body>
+</html>

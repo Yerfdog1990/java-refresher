@@ -1,6 +1,0 @@
-rootProject.name = 'gradle-7'
-
-include 'conditional-dependency-demo'
-include 'dependency-version'
-include 'gradle-javadoc'
-include 'multiple-repositories-demo'
