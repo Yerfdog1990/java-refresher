@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css(v=${#dates.createNow().time})}" href="/css/styles.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Welcome to Student Registration</h1>
+    <p>Please click the button below to proceed to register a new user.</p>
+    <a class="btn" th:href="@{/users/form}">Proceed to Register</a>
+    <p> or </p>
+    <a class="btn" th:href="@{/users}">View registered students</a>
+</div>
+</body>
+</html>
