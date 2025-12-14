@@ -4,7 +4,8 @@ package springsecurity.lesson3explicitusernameandpassword.persistence.dto;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import springsecurity.lesson3explicitusernameandpassword.persistence.validation.OnCreate;
+import springsecurity.lesson3explicitusernameandpassword.validation.OnCreate;
+
 
 @Builder
 @Data
