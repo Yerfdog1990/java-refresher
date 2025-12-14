@@ -14,7 +14,7 @@ import springsecurity.lesson3explicitusernameandpassword.persistence.dto.Student
 import springsecurity.lesson3explicitusernameandpassword.persistence.dto.StudentResponseDto;
 import springsecurity.lesson3explicitusernameandpassword.persistence.entity.Student;
 import springsecurity.lesson3explicitusernameandpassword.persistence.service.StudentService;
-import springsecurity.lesson3explicitusernameandpassword.persistence.validation.OnCreate;
+import springsecurity.lesson3explicitusernameandpassword.validation.OnCreate;
 
 @Controller
 @RequestMapping("/")
