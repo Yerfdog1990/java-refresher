@@ -1,0 +1,15 @@
+meta {
+  name: Email without attachment
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/sendMail
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}
