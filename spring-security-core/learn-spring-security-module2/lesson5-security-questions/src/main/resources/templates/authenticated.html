@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account Activated</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container auth-container">
+    <h1>Account Activated</h1>
+    <div class="alert alert-success">
+        Account activated successfully! You can now login into your account.
+    </div>
+    <div class="actions">
+        <a class="btn primary" th:href="@{/login}">Login</a>
+    </div>
+</div>
+</body>
+</html>
