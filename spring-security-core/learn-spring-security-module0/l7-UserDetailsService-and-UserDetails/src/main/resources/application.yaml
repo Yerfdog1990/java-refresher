@@ -1,0 +1,7 @@
+
+spring:
+  application:
+    name: l7-UserDetailsService-and-UserDetails
+
+
+

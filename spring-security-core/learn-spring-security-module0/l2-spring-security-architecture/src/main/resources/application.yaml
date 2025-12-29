@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: l2-spring-security-architecture
+
+# Logging level
+logging:
+  level:
+    l2springsecurityarchitecture: DEBUG
+    org.springframework.security: DEBUG
+
+# Console log pattern
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
