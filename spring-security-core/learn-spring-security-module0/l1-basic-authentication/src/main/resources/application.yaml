@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: l1-basic-authentication
+
+# user details
+  security:
+    user:
+      name: admin
+      password: admin123
