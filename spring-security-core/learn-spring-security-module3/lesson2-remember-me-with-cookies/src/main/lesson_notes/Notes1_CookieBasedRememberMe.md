@@ -513,21 +513,21 @@ This complements the cookie-based diagram and highlights **where the database pa
           │    remember=true
           ▼
  ┌────────────────────────────┐
- │ UsernamePassword            │
- │ AuthenticationFilter        │
+ │ UsernamePassword           │
+ │ AuthenticationFilter       │
  └────────┬───────────────────┘
           │
           │ 2. Authenticate credentials
           ▼
  ┌────────────────────────────┐
- │ AuthenticationManager       │
- │ + AuthenticationProviders   │
+ │ AuthenticationManager      │
+ │ + AuthenticationProviders  │
  └────────┬───────────────────┘
           │
           │ 3. Authentication SUCCESS
           ▼
  ┌────────────────────────────────────┐
- │ PersistentTokenBasedRememberMeSvc   │
+ │ PersistentTokenBasedRememberMeSvc  │
  └────────┬───────────────────────────┘
           │
           │ 4. loginSuccess()
@@ -553,21 +553,21 @@ This complements the cookie-based diagram and highlights **where the database pa
           │    WITH remember-me cookie
           ▼
  ┌────────────────────────────┐
- │ RememberMeAuthentication    │
- │ Filter                      │
+ │ RememberMeAuthentication   │
+ │ Filter                     │
  └────────┬───────────────────┘
           │
           │ 7. autoLogin()
           ▼
  ┌────────────────────────────────────┐
- │ PersistentTokenBasedRememberMeSvc   │
+ │ PersistentTokenBasedRememberMeSvc  │
  └────────┬───────────────────────────┘
           │
           │ 8. Lookup series in DB
           ▼
  ┌────────────────────────────┐
  │ PersistentTokenRepository  │
- │ Validate token value        │
+ │ Validate token value       │
  └────────┬───────────────────┘
           │
           │ 9. Token VALID?
@@ -575,21 +575,21 @@ This complements the cookie-based diagram and highlights **where the database pa
           │    └─ NO  → Possible theft
           ▼
  ┌────────────────────────────┐
- │ Update token in DB          │
- │ (New token value)           │
+ │ Update token in DB         │
+ │ (New token value)          │
  └────────┬───────────────────┘
           │
           │ 10. Load UserDetails
           ▼
  ┌────────────────────────────┐
- │ UserDetailsService          │
+ │ UserDetailsService         │
  └────────┬───────────────────┘
           │
           │ 11. Create Authentication
           ▼
  ┌────────────────────────────┐
- │ SecurityContextHolder       │
- │ Authentication restored     │
+ │ SecurityContextHolder      │
+ │ Authentication restored    │
  └────────┬───────────────────┘
           │
           │ 12. New JSESSIONID issued
