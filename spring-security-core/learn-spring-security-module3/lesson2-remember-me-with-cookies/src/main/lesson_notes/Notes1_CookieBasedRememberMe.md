@@ -959,9 +959,9 @@ You can paste this directly into your lesson notes.
 COOKIE-BASED                               PERSISTENT TOKEN
 ────────────                               ────────────────
 • Token reusable until expiry             • Token rotated every login
-• Token usable on any device               • Token theft detected
-• No server-side state                     • Server-side validation
-• Password change invalidates token        • Compromised tokens revoked
+• Token usable on any device              • Token theft detected
+• No server-side state                    • Server-side validation
+• Password change invalidates token       • Compromised tokens revoked
 • Simpler                                 • More secure (RECOMMENDED)
 
 
