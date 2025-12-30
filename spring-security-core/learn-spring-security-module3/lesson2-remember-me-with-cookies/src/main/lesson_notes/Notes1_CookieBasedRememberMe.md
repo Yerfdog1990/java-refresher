@@ -938,10 +938,10 @@ You can paste this directly into your lesson notes.
            │                              │ PersistentTokenRepository        │
            │                              │ (JDBC / DB)                      │
            │                              └──────────┬───────────────────────┘
-           │                                           │
-           │                                           │ Validate token
-           │                                           │ Rotate token
-           │                                           ▼
+           │                                         │
+           │                                         │ Validate token
+           │                                         │ Rotate token
+           │                                         ▼
            ▼                              ┌──────────────────────────────────┐
 ┌──────────────────────────┐              │ Issue NEW cookie + update DB     │
 │ Auto-authenticate user   │              └──────────────────────────────────┘
