@@ -9,6 +9,7 @@
         <module name="lesson21-setup-selenium-environment" />
         <module name="lesson25-xpath_axes" />
         <module name="lesson27-waiting_methods" />
+        <module name="lesson31-handling-drop-downs" />
         <module name="lesson23-css-selectors" />
         <module name="lesson22-locators" />
         <module name="lesson20-collections" />
@@ -16,6 +17,7 @@
         <module name="lesson24-xpaths" />
         <module name="lesson26-webelement_methods" />
         <module name="lesson29-handlingcheckboxes" />
+        <module name="lesson30-frames_nested_iFrames" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
