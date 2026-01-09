@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e6fb805a-9b31-4ea3-bfd6-2dec763b3ae4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springsecurity/lesson2authenticationtaganddisplayingcurrentuser/Lesson2AuthenticationTagAndDisplayingCurrentUserApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springsecurity/lesson2authenticationtaganddisplayingcurrentuser/configuration/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/springsecurity/lesson2authenticationtaganddisplayingcurrentuser/controller/SecurityController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/lesson_notes/Notes1_JSPAuthenticationTag.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/profile.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/springsecurity/lesson2authenticationtaganddisplayingcurrentuser/Lesson2AuthenticationTagAndDisplayingCurrentUserApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="23" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="381IJzKrmwcGP1jOltpDvWeZddC" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.Lesson2AuthenticationTagAndDisplayingCurrentUserApplicationTests.executor": "Run",
+    "JUnit.ProfileControllerTest.executor": "Run",
+    "JUnit.RedirectLoopTest.executor": "Run",
+    "Maven.lesson2-authentication-tag-and-displaying-current-user [clean].executor": "Run",
+    "Maven.lesson2-authentication-tag-and-displaying-current-user [compile].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.Lesson2AuthenticationTagAndDisplayingCurrentUserApplication.executor": "Run",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/lesson_notes" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Lesson2AuthenticationTagAndDisplayingCurrentUserApplication">
+    <configuration name="Lesson2AuthenticationTagAndDisplayingCurrentUserApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lesson2-authentication-tag-and-displaying-current-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser" />
+      <option name="MAIN_CLASS_NAME" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser.Lesson2AuthenticationTagAndDisplayingCurrentUserApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProfileControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lesson2-authentication-tag-and-displaying-current-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser" />
+      <option name="MAIN_CLASS_NAME" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser.ProfileControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RedirectLoopTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lesson2-authentication-tag-and-displaying-current-user" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser" />
+      <option name="MAIN_CLASS_NAME" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser.RedirectLoopTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Lesson2AuthenticationTagAndDisplayingCurrentUserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="lesson2-authentication-tag-and-displaying-current-user" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="springsecurity.lesson2authenticationtaganddisplayingcurrentuser.Lesson2AuthenticationTagAndDisplayingCurrentUserApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RedirectLoopTest" />
+        <item itemvalue="JUnit.Lesson2AuthenticationTagAndDisplayingCurrentUserApplicationTests" />
+        <item itemvalue="JUnit.ProfileControllerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-26cb7f24e5b0-intellij.indexing.shared.core-IU-253.29346.138" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.29346.138" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6fb805a-9b31-4ea3-bfd6-2dec763b3ae4" name="Changes" comment="" />
+      <created>1767960584763</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1767960584763</updated>
+      <workItem from="1767960589572" duration="5507000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
