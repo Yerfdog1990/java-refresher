@@ -1,0 +1,9 @@
+package springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.repository;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.model.SecurityQuestionDefinition;
+
+public interface SecurityQuestionDefinitionRepository extends JpaRepository<SecurityQuestionDefinition, Long> {
+
+}
