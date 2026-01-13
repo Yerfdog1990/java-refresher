@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.validation.PasswordMatches;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.validation.ValidPassword;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -39,7 +40,7 @@ public class Student {
     private String passwordConfirmation;
 
     @Column(name = "date_created")
-    private Calendar created = Calendar.getInstance();
+    private LocalDateTime created;
 
     private boolean enabled;
 
@@ -48,4 +49,8 @@ public class Student {
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Authority> authorities = new HashSet<>();
+
+    public Student(Long id) {
+        this.id = id;
+    }
 }

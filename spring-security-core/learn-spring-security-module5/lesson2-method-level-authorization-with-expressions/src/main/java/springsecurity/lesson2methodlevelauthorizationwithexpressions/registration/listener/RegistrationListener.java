@@ -7,6 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
+import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.dto.StudentDTO;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.model.Student;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.service.IStudentService;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.registration.OnRegistrationCompleteEvent;

@@ -24,7 +24,7 @@
         <p><strong>Name:</strong> <span th:text="${student.username}"></span></p>
         <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
         <p><strong>Date Created:</strong>
-            <span th:text="${student.created != null ? #calendars.format(student.created, 'yyyy-MM-dd HH:mm') : '-'}"></span>
+            <span th:text="${student.created != null ? #temporals.format(student.created, 'yyyy-MM-dd HH:mm') : '-'}"></span>
         </p>
     </div>
 

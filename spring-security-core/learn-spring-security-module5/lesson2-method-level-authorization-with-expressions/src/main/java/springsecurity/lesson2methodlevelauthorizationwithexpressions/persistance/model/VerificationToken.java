@@ -4,6 +4,7 @@ package springsecurity.lesson2methodlevelauthorizationwithexpressions.persistanc
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.dto.StudentDTO;
 
 import java.util.Calendar;
 import java.util.Date;
