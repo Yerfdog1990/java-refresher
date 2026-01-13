@@ -9,7 +9,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.dto.StudentDTO;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.model.*;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.repository.SecurityQuestionDefinitionRepository;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.repository.SecurityQuestionRepository;
@@ -25,6 +27,7 @@ import springsecurity.lesson2methodlevelauthorizationwithexpressions.registratio
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.validation.EmailExistsException;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class RegistrationController {
@@ -49,7 +52,7 @@ public class RegistrationController {
     @GetMapping("/signup")
     public ModelAndView registrationForm() {
         Map<String, Object> model = new HashMap<>();
-        model.put("student", new Student());
+        model.put("student", new StudentDTO());  // Changed from "student" to "studentDTO"
         model.put("questions", securityQuestionDefinitionRepository.findAll());
         return new ModelAndView("registrationPage", model);
     }
@@ -64,6 +67,26 @@ public class RegistrationController {
         return "loginPage";
     }
 
+    // Check authorities the user has when authenticated
+    @GetMapping("/debug/me")
+    @ResponseBody
+    public Map<String, Object> debugMe(Authentication auth) {
+        Map<String, Object> info = new HashMap<>();
+        info.put("name", auth.getName());
+        info.put("authorities", auth.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList()));
+        info.put("details", auth.getDetails());
+        info.put("principal", auth.getPrincipal());
+        return info;
+    }
+
+    @GetMapping("/debug/user")
+    @ResponseBody
+    public String debugUser(Authentication authentication) {
+        return "User: " + authentication.getName() +
+                ", Authorities: " + authentication.getAuthorities();
+    }
     @GetMapping("/activation")
     public String activation() {
         return "activation";
@@ -81,18 +104,19 @@ public class RegistrationController {
 
     @GetMapping("/users")
     public ModelAndView showUsers() {
-        return new ModelAndView("users", "students", studentService.findAll());
+        return new ModelAndView("users", "students", studentService.findAllStudents());
     }
+
 
     @GetMapping("/users/{id}")
     public ModelAndView showUser(@PathVariable("id") Long id) {
-        Student student = studentService.findById(id);
-        return new ModelAndView("view", "student", student);
+        StudentDTO studentDTO = studentService.findById(id);
+        return new ModelAndView("view", "student", studentDTO);
     }
 
     @GetMapping("/users/{id}/edit")
     public ModelAndView editUserForm(@PathVariable("id") Long id) {
-        Student student = studentService.findById(id);
+        StudentDTO student = studentService.findById(id);
         Map<String, Object> model = new HashMap<>();
         model.put("student", student);
         model.put("questions", securityQuestionDefinitionRepository.findAll());
@@ -100,21 +124,26 @@ public class RegistrationController {
     }
 
     @PostMapping("/users/{id}/delete")
-    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView deleteUser(@PathVariable("id") Long id) {
         studentService.deleteById(id);
         return new ModelAndView("redirect:/users");
     }
 
+
     @ExceptionHandler(AccessDeniedException.class)
     public ModelAndView handleAccessDeniedException(AccessDeniedException ex, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("errorMessage", "You have no previlage to delete any user! Kindly contact the admin");
+        String message = ex.getMessage() != null ?
+                ex.getMessage() : "You don't have permission to perform this action. Please contact your administrator.";
+        redirectAttributes.addFlashAttribute("errorMessage", message);
         return new ModelAndView("redirect:/users");
     }
 
     @PostMapping("/users/{id}/edit")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ModelAndView editUser(@PathVariable("id") Long id, @Valid final Student student, final BindingResult result, @RequestParam(value = "roleNames", required = false) List<String> roleNames) {
+    public ModelAndView editUser(
+            @PathVariable("id") Long id,
+            @Valid final Student student,
+            final BindingResult result,
+            @RequestParam(value = "roleNames", required = false) List<String> roleNames) {
         if (result.hasErrors()) {
             Map<String, Object> model = new HashMap<>();
             model.put("student", student);
@@ -141,34 +170,43 @@ public class RegistrationController {
     }
 
     @PostMapping("/student/register")
-    public ModelAndView registerNewStudent(@Valid final Student student, final BindingResult result, final @RequestParam(required = false) Long questionId, @RequestParam(required = false) final String answer, @RequestParam(value = "roleNames", required = false) List<String> roleNames, final HttpServletRequest request, final RedirectAttributes redirectAttributes) {
+    public ModelAndView registerNewStudent(
+            @Valid @ModelAttribute("student") StudentDTO studentDTO,
+            BindingResult result,
+            @RequestParam(value = "questionId", required = false) Long questionId,
+            @RequestParam(value = "answer", required = false) String answer,
+            @RequestParam(value = "roleNames", required = false) List<String> roleNames,
+            HttpServletRequest request) {
+
+        // Validate password match
+        if (studentDTO.getPassword() != null && !studentDTO.getPassword().equals(studentDTO.getPasswordConfirmation())) {
+            result.rejectValue("passwordConfirmation", "error.student", "Passwords do not match");
+        }
+
         if (result.hasErrors()) {
             Map<String, Object> model = new HashMap<>();
-            model.put("student", student);
+            model.put("student", studentDTO);
             model.put("questions", securityQuestionDefinitionRepository.findAll());
             return new ModelAndView("registrationPage", model);
         }
+
         try {
-            if (roleNames != null) {
-                for (String auth : roleNames) {
-                    student.getAuthorities().add(new Authority(student, auth));
-                }
-            }
-            final Student registered = studentService.registerNewStudent(student);
-            if (questionId != null && answer != null) {
-                final SecurityQuestionDefinition questionDefinition = securityQuestionDefinitionRepository.findById(questionId).orElseThrow(() -> new RuntimeException("Security Question Definition not found"));
-                securityQuestionRepository.save(new SecurityQuestion(registered, questionDefinition, answer));
-            }
-            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
+            // Register the student
+            Student registered = studentService.registerNewStudent(studentDTO);
+
+            // Send activation email
+            String appUrl = request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, appUrl));
+
+            return new ModelAndView("redirect:/login?registered=true");
+
         } catch (EmailExistsException e) {
-            result.addError(new FieldError("student", "email", e.getMessage()));
+            result.rejectValue("email", "email.exists", e.getMessage());
             Map<String, Object> model = new HashMap<>();
-            model.put("student", student);
+            model.put("student", studentDTO);
             model.put("questions", securityQuestionDefinitionRepository.findAll());
             return new ModelAndView("registrationPage", model);
         }
-        return new ModelAndView("redirect:/activation");
     }
 
     @GetMapping("/registrationConfirm")

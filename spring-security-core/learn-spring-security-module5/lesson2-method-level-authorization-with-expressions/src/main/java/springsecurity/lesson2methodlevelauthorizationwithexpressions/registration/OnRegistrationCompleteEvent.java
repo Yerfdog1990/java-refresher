@@ -3,6 +3,7 @@ package springsecurity.lesson2methodlevelauthorizationwithexpressions.registrati
 
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
+import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.dto.StudentDTO;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.model.Student;
 
 @Getter

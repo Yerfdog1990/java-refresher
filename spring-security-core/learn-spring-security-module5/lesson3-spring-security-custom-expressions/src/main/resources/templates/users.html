@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Registered Users</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <div style="text-align: right;">
+        <form th:action="@{/logout}" method="post" style="display: inline-block;">
+            <button type="submit" class="btn danger">Logout</button>
+        </form>
+    </div>
+    <h1>Registered Users</h1>
+
+    <div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
+    <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+
+    <div class="actions">
+        <a class="btn primary" th:href="@{/signup}">Register New User</a>
+        <a class="btn" th:href="@{/home}">Back to Home</a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Date Created</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${Users == null or #lists.isEmpty(Users)}">
+            <td colspan="4">No Users registered yet.</td>
+        </tr>
+        <tr th:each="s : ${Users}">
+            <td th:text="${s.username}"></td>
+            <td th:text="${s.email}"></td>
+            <td th:text="${s.created != null ? #calendars.format(s.created, 'MMM d, yyyy HH:mm:ss') : '-'}">
+            </td>
+            <td class="actions">
+                <a class="btn" th:href="@{/users/{id}(id=${s.id})}">View</a>
+                <a class="btn" th:href="@{/users/{id}/edit(id=${s.id})}">Edit</a>
+                <form th:action="@{/users/{id}/delete(id=${s.id})}" method="post" style="display: inline-block;">
+                    <button type="submit" class="btn danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

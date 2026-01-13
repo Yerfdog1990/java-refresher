@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>View User</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<div class="container">
+    <div style="text-align: right;">
+        <form th:action="@{/logout}" method="post" style="display: inline-block;">
+            <button type="submit" class="btn danger">Logout</button>
+        </form>
+    </div>
+    <div th:if="${message}">
+        <div class="alert alert-success" th:text="${message}"></div>
+        <div class="actions">
+            <a class="btn" th:href="@{/users}">View registered users</a>
+        </div>
+    </div>
+
+    <h1>User Details</h1>
+    <div class="detail">
+        <p><strong>Name:</strong> <span th:text="${myUser.username}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${myUser.email}"></span></p>
+        <p><strong>Date Created:</strong>
+            <span th:text="${myUser.created != null ? #calendars.format(myUser.created, 'yyyy-MM-dd HH:mm') : '-'}"></span>
+        </p>
+    </div>
+
+    <div class="actions">
+        <a class="btn primary" th:href="@{/users/{id}/edit(id=${myUser.id})}">Modify</a>
+        <form th:action="@{/users/{id}/delete(id=${myUser.id})}" method="post" style="display: inline-block;">
+            <button type="submit" class="btn danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+        </form>
+        <a class="btn" th:href="@{/home}">Back to Home</a>
+    </div>
+</div>
+</body>
+</html>

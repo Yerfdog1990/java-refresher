@@ -5,14 +5,16 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.dto.StudentDTO;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.model.Student;
+
+import java.util.List;
 
 @Repository
 public interface IStudentRepository extends JpaRepository<Student, Long> {
     Student findByEmail(String email);
 
-    @Modifying
-    @Query("UPDATE Student s SET s.enabled = :enabled WHERE s.id = :id")
-    void updateEnabled(@Param("id") Long id, @Param("enabled") boolean enabled);
+    @Query("SELECT new springsecurity.lesson2methodlevelauthorizationwithexpressions.persistance.dto.StudentDTO(s.id, s.username, s.email, s.created) FROM Student s")
+    List<StudentDTO> findAllAsDTOs();
 
 }
