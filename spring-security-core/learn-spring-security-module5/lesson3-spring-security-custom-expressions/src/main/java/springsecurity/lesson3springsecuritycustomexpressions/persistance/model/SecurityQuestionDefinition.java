@@ -2,12 +2,13 @@ package springsecurity.lesson3springsecuritycustomexpressions.persistance.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @EqualsAndHashCode(of = "text")
 public class SecurityQuestionDefinition {
     @Id

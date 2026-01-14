@@ -1,7 +1,7 @@
 -- Seed three students (plaintext passwords) and their authorities
 
 -- Students: two USERs and one ADMIN
-INSERT INTO myUser (username, email, password, enabled) VALUES
+INSERT INTO student (username, email, password, enabled) VALUES
   ('Alice', 'alice@example.com', 'alice123', true),
   ('Bob',   'bob@example.com',   'bob123', true),
   ('Carol', 'carol@example.com', 'carol123', true),

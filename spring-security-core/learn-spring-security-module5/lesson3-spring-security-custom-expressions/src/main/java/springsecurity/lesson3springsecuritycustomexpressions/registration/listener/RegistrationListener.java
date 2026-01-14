@@ -7,8 +7,8 @@ import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.service.IMyUserService;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.service.IStudentService;
 import springsecurity.lesson3springsecuritycustomexpressions.registration.OnRegistrationCompleteEvent;
 
 import java.util.UUID;
@@ -17,11 +17,11 @@ import java.util.UUID;
 public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
 
     private final JavaMailSender mailSender;
-    private final IMyUserService service;
+    private final IStudentService service;
     private final Environment env;
 
     @Autowired
-    public RegistrationListener(JavaMailSender mailSender, IMyUserService service, Environment env) {
+    public RegistrationListener(JavaMailSender mailSender, IStudentService service, Environment env) {
         this.mailSender = mailSender;
         this.service = service;
         this.env = env;
@@ -29,18 +29,18 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
     @Override
     public void onApplicationEvent(final OnRegistrationCompleteEvent event) {
-        System.out.println("[DEBUG_LOG] RegistrationListener.onApplicationEvent called for student: " + event.getMyUser().getEmail());
+        System.out.println("[DEBUG_LOG] RegistrationListener.onApplicationEvent called for student: " + event.getStudent().getEmail());
         this.confirmRegistration(event);
     }
 
     private void confirmRegistration(final OnRegistrationCompleteEvent event) {
         System.out.println("[DEBUG_LOG] confirmRegistration started");
-        final MyUser myUser = event.getMyUser();
+        final Student student = event.getStudent();
         final String token = UUID.randomUUID().toString();
-        service.createVerificationTokenForUser(myUser, token);
+        service.createVerificationTokenForUser(student, token);
 
         try {
-            final SimpleMailMessage email = constructEmailMessage(event, myUser, token);
+            final SimpleMailMessage email = constructEmailMessage(event, student, token);
             System.out.println("[DEBUG_LOG] sending email to: " + email.getTo()[0]);
             mailSender.send(email);
             System.out.println("[DEBUG_LOG] email sent successfully");
@@ -52,8 +52,8 @@ public class RegistrationListener implements ApplicationListener<OnRegistrationC
 
     //
 
-    private SimpleMailMessage constructEmailMessage(final OnRegistrationCompleteEvent event, final MyUser myUser, final String token) {
-        final String recipientAddress = myUser.getEmail();
+    private SimpleMailMessage constructEmailMessage(final OnRegistrationCompleteEvent event, final Student student, final String token) {
+        final String recipientAddress = student.getEmail();
         final String subject = "Registration Confirmation";
         final String confirmationUrl = event.getAppUrl() + "/registrationConfirm?token=" + token;
         final SimpleMailMessage email = new SimpleMailMessage();

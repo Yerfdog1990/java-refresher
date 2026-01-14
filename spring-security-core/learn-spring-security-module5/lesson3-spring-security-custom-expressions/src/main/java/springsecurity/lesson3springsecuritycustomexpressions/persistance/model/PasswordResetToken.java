@@ -1,16 +1,17 @@
 package springsecurity.lesson3springsecuritycustomexpressions.persistance.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"token", "myUser"})
+@EqualsAndHashCode(of = {"token", "student"})
 public class PasswordResetToken {
 
     private static final int EXPIRATION = 60 * 24;
@@ -21,17 +22,17 @@ public class PasswordResetToken {
 
     private String token;
 
-    @OneToOne(targetEntity = MyUser.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = Student.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
-    private MyUser myUser;
+    private Student student;
 
     private Date expiryDate;
 
-    public PasswordResetToken(final String token, final MyUser myUser) {
+    public PasswordResetToken(final String token, final Student student) {
         super();
 
         this.token = token;
-        this.myUser = myUser;
+        this.student = student;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 

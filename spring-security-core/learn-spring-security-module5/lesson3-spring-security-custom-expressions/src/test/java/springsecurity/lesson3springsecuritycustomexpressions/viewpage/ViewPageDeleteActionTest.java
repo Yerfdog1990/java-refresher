@@ -8,8 +8,8 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.MyUserRepository;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.IStudentRepository;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -23,7 +23,7 @@ public class ViewPageDeleteActionTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
-    private MyUserRepository studentRepository;
+    private IStudentRepository studentRepository;
 
     private MockMvc mockMvc;
 
@@ -37,14 +37,14 @@ public class ViewPageDeleteActionTest {
     @Test
     @WithMockUser
     public void givenViewPage_whenCheckingDeleteButton_thenShouldHaveCorrectAction() throws Exception {
-        MyUser myUser = new MyUser();
-        myUser.setUsername("testviewdelete");
-        myUser.setEmail("testviewdelete@test.com");
-        myUser.setPassword("Password123!");
-        myUser.setPasswordConfirmation("Password123!");
-        myUser = studentRepository.save(myUser);
+        Student student = new Student();
+        student.setUsername("testviewdelete");
+        student.setEmail("testviewdelete@test.com");
+        student.setPassword("Password123!");
+        student.setPasswordConfirmation("Password123!");
+        student = studentRepository.save(student);
 
-        mockMvc.perform(get("/users/" + myUser.getId()))
-                .andExpect(content().string(containsString("action=\"/users/" + myUser.getId() + "/delete\"")));
+        mockMvc.perform(get("/users/" + student.getId()))
+                .andExpect(content().string(containsString("action=\"/users/" + student.getId() + "/delete\"")));
     }
 }

@@ -1,13 +1,14 @@
 package springsecurity.lesson3springsecuritycustomexpressions.persistance.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"myUser", "authority"})
+@EqualsAndHashCode(of = {"student", "authority"})
 public class Authority {
 
     @Id
@@ -16,12 +17,12 @@ public class Authority {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false)
-    private MyUser myUser;
+    private Student student;
 
     private String authority;
 
-    public Authority(MyUser myUser, String authority) {
-        this.myUser = myUser;
+    public Authority(Student student, String authority) {
+        this.student = student;
         this.authority = authority;
     }
 }

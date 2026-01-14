@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.PasswordResetToken;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.PasswordResetTokenRepository;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.service.IMyUserService;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.service.IStudentService;
 
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.SecurityQuestion;
@@ -36,7 +36,7 @@ public class ForgotPasswordIntegrationTest {
     private WebApplicationContext webApplicationContext;
 
     @MockitoBean
-    private IMyUserService studentService;
+    private IStudentService studentService;
 
     @MockitoBean
     private PasswordResetTokenRepository passwordResetTokenRepository;
@@ -75,17 +75,17 @@ public class ForgotPasswordIntegrationTest {
 
     @Test
     public void givenValidToken_whenShowChangePasswordPage_thenSuccess() throws Exception {
-        MyUser myUser = new MyUser();
-        myUser.setId(1L);
-        myUser.setEmail("alice@example.com");
+        Student student = new Student();
+        student.setId(1L);
+        student.setEmail("alice@example.com");
 
-        when(studentService.findUserByEmail("alice@example.com")).thenReturn(myUser);
+        when(studentService.findUserByEmail("alice@example.com")).thenReturn(student);
         String token = UUID.randomUUID().toString();
-        PasswordResetToken passToken = new PasswordResetToken(token, myUser);
+        PasswordResetToken passToken = new PasswordResetToken(token, student);
         when(studentService.getPasswordResetToken(token)).thenReturn(passToken);
 
         mockMvc.perform(get("/student/changePassword")
-                .param("id", String.valueOf(myUser.getId()))
+                .param("id", String.valueOf(student.getId()))
                 .param("token", token))
                 .andExpect(status().isOk())
                 .andExpect(view().name("resetPassword"))
@@ -101,16 +101,16 @@ public class ForgotPasswordIntegrationTest {
         String answer = "test answer";
         String token = UUID.randomUUID().toString();
 
-        // Mock the myUser
-        MyUser myUser = new MyUser();
-        myUser.setId(1L);
-        myUser.setEmail("user@example.com");
+        // Mock the student
+        Student student = new Student();
+        student.setId(1L);
+        student.setEmail("user@example.com");
 
-        PasswordResetToken passToken = new PasswordResetToken(token, myUser);
+        PasswordResetToken passToken = new PasswordResetToken(token, student);
 
         // Mock the security question
         SecurityQuestion securityQuestion = new SecurityQuestion();
-        securityQuestion.setMyUser(myUser);
+        securityQuestion.setStudent(student);
         securityQuestion.setAnswer(answer);
         SecurityQuestionDefinition definition = new SecurityQuestionDefinition();
         definition.setId(questionId);
@@ -120,7 +120,7 @@ public class ForgotPasswordIntegrationTest {
         // Mock the service/repository calls
         when(studentService.getPasswordResetToken(token)).thenReturn(passToken);
         when(securityQuestionRepository.findByQuestionDefinitionIdAndStudentIdAndAnswer(
-                eq(questionId), eq(myUser.getId()), eq(answer)))
+                eq(questionId), eq(student.getId()), eq(answer)))
                 .thenReturn(securityQuestion);
 
         // When & Then
@@ -143,12 +143,12 @@ public class ForgotPasswordIntegrationTest {
         String wrongAnswer = "wrong answer";
         String token = UUID.randomUUID().toString();
 
-        // Mock the myUser
-        MyUser myUser = new MyUser();
-        myUser.setId(1L);
-        myUser.setEmail("user@example.com");
+        // Mock the student
+        Student student = new Student();
+        student.setId(1L);
+        student.setEmail("user@example.com");
 
-        PasswordResetToken passToken = new PasswordResetToken(token, myUser);
+        PasswordResetToken passToken = new PasswordResetToken(token, student);
 
         // Mock the service/repository calls
         when(studentService.getPasswordResetToken(token)).thenReturn(passToken);

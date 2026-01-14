@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS security_question;
 DROP TABLE IF EXISTS verification_token;
 DROP TABLE IF EXISTS password_reset_token;
 DROP TABLE IF EXISTS authority;
-DROP TABLE IF EXISTS myUser;
+DROP TABLE IF EXISTS student;
 DROP TABLE IF EXISTS security_question_definition;
 DROP TABLE IF EXISTS persistent_logins;
 DROP TABLE IF EXISTS persistent_logins;
@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS persistent_logins;
 
 -- Create the schema for the Students and Authorities tables
 
-CREATE TABLE myUser (
+CREATE TABLE student (
                          id SERIAL PRIMARY KEY,
                          username VARCHAR(50) NOT NULL,
                          email VARCHAR(50) NOT NULL UNIQUE,
@@ -26,7 +26,7 @@ CREATE TABLE authority (
                            id SERIAL PRIMARY KEY,
                            student_id BIGINT NOT NULL,
                            authority VARCHAR(50) NOT NULL,
-                           CONSTRAINT fk_authorities_students FOREIGN KEY (student_id) REFERENCES myUser(id)
+                           CONSTRAINT fk_authorities_students FOREIGN KEY (student_id) REFERENCES student(id)
 );
 
 CREATE UNIQUE INDEX ix_authority_student_authority ON authority (student_id, authority);
@@ -36,7 +36,7 @@ CREATE TABLE verification_token (
                                     token VARCHAR(255) NOT NULL,
                                     student_id BIGINT NOT NULL,
                                     expiry_date TIMESTAMP NOT NULL,
-                                    CONSTRAINT fk_verification_token_student FOREIGN KEY (student_id) REFERENCES myUser(id)
+                                    CONSTRAINT fk_verification_token_student FOREIGN KEY (student_id) REFERENCES student(id)
 );
 
 CREATE TABLE password_reset_token (
@@ -44,7 +44,7 @@ CREATE TABLE password_reset_token (
                                       token VARCHAR(255) NOT NULL,
                                       student_id BIGINT NOT NULL,
                                       expiry_date TIMESTAMP NOT NULL,
-                                      CONSTRAINT fk_password_reset_token_student FOREIGN KEY (student_id) REFERENCES myUser(id)
+                                      CONSTRAINT fk_password_reset_token_student FOREIGN KEY (student_id) REFERENCES student(id)
 );
 
 
@@ -58,7 +58,7 @@ CREATE TABLE security_question (
                                    student_id BIGINT NOT NULL UNIQUE,
                                    question_definition_id BIGINT NOT NULL,
                                    answer VARCHAR(255) NOT NULL,
-                                   CONSTRAINT fk_security_question_student FOREIGN KEY (student_id) REFERENCES myUser(id),
+                                   CONSTRAINT fk_security_question_student FOREIGN KEY (student_id) REFERENCES student(id),
                                    CONSTRAINT fk_security_question_definition FOREIGN KEY (question_definition_id) REFERENCES security_question_definition(id)
 );
 

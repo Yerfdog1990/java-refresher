@@ -1,28 +1,29 @@
 package springsecurity.lesson3springsecuritycustomexpressions.persistance.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"myUser", "questionDefinition", "answer"})
+@EqualsAndHashCode(of = {"student", "questionDefinition", "answer"})
 public class SecurityQuestion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(targetEntity = MyUser.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = Student.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, unique = true)
-    private MyUser myUser;
+    private Student student;
     @OneToOne(targetEntity = SecurityQuestionDefinition.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private SecurityQuestionDefinition questionDefinition;
     private String answer;
 
     // Constructor
-    public SecurityQuestion(MyUser myUser, SecurityQuestionDefinition questionDefinition, String answer) {
-        this.myUser = myUser;
+    public SecurityQuestion(Student student, SecurityQuestionDefinition questionDefinition, String answer) {
+        this.student = student;
         this.questionDefinition = questionDefinition;
         this.answer = answer;
     }
