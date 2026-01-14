@@ -3,7 +3,7 @@ package springsecurity.lesson3springsecuritycustomexpressions.validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
 
@@ -14,18 +14,18 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
 
     @Override
     public boolean isValid(final Object obj, final ConstraintValidatorContext context) {
-        final MyUser myUser = (MyUser) obj;
+        final Student student = (Student) obj;
         boolean isValid = true;
-        if (myUser.getPasswordConfirmation() != null && !myUser.getPassword().equals(myUser.getPasswordConfirmation())) {
+        if (student.getPasswordConfirmation() != null && !student.getPassword().equals(student.getPasswordConfirmation())) {
             context.disableDefaultConstraintViolation();
             context.buildConstraintViolationWithTemplate("Passwords do not match")
                     .addPropertyNode("passwordConfirmation")
                     .addConstraintViolation();
             isValid = false;
         }
-        if (myUser.getEmail() != null && myUser.getPassword() != null) {
-            String email = myUser.getEmail().toLowerCase();
-            String password = myUser.getPassword().toLowerCase();
+        if (student.getEmail() != null && student.getPassword() != null) {
+            String email = student.getEmail().toLowerCase();
+            String password = student.getPassword().toLowerCase();
             String localPart = email.split("@")[0];
             if (password.contains(email) || password.contains(localPart)) {
                 context.disableDefaultConstraintViolation();

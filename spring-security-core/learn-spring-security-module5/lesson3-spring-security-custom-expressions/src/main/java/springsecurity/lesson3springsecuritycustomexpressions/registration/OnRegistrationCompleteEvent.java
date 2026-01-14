@@ -3,17 +3,17 @@ package springsecurity.lesson3springsecuritycustomexpressions.registration;
 
 import lombok.Getter;
 import org.springframework.context.ApplicationEvent;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
 
 @Getter
 public class OnRegistrationCompleteEvent extends ApplicationEvent {
 
     private final String appUrl;
-    private final MyUser myUser;
+    private final Student student;
 
-    public OnRegistrationCompleteEvent(final MyUser myUser, final String appUrl) {
-        super(myUser);
-        this.myUser = myUser;
+    public OnRegistrationCompleteEvent(final Student student, final String appUrl) {
+        super(student);
+        this.student = student;
         this.appUrl = appUrl;
     }
 }

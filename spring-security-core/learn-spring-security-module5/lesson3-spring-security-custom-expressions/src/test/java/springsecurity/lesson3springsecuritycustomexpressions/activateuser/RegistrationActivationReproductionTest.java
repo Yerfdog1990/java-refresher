@@ -7,9 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.VerificationToken;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.MyUserRepository;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.IStudentRepository;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.VerificationTokenRepository;
 
 import java.util.UUID;
@@ -26,7 +26,7 @@ public class RegistrationActivationReproductionTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
-    private MyUserRepository studentRepository;
+    private IStudentRepository studentRepository;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
@@ -44,27 +44,27 @@ public class RegistrationActivationReproductionTest {
 
     @Test
     public void givenValidToken_whenConfirmRegistration_thenShouldSucceed() throws Exception {
-        MyUser myUser = new MyUser();
-        myUser.setUsername("reproUser");
-        myUser.setEmail("repro@example.com");
-        myUser.setPassword("Password123!");
-        myUser.setPasswordConfirmation("Password123!");
-        myUser.setEnabled(false);
-        studentRepository.save(myUser);
+        Student student = new Student();
+        student.setUsername("reproUser");
+        student.setEmail("repro@example.com");
+        student.setPassword("Password123!");
+        student.setPasswordConfirmation("Password123!");
+        student.setEnabled(false);
+        studentRepository.save(student);
 
-        // Simulate fetching myUser from DB where passwordConfirmation is NOT persisted
-        MyUser savedMyUser = studentRepository.findByEmail("repro@example.com");
-        savedMyUser.setPasswordConfirmation(null); // This is what happens when it's loaded from DB
+        // Simulate fetching student from DB where passwordConfirmation is NOT persisted
+        Student savedStudent = studentRepository.findByEmail("repro@example.com");
+        savedStudent.setPasswordConfirmation(null); // This is what happens when it's loaded from DB
 
         String token = UUID.randomUUID().toString();
-        VerificationToken verificationToken = new VerificationToken(token, savedMyUser);
+        VerificationToken verificationToken = new VerificationToken(token, savedStudent);
         tokenRepository.save(verificationToken);
 
         mockMvc.perform(get("/registrationConfirm").param("token", token))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/authenticated"));
 
-        MyUser verifiedMyUser = studentRepository.findByEmail("repro@example.com");
-        assertTrue(verifiedMyUser.isEnabled());
+        Student verifiedStudent = studentRepository.findByEmail("repro@example.com");
+        assertTrue(verifiedStudent.isEnabled());
     }
 }

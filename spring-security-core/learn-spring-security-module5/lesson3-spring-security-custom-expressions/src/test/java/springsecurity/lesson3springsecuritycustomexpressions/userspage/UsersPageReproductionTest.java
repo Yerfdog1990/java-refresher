@@ -7,9 +7,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.VerificationToken;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.MyUserRepository;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.IStudentRepository;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.VerificationTokenRepository;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class UsersPageReproductionTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
-    private MyUserRepository studentRepository;
+    private IStudentRepository studentRepository;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
@@ -59,13 +59,13 @@ public class UsersPageReproductionTest {
                 .andExpect(redirectedUrl("/activation"));
 
         // 2. Verify it's disabled in DB
-        MyUser myUser = studentRepository.findByEmail(email);
-        assertFalse(myUser.isEnabled(), "MyUser should be disabled after registration");
+        Student student = studentRepository.findByEmail(email);
+        assertFalse(student.isEnabled(), "Student should be disabled after registration");
 
         // 3. Find the token
         List<VerificationToken> tokens = tokenRepository.findAll();
         VerificationToken tokenObj = tokens.stream()
-                .filter(t -> t.getMyUser().getEmail().equals(email))
+                .filter(t -> t.getStudent().getEmail().equals(email))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Token not found for email: " + email));
         
@@ -77,7 +77,7 @@ public class UsersPageReproductionTest {
                 .andExpect(redirectedUrl("/authenticated"));
 
         // 5. Verify it's enabled in DB
-        MyUser verifiedMyUser = studentRepository.findByEmail(email);
-        assertTrue(verifiedMyUser.isEnabled(), "MyUser should be enabled after confirmation");
+        Student verifiedStudent = studentRepository.findByEmail(email);
+        assertTrue(verifiedStudent.isEnabled(), "Student should be enabled after confirmation");
     }
 }

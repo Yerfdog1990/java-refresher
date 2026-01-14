@@ -9,6 +9,4 @@ public interface SecurityQuestionRepository extends JpaRepository<SecurityQuesti
     SecurityQuestion findByQuestionDefinitionIdAndStudentIdAndAnswer(Long questionDefinitionId, Long userId, String answer);
 
     Object findByStudentIdAndAnswer(Long id, String answer);
-
-    SecurityQuestion findByQuestionDefinitionIdAndMyUserIdAndAnswer(Long questionDefinitionId, Long myUserId, String answer);
 }

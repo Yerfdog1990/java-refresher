@@ -18,8 +18,8 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 import static org.junit.jupiter.api.Assertions.*;
 
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.MyUserRepository;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.IStudentRepository;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +31,7 @@ public class RegistrationUIAuthorizationTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
-    private MyUserRepository studentRepository;
+    private IStudentRepository studentRepository;
 
     private MockMvc mockMvc;
 
@@ -78,10 +78,10 @@ public class RegistrationUIAuthorizationTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/activation"));
 
-        MyUser myUser = studentRepository.findByEmail(email);
-        assertNotNull(myUser);
-        assertEquals(1, myUser.getAuthorities().size());
-        assertTrue(myUser.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER")));
+        Student student = studentRepository.findByEmail(email);
+        assertNotNull(student);
+        assertEquals(1, student.getAuthorities().size());
+        assertTrue(student.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER")));
     }
 
     @Test
@@ -100,11 +100,11 @@ public class RegistrationUIAuthorizationTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/activation"));
 
-        MyUser myUser = studentRepository.findByEmail(email);
-        assertNotNull(myUser);
-        assertEquals(2, myUser.getAuthorities().size());
-        assertTrue(myUser.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
-        assertTrue(myUser.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER")));
+        Student student = studentRepository.findByEmail(email);
+        assertNotNull(student);
+        assertEquals(2, student.getAuthorities().size());
+        assertTrue(student.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
+        assertTrue(student.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_USER")));
     }
 
     @Test
@@ -122,8 +122,8 @@ public class RegistrationUIAuthorizationTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/users"));
 
-        MyUser myUser = studentRepository.findById(aliceId).orElseThrow();
-        assertEquals(1, myUser.getAuthorities().size());
-        assertTrue(myUser.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
+        Student student = studentRepository.findById(aliceId).orElseThrow();
+        assertEquals(1, student.getAuthorities().size());
+        assertTrue(student.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN")));
     }
 }

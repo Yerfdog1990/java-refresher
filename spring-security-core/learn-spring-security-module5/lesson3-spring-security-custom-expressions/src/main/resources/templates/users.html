@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Registered Users</title>
+    <title>Registered Students</title>
     <link rel="stylesheet" th:href="@{/css/styles.css}" />
 </head>
 <body>
@@ -12,13 +12,13 @@
             <button type="submit" class="btn danger">Logout</button>
         </form>
     </div>
-    <h1>Registered Users</h1>
+    <h1>Registered Students</h1>
 
     <div th:if="${param.logout}" class="alert alert-success">You have been logged out.</div>
     <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
 
     <div class="actions">
-        <a class="btn primary" th:href="@{/signup}">Register New User</a>
+        <a class="btn primary" th:href="@{/signup}">Register New Student</a>
         <a class="btn" th:href="@{/home}">Back to Home</a>
     </div>
 
@@ -32,13 +32,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${Users == null or #lists.isEmpty(Users)}">
-            <td colspan="4">No Users registered yet.</td>
+        <tr th:if="${students == null or #lists.isEmpty(students)}">
+            <td colspan="4">No students registered yet.</td>
         </tr>
-        <tr th:each="s : ${Users}">
+        <tr th:each="s : ${students}">
             <td th:text="${s.username}"></td>
             <td th:text="${s.email}"></td>
-            <td th:text="${s.created != null ? #calendars.format(s.created, 'MMM d, yyyy HH:mm:ss') : '-'}">
+            <td th:text="${s.created != null} ? ${#temporals.format(s.created, 'MMM d, yyyy HH:mm:ss')} : '-'"></td>
             </td>
             <td class="actions">
                 <a class="btn" th:href="@{/users/{id}(id=${s.id})}">View</a>

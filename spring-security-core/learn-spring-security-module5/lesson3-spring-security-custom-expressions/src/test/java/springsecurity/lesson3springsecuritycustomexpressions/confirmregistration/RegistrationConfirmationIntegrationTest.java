@@ -8,9 +8,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.VerificationToken;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.MyUserRepository;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.IStudentRepository;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.repository.VerificationTokenRepository;
 
 import java.util.Calendar;
@@ -29,7 +29,7 @@ public class RegistrationConfirmationIntegrationTest {
     private WebApplicationContext webApplicationContext;
 
     @Autowired
-    private MyUserRepository studentRepository;
+    private IStudentRepository studentRepository;
 
     @Autowired
     private VerificationTokenRepository tokenRepository;
@@ -53,15 +53,15 @@ public class RegistrationConfirmationIntegrationTest {
 
     @Test
     public void givenExpiredToken_whenConfirmRegistration_thenRedirectToLoginWithErrorMessage() throws Exception {
-        MyUser myUser = new MyUser();
-        myUser.setUsername("Joe Doe");
-        myUser.setEmail("joedoe@gmail.com");
-        myUser.setPassword("JoeDoe123!");
-        myUser.setPasswordConfirmation("JoeDoe123!");
-        studentRepository.save(myUser);
+        Student student = new Student();
+        student.setUsername("Joe Doe");
+        student.setEmail("joedoe@gmail.com");
+        student.setPassword("JoeDoe123!");
+        student.setPasswordConfirmation("JoeDoe123!");
+        studentRepository.save(student);
 
         String token = UUID.randomUUID().toString();
-        VerificationToken verificationToken = new VerificationToken(token, myUser);
+        VerificationToken verificationToken = new VerificationToken(token, student);
         
         // Set an expiry date to the past
         Calendar cal = Calendar.getInstance();
@@ -78,23 +78,23 @@ public class RegistrationConfirmationIntegrationTest {
 
     @Test
     public void givenValidToken_whenConfirmRegistration_thenRedirectToAuthenticated() throws Exception {
-        MyUser myUser = new MyUser();
-        myUser.setUsername("JaneDoe2");
-        myUser.setEmail("jane2@example.com");
-        myUser.setPassword("JaneDoe123!");
-        myUser.setPasswordConfirmation("JaneDoe123!");
-        myUser.setEnabled(false);
-        studentRepository.save(myUser);
+        Student student = new Student();
+        student.setUsername("JaneDoe2");
+        student.setEmail("jane2@example.com");
+        student.setPassword("JaneDoe123!");
+        student.setPasswordConfirmation("JaneDoe123!");
+        student.setEnabled(false);
+        studentRepository.save(student);
 
         String token = UUID.randomUUID().toString();
-        VerificationToken verificationToken = new VerificationToken(token, myUser);
+        VerificationToken verificationToken = new VerificationToken(token, student);
         tokenRepository.save(verificationToken);
 
         mockMvc.perform(get("/registrationConfirm").param("token", token))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/authenticated"));
 
-        MyUser verifiedMyUser = studentRepository.findByEmail("jane2@example.com");
-        assertTrue(verifiedMyUser.isEnabled());
+        Student verifiedStudent = studentRepository.findByEmail("jane2@example.com");
+        assertTrue(verifiedStudent.isEnabled());
     }
 }

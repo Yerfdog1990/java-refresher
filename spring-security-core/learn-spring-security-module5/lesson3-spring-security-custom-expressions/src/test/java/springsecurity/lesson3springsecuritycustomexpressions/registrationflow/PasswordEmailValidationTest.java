@@ -8,9 +8,9 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.MyUser;
 import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.PasswordResetToken;
-import springsecurity.lesson3springsecuritycustomexpressions.persistance.service.IMyUserService;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.model.Student;
+import springsecurity.lesson3springsecuritycustomexpressions.persistance.service.IStudentService;
 
 import java.util.UUID;
 
@@ -27,7 +27,7 @@ public class PasswordEmailValidationTest {
     private WebApplicationContext webApplicationContext;
 
     @MockitoBean
-    private IMyUserService studentService;
+    private IStudentService studentService;
 
     private MockMvc mockMvc;
 
@@ -87,11 +87,11 @@ public class PasswordEmailValidationTest {
         String password = "Password123!" + email;
         String token = UUID.randomUUID().toString();
 
-        MyUser myUser = new MyUser();
-        myUser.setId(1L);
-        myUser.setEmail(email);
+        Student student = new Student();
+        student.setId(1L);
+        student.setEmail(email);
 
-        PasswordResetToken passToken = new PasswordResetToken(token, myUser);
+        PasswordResetToken passToken = new PasswordResetToken(token, student);
 
         // Mock the service
         when(studentService.getPasswordResetToken(token)).thenReturn(passToken);
@@ -116,11 +116,11 @@ public class PasswordEmailValidationTest {
         String password = "goddyouma996@1990";
         String token = UUID.randomUUID().toString();
 
-        MyUser myUser = new MyUser();
-        myUser.setId(1L);
-        myUser.setEmail(email);
+        Student student = new Student();
+        student.setId(1L);
+        student.setEmail(email);
 
-        PasswordResetToken passToken = new PasswordResetToken(token, myUser);
+        PasswordResetToken passToken = new PasswordResetToken(token, student);
 
         // Mock the service
         when(studentService.getPasswordResetToken(token)).thenReturn(passToken);

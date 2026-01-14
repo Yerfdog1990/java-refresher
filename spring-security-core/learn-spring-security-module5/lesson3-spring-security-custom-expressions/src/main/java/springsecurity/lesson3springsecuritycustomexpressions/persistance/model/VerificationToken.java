@@ -2,15 +2,15 @@ package springsecurity.lesson3springsecuritycustomexpressions.persistance.model;
 
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Calendar;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
-@EqualsAndHashCode( of = {"token", "myUser", "expiryDate"})
+@Data
+@EqualsAndHashCode( of = {"token", "student", "expiryDate"})
 public class VerificationToken {
 
     private static final int EXPIRATION = 60 * 24;
@@ -21,9 +21,9 @@ public class VerificationToken {
 
     private String token;
 
-    @OneToOne(targetEntity = MyUser.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = Student.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
-    private MyUser myUser;
+    private Student student;
 
     private Date expiryDate;
 
@@ -38,11 +38,11 @@ public class VerificationToken {
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
-    public VerificationToken(final String token, final MyUser myUser) {
+    public VerificationToken(final String token, final Student student) {
         super();
 
         this.token = token;
-        this.myUser = myUser;
+        this.student = student;
         this.expiryDate = calculateExpiryDate(EXPIRATION);
     }
 
