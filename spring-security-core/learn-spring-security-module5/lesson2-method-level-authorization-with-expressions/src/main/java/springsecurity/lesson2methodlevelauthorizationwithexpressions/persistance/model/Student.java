@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import org.hibernate.annotations.CreationTimestamp;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.validation.PasswordMatches;
 import springsecurity.lesson2methodlevelauthorizationwithexpressions.validation.ValidPassword;
 
@@ -39,7 +40,8 @@ public class Student {
     @Transient
     private String passwordConfirmation;
 
-    @Column(name = "date_created")
+    @CreationTimestamp
+    @Column(name = "date_created", updatable = false)
     private LocalDateTime created;
 
     private boolean enabled;
