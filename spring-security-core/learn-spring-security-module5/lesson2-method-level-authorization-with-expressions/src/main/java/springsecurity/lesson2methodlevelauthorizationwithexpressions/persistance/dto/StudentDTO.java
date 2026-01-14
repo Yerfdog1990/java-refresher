@@ -60,7 +60,7 @@ public class StudentDTO {
         student.setUsername(this.username);
         student.setEmail(this.email);
         student.setCreated(this.created);
-        // Password should be set separately using the password encoder
+        student.setPassword(this.password);
         return student;
     }
 }

@@ -171,42 +171,35 @@ public class RegistrationController {
 
     @PostMapping("/student/register")
     public ModelAndView registerNewStudent(
-            @Valid @ModelAttribute("student") StudentDTO studentDTO,
+            @Valid @ModelAttribute("student") StudentDTO student,
             BindingResult result,
             @RequestParam(value = "questionId", required = false) Long questionId,
             @RequestParam(value = "answer", required = false) String answer,
             @RequestParam(value = "roleNames", required = false) List<String> roleNames,
             HttpServletRequest request) {
 
-        // Validate password match
-        if (studentDTO.getPassword() != null && !studentDTO.getPassword().equals(studentDTO.getPasswordConfirmation())) {
-            result.rejectValue("passwordConfirmation", "error.student", "Passwords do not match");
-        }
-
         if (result.hasErrors()) {
             Map<String, Object> model = new HashMap<>();
-            model.put("student", studentDTO);
+            model.put("student", student);
             model.put("questions", securityQuestionDefinitionRepository.findAll());
             return new ModelAndView("registrationPage", model);
         }
-
         try {
-            // Register the student
-            Student registered = studentService.registerNewStudent(studentDTO);
-
-            // Send activation email
-            String appUrl = request.getContextPath();
+            final Student registered = studentService.registerNewStudent(student);
+            if (questionId != null && answer != null) {
+                final SecurityQuestionDefinition questionDefinition = securityQuestionDefinitionRepository.findById(questionId).orElseThrow(() -> new RuntimeException("Security Question Definition not found"));
+                securityQuestionRepository.save(new SecurityQuestion(registered, questionDefinition, answer));
+            }
+            final String appUrl = "http://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath();
             eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, appUrl));
-
-            return new ModelAndView("redirect:/login?registered=true");
-
         } catch (EmailExistsException e) {
-            result.rejectValue("email", "email.exists", e.getMessage());
+            result.addError(new FieldError("student", "email", e.getMessage()));
             Map<String, Object> model = new HashMap<>();
-            model.put("student", studentDTO);
+            model.put("student", student);
             model.put("questions", securityQuestionDefinitionRepository.findAll());
             return new ModelAndView("registrationPage", model);
         }
+        return new ModelAndView("redirect:/activation");
     }
 
     @GetMapping("/registrationConfirm")
