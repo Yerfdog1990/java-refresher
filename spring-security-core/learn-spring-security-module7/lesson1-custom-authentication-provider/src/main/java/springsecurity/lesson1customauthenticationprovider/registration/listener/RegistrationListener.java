@@ -1,0 +1,66 @@
+package springsecurity.lesson1customauthenticationprovider.registration.listener;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
+import org.springframework.core.env.Environment;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Component;
+import springsecurity.lesson1customauthenticationprovider.persistance.model.Student;
+import springsecurity.lesson1customauthenticationprovider.persistance.service.IStudentService;
+import springsecurity.lesson1customauthenticationprovider.registration.OnRegistrationCompleteEvent;
+
+import java.util.UUID;
+
+@Component
+public class RegistrationListener implements ApplicationListener<OnRegistrationCompleteEvent> {
+
+    private final JavaMailSender mailSender;
+    private final IStudentService service;
+    private final Environment env;
+
+    @Autowired
+    public RegistrationListener(JavaMailSender mailSender, IStudentService service, Environment env) {
+        this.mailSender = mailSender;
+        this.service = service;
+        this.env = env;
+    }
+
+    @Override
+    public void onApplicationEvent(final OnRegistrationCompleteEvent event) {
+        System.out.println("[DEBUG_LOG] RegistrationListener.onApplicationEvent called for student: " + event.getStudent().getEmail());
+        this.confirmRegistration(event);
+    }
+
+    private void confirmRegistration(final OnRegistrationCompleteEvent event) {
+        System.out.println("[DEBUG_LOG] confirmRegistration started");
+        final Student student = event.getStudent();
+        final String token = UUID.randomUUID().toString();
+        service.createVerificationTokenForUser(student, token);
+
+        try {
+            final SimpleMailMessage email = constructEmailMessage(event, student, token);
+            System.out.println("[DEBUG_LOG] sending email to: " + email.getTo()[0]);
+            mailSender.send(email);
+            System.out.println("[DEBUG_LOG] email sent successfully");
+        } catch (Exception e) {
+            System.out.println("[DEBUG_LOG] FAILED to send email: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    //
+
+    private SimpleMailMessage constructEmailMessage(final OnRegistrationCompleteEvent event, final Student student, final String token) {
+        final String recipientAddress = student.getEmail();
+        final String subject = "Registration Confirmation";
+        final String confirmationUrl = event.getAppUrl() + "/registrationConfirm?token=" + token;
+        final SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+        email.setText("Please open the following URL to verify your account: \r\n" + confirmationUrl);
+        email.setFrom(env.getProperty("spring.mail.username"));
+        return email;
+    }
+}
