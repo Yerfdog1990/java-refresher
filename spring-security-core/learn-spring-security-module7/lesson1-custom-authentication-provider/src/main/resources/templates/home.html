@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Welcome</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css(v=${#dates.createNow().time})}" href="/css/styles.css" />
+</head>
+<body>
+<div class="container">
+    <div style="text-align: right; margin-top: 10px;">
+        <form th:action="@{/logout}" method="post" style="display: inline-block;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit" class="btn danger">Logout</button>
+        </form>
+    </div>
+    <h1>Welcome to Student Registration</h1>
+    <p>Please click the button below to proceed to register a new user.</p>
+    <a class="btn" th:href="@{/signup}">Proceed to Register</a>
+    <p> or </p>
+    <a class="btn" th:href="@{/users}">View registered students</a>
+</div>
+</body>
+</html>
