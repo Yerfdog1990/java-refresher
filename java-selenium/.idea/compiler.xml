@@ -9,15 +9,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lesson21-setup-selenium-environment" />
         <module name="lesson27-waiting_methods" />
+        <module name="lesson32-handling-auto-suggest-dropdown-and-web-tables" />
         <module name="lesson20-collections" />
         <module name="lesson24-xpaths" />
+        <module name="lesson31-handling-drop-downs-and-static-webtables" />
         <module name="lesson25-xpath_axes" />
         <module name="lesson23-css-selectors" />
         <module name="lesson22-locators" />
         <module name="lesson28-browser-navigation-commands" />
         <module name="lesson26-webelement_methods" />
         <module name="lesson29-handlingcheckboxes" />
-        <module name="lesson32-handlingauto-suggest-dropdown" />
         <module name="lesson30-frames_nested_iFrames" />
       </profile>
     </annotationProcessing>
