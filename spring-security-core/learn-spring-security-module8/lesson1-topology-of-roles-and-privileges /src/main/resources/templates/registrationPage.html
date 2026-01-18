@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Registration Page</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pwstrength-bootstrap/3.1.1/pwstrength-bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container auth-container">
+    <h1>Registration page</h1>
+    <div class="alert alert-info">An activation link will be sent to your email after registration.</div>
+    <form id="studentForm"
+          th:action="${(student != null && student.id != null) ? ('/users/' + student.id + '/edit') : '/student/register'}"
+          th:object="${student}"
+          th:if="${student != null}"
+          action="#"
+          method="post">
+        <input type="hidden" th:if="${student?.id != null}" th:field="*{id}"/>
+
+        <!-- Add CSRF token for security -->
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+        <!-- Rest of your form fields -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" type="text" th:field="*{username}" class="form-control" required/>
+            <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" th:field="*{email}" class="form-control" required/>
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input id="password" type="password" th:field="*{password}" class="form-control" required/>
+            <div class="pwstrength_viewport_progress"></div>
+            <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label for="passwordConfirmation">Confirm Password</label>
+            <input id="passwordConfirmation" type="password" th:field="*{passwordConfirmation}" class="form-control" required/>
+            <div th:if="${#fields.hasErrors('passwordConfirmation')}" th:errors="*{passwordConfirmation}" class="text-danger"></div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-xs-2" for="question">Security Question:</label>
+            <div class="col-xs-10">
+                <select id="question" name="questionId">
+                    <option th:each="question : ${questions}"
+                            th:value="${question.id}"
+                            th:text="${question.text}">Question</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-xs-2" for="answer">Answer</label>
+            <div class="col-xs-10">
+                <input id="answer" type="text" name="answer"/>
+            </div>
+        </div>
+        <!-- Assigning roles visible to the admin only-->
+        <div class="form-group" sec:authorize="hasRole('ADMIN')">
+            <label class="control-label col-xs-2">Roles:</label>
+            <div class="col-xs-10">
+                <label for="roleUser"><input type="radio" name="roleNames" value="ROLE_USER" id="roleUser" /> USER</label>
+                <label for="roleAdmin"><input type="radio" name="roleNames" value="ROLE_ADMIN"  id="roleAdmin" /> ADMIN</label>
+            </div>
+        </div>
+        <div class="actions">
+            <input type="submit" class="btn primary" th:value="${student.id == null ? 'Register' : 'Save Changes'}"/>
+            <a class="btn" th:href="${student.id == null} ? @{/login} : @{/users}">[[${student.id == null ? 'Back to Login' : 'Back to Users'}]]</a>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        options = {
+            common: {
+                minChar: 8,
+                usernameField: "#username",
+                emailField: "#email"
+            },
+            ui: {
+                showVerdictsInsideProgressBar: true,
+                showErrors: true,
+                errorMessages: {
+                    wordLength: 'Your password is too short',
+                    wordEmail: 'Your password cannot contain your email'
+                },
+                viewports: {
+                    progress: ".pwstrength_viewport_progress"
+                }
+            },
+            rules: {
+                activated: {
+                    wordEmail: true
+                },
+                extra: {
+                    wordEmail: function (options, word, score) {
+                        var email = $(options.common.emailField).val();
+                        if (email && email.length > 3) {
+                            var localPart = email.split('@')[0];
+                            if (word.toLowerCase().indexOf(email.toLowerCase()) > -1 || (localPart.length > 3 && word.toLowerCase().indexOf(localPart.toLowerCase()) > -1)) {
+                                return score;
+                            }
+                        }
+                        return 0;
+                    }
+                }
+            }
+        };
+        $('#password').pwstrength(options);
+    });
+</script>
+</body>
+</html>
