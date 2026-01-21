@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import springsecurity.lesson2datastructureofacl.persistence.validation.OnCreate;
 
+import java.time.LocalDateTime;
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -23,4 +25,6 @@ public class StudentRequestDto {
 
     @NotBlank(message = "Password is required", groups = OnCreate.class)
     private String password;
+
+    private LocalDateTime dateCreated;
 }

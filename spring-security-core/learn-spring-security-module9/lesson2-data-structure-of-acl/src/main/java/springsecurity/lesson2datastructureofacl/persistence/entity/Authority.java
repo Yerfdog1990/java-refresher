@@ -21,8 +21,4 @@ public class Authority {
 
     private String authority;
 
-    public Authority(Student student, String authority) {
-        this.student = student;
-        this.authority = authority;
-    }
 }

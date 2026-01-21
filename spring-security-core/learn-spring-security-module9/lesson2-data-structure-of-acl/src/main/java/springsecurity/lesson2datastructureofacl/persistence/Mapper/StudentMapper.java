@@ -21,6 +21,7 @@ public class StudentMapper {
                 .id(student.getId())
                 .username(student.getUsername())
                 .email(student.getEmail())
+                .dateCreated(student.getDateCreated())
                 .build();
     }
 
@@ -32,7 +33,7 @@ public class StudentMapper {
         s.setEmail(studentDto.getEmail());
         // Map password from request for persistence; never expose it via response DTOs
         s.setPassword(studentDto.getPassword());
-        // dateCreated is managed internally/not exposed via request DTO
+        s.setDateCreated(studentDto.getDateCreated());
         return s;
     }
 }

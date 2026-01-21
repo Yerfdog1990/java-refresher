@@ -8,12 +8,12 @@ TRUNCATE TABLE acl_sid RESTART IDENTITY CASCADE;
 --------------------------------------------------
 -- 1. STUDENTS
 --------------------------------------------------
-INSERT INTO student (username, email, password)
+INSERT INTO student (username, email, password, date_created)
 VALUES
-    ('Alice', 'alice@example.com', 'alice123'),
-    ('Carol', 'carol@example.com', 'carol123'),
-    ('Alex', 'alex@example.com', 'alex123'),
-    ('Bob',  'bob@example.com',  'bob123');
+    ('Alice', 'alice@example.com', 'alice123', NOW()),
+    ('Carol', 'carol@example.com', 'carol123', NOW()),
+    ('Alex', 'alex@example.com', 'alex123', NOW()),
+    ('Bob',  'bob@example.com',  'bob123', NOW());
 
 --------------------------------------------------
 -- 2. AUTHORITY

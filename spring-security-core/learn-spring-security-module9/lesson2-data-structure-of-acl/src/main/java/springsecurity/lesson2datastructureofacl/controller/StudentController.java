@@ -23,8 +23,6 @@ public class StudentController {
 
     private final StudentService studentService;
 
-    //
-
     @Autowired
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -49,6 +47,7 @@ public class StudentController {
         return "registration";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("users")
     public String create(@Validated(OnCreate.class) @ModelAttribute("student") StudentRequestDto studentDto, BindingResult result, Model model, RedirectAttributes ra) {
         if (result.hasErrors()) {
@@ -88,6 +87,7 @@ public String editForm(@PathVariable Long id, Model model) {
     return "registration";
 }
 
+@PreAuthorize("hasPermission(#id, 'springsecurity.lesson2datastructureofacl.persistence.entity.Student', 'WRITE') or hasRole('ADMIN')")
 @PostMapping("users/{id}")
 public String update(@PathVariable Long id, @Valid @ModelAttribute("student") StudentRequestDto studentDto, BindingResult result, RedirectAttributes ra) {
     if (result.hasErrors()) {
@@ -95,18 +95,16 @@ public String update(@PathVariable Long id, @Valid @ModelAttribute("student") St
     }
     studentDto.setId(id);
     Student toUpdate = StudentMapper.toEntity(studentDto);
-    // Preserve existing password on update when not provided
+    // Preserve existing the password on update when not provided
     if (toUpdate.getPassword() == null || toUpdate.getPassword().isBlank()) {
-        Student existing = studentService.findById(id).orElse(null);
-        if (existing != null) {
-            toUpdate.setPassword(existing.getPassword());
-        }
+        studentService.findById(id).ifPresent(existing -> toUpdate.setPassword(existing.getPassword()));
     }
     studentService.modify(toUpdate);
     ra.addFlashAttribute("message", "User updated successfully");
     return "redirect:/users/" + id;
 }
 
+@PreAuthorize("hasRole('ADMIN')")
 @GetMapping("users/{id}/delete")
 public String delete(@PathVariable Long id, RedirectAttributes ra) {
     studentService.deleteById(id);

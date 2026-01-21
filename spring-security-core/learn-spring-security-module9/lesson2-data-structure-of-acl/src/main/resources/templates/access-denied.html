@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Denied</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h3>Access Denied</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead">You do not have permission to access this page.</p>
+                    <p th:if="${message}" th:text="${message}" class="text-muted"></p>
+                    <hr>
+                    <a href="/home" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

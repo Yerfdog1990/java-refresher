@@ -77,7 +77,8 @@ public class StudentControllerIntegrationTest {
                         .param("email", "dave@example.com")
                         .param("password", "dave123")
                         .with(csrf()))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isForbidden())
+                .andExpect(view().name("access-denied"));
     }
 
     @Test
@@ -99,7 +100,8 @@ public class StudentControllerIntegrationTest {
     @Test
     public void givenUser_whenEditForm_thenForbidden() throws Exception {
         mockMvc.perform(get("/users/2/edit").with(user("alice@example.com").roles("USER")))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isForbidden())
+                .andExpect(view().name("access-denied"));
     }
 
     @Test
@@ -125,6 +127,26 @@ public class StudentControllerIntegrationTest {
     @Test
     public void givenUser_whenDeleteStudent_thenForbidden() throws Exception {
         mockMvc.perform(get("/users/1/delete").with(user("alice@example.com").roles("USER")))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isForbidden())
+                .andExpect(view().name("access-denied"));
+    }
+
+    @Test
+    public void givenUser_whenEditFormOwn_thenForbidden() throws Exception {
+        mockMvc.perform(get("/users/1/edit").with(user("alice@example.com").roles("USER")))
+                .andExpect(status().isForbidden())
+                .andExpect(view().name("access-denied"))
+                .andExpect(model().attributeExists("message"));
+    }
+
+    @Test
+    public void givenUser_whenUpdateStudent_thenForbidden() throws Exception {
+        mockMvc.perform(post("/users/1")
+                        .with(user("alice@example.com").roles("USER"))
+                        .param("username", "AliceUpdated")
+                        .param("email", "alice@example.com")
+                        .with(csrf()))
+                .andExpect(status().isForbidden())
+                .andExpect(view().name("access-denied"));
     }
 }
