@@ -19,7 +19,7 @@
         <p><strong>Name:</strong> <span th:text="${student.username}"></span></p>
         <p><strong>Email:</strong> <span th:text="${student.email}"></span></p>
         <p><strong>Date Created:</strong>
-            <span th:text="${#dates.format(student.dateCreated.time, 'yyyy-MM-dd HH:mm')}"></span>
+            <span th:text="${#temporals.format(student.dateCreated, 'yyyy-MM-dd HH:mm')}"></span>
         </p>
     </div>
 
@@ -27,6 +27,9 @@
         <a class="btn primary" th:href="@{/users/{id}/edit(id=${student.id})}">Modify</a>
         <a class="btn danger" th:href="@{/users/{id}/delete(id=${student.id})}">Delete</a>
         <a class="btn" th:href="@{/home}">Back to Home</a>
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="btn danger">Logout</button>
+        </form>
     </div>
 </div>
 </body>

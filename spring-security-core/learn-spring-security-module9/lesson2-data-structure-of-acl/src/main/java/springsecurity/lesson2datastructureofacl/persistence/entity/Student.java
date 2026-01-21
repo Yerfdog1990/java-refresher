@@ -9,6 +9,9 @@ import lombok.Setter;
 import org.hibernate.annotations.NaturalId;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Getter @Setter
 @NoArgsConstructor
@@ -30,5 +33,12 @@ public class Student {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Authority> authorities = new HashSet<>();
+
+    public Student(Long id) {
+        this.id = id;
+    }
 }
 

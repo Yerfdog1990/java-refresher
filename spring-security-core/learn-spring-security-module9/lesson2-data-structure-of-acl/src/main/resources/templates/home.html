@@ -12,6 +12,9 @@
     <a class="btn" th:href="@{/users/form}">Proceed to Register</a>
     <p> or </p>
     <a class="btn" th:href="@{/users}">View registered students</a>
+    <form th:action="@{/logout}" method="post" style="display: inline;">
+        <button type="submit" class="btn danger">Logout</button>
+    </form>
 </div>
 </body>
 </html>

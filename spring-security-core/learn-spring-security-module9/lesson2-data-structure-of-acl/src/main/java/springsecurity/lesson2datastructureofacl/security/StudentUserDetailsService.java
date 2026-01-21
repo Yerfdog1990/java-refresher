@@ -22,9 +22,9 @@ public class StudentUserDetailsService implements UserDetailsService {
         Student s = repo.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("Not found"));
 
-        return User.withUsername(s.getId().toString())
+        return User.withUsername(s.getEmail())
                 .password("{noop}" + s.getPassword())
-                .authorities("USER")
+                .roles(s.getEmail().startsWith("bob") ? "ADMIN" : "USER")
                 .build();
     }
 }

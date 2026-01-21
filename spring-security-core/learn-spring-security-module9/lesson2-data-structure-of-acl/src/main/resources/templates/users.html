@@ -22,6 +22,9 @@
     <div class="actions">
         <a class="btn primary" th:href="@{/users/form}">Register New Student</a>
         <a class="btn" th:href="@{/home}">Back to Home</a>
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="btn danger">Logout</button>
+        </form>
     </div>
 
     <table>
@@ -40,8 +43,7 @@
         <tr th:each="s : ${students}">
             <td th:text="${s.username}"></td>
             <td th:text="${s.email}"></td>
-            <td th:with="df=#{new java.text.SimpleDateFormat('MMM d, yyyy HH:mm:ss')}"
-                th:text="${s.dateCreated != null ? df.format(s.dateCreated.time) : '-'}">
+            <td th:text="${s.dateCreated != null ? #temporals.format(s.dateCreated, 'MMM d, yyyy HH:mm:ss') : '-'}">
             </td>
             <td class="actions">
                 <a class="btn" th:href="@{/users/{id}(id=${s.id})}">View</a>

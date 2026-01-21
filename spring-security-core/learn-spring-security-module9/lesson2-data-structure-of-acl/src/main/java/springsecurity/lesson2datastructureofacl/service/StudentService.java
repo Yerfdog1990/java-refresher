@@ -2,6 +2,9 @@ package springsecurity.lesson2datastructureofacl.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PostFilter;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import springsecurity.lesson2datastructureofacl.exceptions.DuplicateStudentException;
 import springsecurity.lesson2datastructureofacl.persistence.entity.Student;
@@ -19,6 +22,7 @@ public class StudentService {
         this.repository = repository;
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public Student create(Student student) {
         // Pre-check for uniqueness of email
         boolean emailExists = student.getEmail() != null && repository.findByEmail(student.getEmail()).isPresent();
@@ -26,22 +30,26 @@ public class StudentService {
         if (emailExists) {
             throw new DuplicateStudentException("A user with that email exists.");
         }
-        return repository.create(student);
+        return repository.save(student);
     }
 
+    @PostAuthorize("hasPermission(returnObject.orElse(null), 'READ') or hasRole('ADMIN')")
     public Optional<Student> findById(Long id) {
-        return repository.findStudentById(id);
+        return repository.findById(id);
     }
 
+    @PostFilter("hasPermission(filterObject, 'READ') or hasRole('ADMIN')")
     public List<Student> findAll() {
         return repository.findAll();
     }
 
+    @PreAuthorize("hasPermission(#student, 'WRITE') or hasRole('ADMIN')")
     public Student modify(Student student) {
-        return repository.modify(student);
+        return repository.save(student);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteById(Long id) {
-        repository.deleteStudentById(id);
+        repository.deleteById(id);
     }
 }

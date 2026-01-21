@@ -2,6 +2,7 @@ package springsecurity.lesson2datastructureofacl.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -54,15 +55,15 @@ public class StudentController {
             return "registration";
         }
         try {
-        Student toCreate = StudentMapper.toEntity(studentDto);
-        Student saved = studentService.create(toCreate);
-        ra.addFlashAttribute("message", "Student created successfuly");
-        return "redirect:/users/" + saved.getId();
-    } catch (DuplicateStudentException e) {
-        model.addAttribute("warning", e.getMessage());
-        return "registration";
+            Student toCreate = StudentMapper.toEntity(studentDto);
+            Student saved = studentService.create(toCreate);
+            ra.addFlashAttribute("message", "Student created successfully");
+            return "redirect:/users/" + saved.getId();
+        } catch (DuplicateStudentException e) {
+            model.addAttribute("warning", e.getMessage());
+            return "registration";
+        }
     }
-}
 
 @GetMapping("users/{id}")
 public String view(@PathVariable Long id, Model model) {
@@ -75,6 +76,7 @@ public String view(@PathVariable Long id, Model model) {
     return "view";
 }
 
+@PreAuthorize("hasPermission(#id, 'springsecurity.lesson2datastructureofacl.persistence.entity.Student', 'WRITE') or hasRole('ADMIN')")
 @GetMapping("users/{id}/edit")
 public String editForm(@PathVariable Long id, Model model) {
     Student student = studentService.findById(id).orElse(null);
