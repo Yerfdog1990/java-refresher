@@ -1,7 +1,7 @@
 twilio: # Twilio credentials got by www.twilio.com #
   account_sid: YOUR_TWILIO_ACCOUNT_SID
   auth_token: YOUR_TWILIO_AUTH_TOKEN
-  trial_number: +17073415567
+  trial_number: YOUR_TWILIO_TRIAL_NUMBER
 
 spring:
   session:
