@@ -1,6 +1,6 @@
 twilio: # Twilio credentials got by www.twilio.com #
-  account_sid: ACaf681b363d3656c2e3963f56a41a00ee
-  auth_token: 0d23641bde78123da912d06497b0a91c
+  account_sid: YOUR_TWILIO_ACCOUNT_SID
+  auth_token: YOUR_TWILIO_AUTH_TOKEN
   trial_number: +17073415567
 
 spring:
