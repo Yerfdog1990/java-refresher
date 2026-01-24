@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "2FA",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

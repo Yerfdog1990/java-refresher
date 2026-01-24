@@ -1,0 +1,33 @@
+twilio: # Twilio credentials got by www.twilio.com #
+  account_sid: ACaf681b363d3656c2e3963f56a41a00ee
+  auth_token: 0d23641bde78123da912d06497b0a91c
+  trial_number: +17073415567
+
+spring:
+  session:
+    store-type: jdbc
+    timeout: 1800  # 30 minutes
+    cookie:
+      name: SESSION
+      http-only: true
+      secure: true  # Set to true in production with HTTPS
+      same-site: lax
+  datasource:
+    url: jdbc:h2:mem:database
+    username: sa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  servlet:
+    session:
+      cookie:
+        http-only: true
+        secure: true  # Set to true in production with HTTPS
+        max-age: 1800  # 30 minutes
