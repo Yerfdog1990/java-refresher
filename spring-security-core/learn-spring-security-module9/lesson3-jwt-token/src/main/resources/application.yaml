@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: lesson2-jwt-token
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/security-db
+    username: securitydb
+    password: Cyrek@2024
+
+jwt:
+  secret: a-string-secret-at-least-256-bits-long
+  expiration: 86400000
+
+logging:
+  level:
+    org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer: ERROR

@@ -1,0 +1,27 @@
+meta {
+  name: Authenticate
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/api/v1/auth/authenticate
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5ZXJmQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY5MzIyMzkyLCJleHAiOjE3Njk0MDg3OTJ9.Gnkb4Ngq67altwWpDAlzsWRvYpRnIn7byhsmEESqK_0
+}
+
+body:json {
+  {
+    "email":"yerf@example.com",
+    "password":"yerf123"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

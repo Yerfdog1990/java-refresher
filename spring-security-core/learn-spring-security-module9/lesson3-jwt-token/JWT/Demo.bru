@@ -1,0 +1,20 @@
+meta {
+  name: Demo
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/api/v1/demo
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5ZXJmQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY5MzIyNjM0LCJleHAiOjE3Njk0MDkwMzR9.rKJHBjqvm5CkDv_2gti_epZ6-gZMx1XGr3nsUxWsCR4
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
