@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1a802e0d-580e-4416-828c-74b9fa18d913" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/RwsbApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/config/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/domain/model/Campaign.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/domain/model/Task.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/domain/model/TaskStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/domain/model/Worker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/persistence/repository/CampaignRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/persistence/repository/TaskRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/persistence/repository/WorkerRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/service/CampaignService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/service/TaskService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/service/WorkerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/service/impl/DefaultCampaignService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/service/impl/DefaultTaskService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/service/impl/DefaultWorkerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/web/controller/CampaignController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/web/controller/TaskController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/web/controller/WorkerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/web/dto/CampaignDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/web/dto/TaskDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/java/com/baeldung/rwsb/web/dto/WorkerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/resources/banner.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/test/java/com/baeldung/rwsb/SpringContextIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/test/java/com/baeldung/rwsb/integration/RwsbAppCampaignIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/test/java/com/baeldung/rwsb/integration/RwsbAppTaskIntegrationTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rest-with-spring-boot-module1/web-configuration/src/test/java/com/baeldung/rwsb/integration/RwsbAppWorkerIntegrationTest.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="87" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="38nJuvtTVtiZTRDRwDBQMPZ1q7j" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.RwsbAppCampaignIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RwsbAppTaskIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RwsbAppWorkerIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.SpringContextIntegrationTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.RwsbApp.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/godfrey/IdeaProjects/Baeldung-boot-camp/java-refresher/REST-with-springboot/learn-rest-with-springboot-module1/lesson3-exception-handling-and-sane-http-status-codes/pom.xml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reactor&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="ReactorSettings">
+    <option name="debugInitializationType" value="AGENT" />
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/data" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RwsbApp">
+    <configuration name="RwsbAppCampaignIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lesson3-exception-handling-and-sane-http-status-codes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baeldung.rwsb.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.baeldung.rwsb.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.baeldung.rwsb.integration.RwsbAppCampaignIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RwsbAppTaskIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lesson3-exception-handling-and-sane-http-status-codes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baeldung.rwsb.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.baeldung.rwsb.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.baeldung.rwsb.integration.RwsbAppTaskIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RwsbAppWorkerIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lesson3-exception-handling-and-sane-http-status-codes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baeldung.rwsb.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.baeldung.rwsb.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.baeldung.rwsb.integration.RwsbAppWorkerIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringContextIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lesson3-exception-handling-and-sane-http-status-codes" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.baeldung.rwsb.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.baeldung.rwsb" />
+      <option name="MAIN_CLASS_NAME" value="com.baeldung.rwsb.SpringContextIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RwsbApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="lesson3-exception-handling-and-sane-http-status-codes" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.baeldung.rwsb.RwsbApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.RwsbAppWorkerIntegrationTest" />
+        <item itemvalue="JUnit.RwsbAppTaskIntegrationTest" />
+        <item itemvalue="JUnit.RwsbAppCampaignIntegrationTest" />
+        <item itemvalue="JUnit.SpringContextIntegrationTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.30387.90" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1a802e0d-580e-4416-828c-74b9fa18d913" name="Changes" comment="" />
+      <created>1769429627378</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769429627378</updated>
+      <workItem from="1769429628396" duration="2360000" />
+      <workItem from="1769509442850" duration="11516000" />
+      <workItem from="1769606003389" duration="748000" />
+      <workItem from="1769606953087" duration="3487000" />
+      <workItem from="1769636094074" duration="87000" />
+      <workItem from="1769636205861" duration="3492000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
