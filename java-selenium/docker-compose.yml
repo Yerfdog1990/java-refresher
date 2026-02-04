@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  opencart:
+    build:
+      context: ./out
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - OPENCART_DB_HOSTNAME=db
+      - OPENCART_DB_USERNAME=opencart
+      - OPENCART_DB_PASSWORD=opencart
+      - OPENCART_DB_DATABASE=opencart
+      - OPENCART_DB_PORT=3306
+    depends_on:
+      - db
+    volumes:
+      - opencart_data:/var/www/html
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=opencart
+      - MYSQL_USER=opencart
+      - MYSQL_PASSWORD=opencart
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+volumes:
+  opencart_data:
+  db_data:
