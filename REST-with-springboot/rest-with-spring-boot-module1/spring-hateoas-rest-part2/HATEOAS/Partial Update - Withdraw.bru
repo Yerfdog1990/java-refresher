@@ -1,0 +1,22 @@
+meta {
+  name: Partial Update - Withdraw
+  type: http
+  seq: 3
+}
+
+patch {
+  url: http://localhost:8080/api/accounts/hateoas/2/withdraw
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "amount": 100.0
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

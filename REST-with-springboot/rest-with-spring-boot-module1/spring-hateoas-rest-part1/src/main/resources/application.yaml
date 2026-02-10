@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-hateoas-rest-part1
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop

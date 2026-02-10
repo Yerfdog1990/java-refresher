@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "REST with spring",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
