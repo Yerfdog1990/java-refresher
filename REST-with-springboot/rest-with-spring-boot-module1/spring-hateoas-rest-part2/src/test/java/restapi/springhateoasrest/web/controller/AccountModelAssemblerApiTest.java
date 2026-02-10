@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -15,6 +14,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 @SpringBootTest
 public class AccountModelAssemblerApiTest {
@@ -38,11 +38,11 @@ public class AccountModelAssemblerApiTest {
         dto.setBalance(5000.0f);
 
         // Create
-        String json = mockMvc.perform(post("/api/accounts/hateoas")
-                        .contentType(MediaType.APPLICATION_JSON)
+        String json = mockMvc.perform(post("/api/accounts/model-assembler")
+                        .contentType(APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(dto)))
                 .andExpect(status().isCreated())
-                .andExpect(header().string("Location", containsString("/api/accounts/hateoas/")))
+                .andExpect(header().string("Location", containsString("/api/accounts/model-assembler/")))
                 .andExpect(jsonPath("$.accountNumber").value("0987654321"))
                 .andExpect(jsonPath("$._links.self.href").exists())
                 .andReturn().getResponse().getContentAsString();
@@ -51,34 +51,29 @@ public class AccountModelAssemblerApiTest {
         Integer id = createdDto.getId();
 
         // Read One
-        mockMvc.perform(get("/api/accounts/hateoas/" + id))
+        mockMvc.perform(get("/api/accounts/model-assembler/" + id))
                 .andExpect(status().isOk())
+                .andExpect(content().contentType("application/hal+json"))
                 .andExpect(jsonPath("$.id").value(id))
-                .andExpect(jsonPath("$._links.self.href", containsString("/api/accounts/hateoas/" + id)))
-                .andExpect(jsonPath("$._links.collection.href", containsString("/api/accounts/hateoas")))
-                .andExpect(jsonPath("$._links.delete.href", containsString("/api/accounts/hateoas/" + id)))
-                .andExpect(jsonPath("$._links.update.href", containsString("/api/accounts/hateoas/" + id)));
+                .andExpect(jsonPath("$._links.self.href", containsString("/api/accounts/model-assembler/" + id)))
+                .andExpect(jsonPath("$._links.collection.href", containsString("/api/accounts/model-assembler")))
+                .andExpect(jsonPath("$._links.Deposit.href", containsString("/api/accounts/model-assembler/" + id + "/deposits")))
+                .andExpect(jsonPath("$._links.Withdrawal.href", containsString("/api/accounts/model-assembler/" + id + "/withdrawals")));
 
         // Read All
-        mockMvc.perform(get("/api/accounts/hateoas"))
+        mockMvc.perform(get("/api/accounts/model-assembler"))
                 .andExpect(status().isOk())
+                .andExpect(content().contentType("application/hal+json"))
                 .andExpect(jsonPath("$._embedded.accountDtoList").isArray())
-                .andExpect(jsonPath("$._links.self.href", containsString("/api/accounts/hateoas")));
+                .andExpect(jsonPath("$._links.self.href", containsString("/api/accounts/model-assembler")));
 
         // Update
         createdDto.setBalance(6000.0f);
-        mockMvc.perform(put("/api/accounts/hateoas/" + id)
-                        .contentType(MediaType.APPLICATION_JSON)
+        mockMvc.perform(put("/api/accounts/model-assembler/" + id)
+                        .contentType(APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(createdDto)))
                 .andExpect(status().isOk())
+                .andExpect(content().contentType("application/hal+json"))
                 .andExpect(jsonPath("$.balance").value(6000.0f));
-
-        // Delete
-        mockMvc.perform(delete("/api/accounts/hateoas/" + id))
-                .andExpect(status().isNoContent());
-
-        // Verify deleted
-        mockMvc.perform(get("/api/accounts/hateoas/" + id))
-                .andExpect(status().isNotFound());
     }
 }

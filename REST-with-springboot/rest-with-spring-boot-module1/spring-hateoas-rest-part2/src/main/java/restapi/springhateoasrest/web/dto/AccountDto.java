@@ -9,7 +9,7 @@ import restapi.springhateoasrest.persistence.entity.Account;
 
 @Data
 @EqualsAndHashCode(of = {"accountNumber", "balance"}, callSuper = false)
-public class AccountDto extends RepresentationModel<AccountDto> {
+public class AccountDto {
 
     private Integer id;
 

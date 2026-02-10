@@ -44,7 +44,9 @@ public class AccountModelAssemblerApi {
                 .map(AccountDto.Mapper::toDto)
                 .map(modelAssembler::toModel)
                 .collect(Collectors.toList());
-        return CollectionModel.of(dtoModelList);
+        CollectionModel<EntityModel<AccountDto>> collectionModel = CollectionModel.of(dtoModelList);
+        collectionModel.add(linkTo(methodOn(AccountModelAssemblerApi.class).readAll()).withSelfRel());
+        return collectionModel;
     }
 
     @PostMapping
