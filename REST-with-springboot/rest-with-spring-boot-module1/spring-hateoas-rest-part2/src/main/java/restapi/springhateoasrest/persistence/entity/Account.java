@@ -11,7 +11,7 @@ import org.springframework.hateoas.RepresentationModel;
 @NoArgsConstructor
 @Data
 @EqualsAndHashCode(of = {"accountNumber", "balance"}, callSuper = false)
-public class Account extends RepresentationModel<Account> {
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

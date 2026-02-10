@@ -6,10 +6,19 @@ meta {
 
 post {
   url: http://localhost:8080/campaigns
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+  "code": "CNew",
+  "name": "Campaign New",
+  "description": "Description of Campaign New"
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

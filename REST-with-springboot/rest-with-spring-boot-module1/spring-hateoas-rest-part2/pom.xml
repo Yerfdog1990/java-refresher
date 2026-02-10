@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>rest-api</groupId>
-    <artifactId>spring-hateoas-rest-part1</artifactId>
+    <artifactId>spring-hateoas-rest-part2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-hateoas-rest</name>
-    <description>spring-hateoas-rest-part1</description>
+    <description>spring-hateoas-rest-part2</description>
     <url/>
     <licenses>
         <license/>
@@ -90,6 +90,10 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
     </dependencies>
 

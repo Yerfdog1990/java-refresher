@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-hateoas-rest-part1
+    name: spring-hateoas-rest-part2
 
   datasource:
     url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE

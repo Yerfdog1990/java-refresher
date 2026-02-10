@@ -1,5 +1,6 @@
 package restapi.springhateoasrest.web.dto;
 
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ public class AccountDto extends RepresentationModel<AccountDto> {
 
     private Integer id;
 
+    @NotBlank(message = "Account number is required")
     private String accountNumber;
 
     private float balance;

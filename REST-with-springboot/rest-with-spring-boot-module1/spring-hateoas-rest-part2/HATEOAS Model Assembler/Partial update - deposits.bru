@@ -1,0 +1,15 @@
+meta {
+  name: Partial update - deposits
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:8080/api/accounts/model-assembler/2/deposits
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+}

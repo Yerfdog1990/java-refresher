@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "name": "HATEOAS",
+  "name": "HATEOAS Part 2",
   "type": "collection",
   "ignore": [
     "node_modules",
