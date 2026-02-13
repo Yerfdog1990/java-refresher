@@ -13,6 +13,7 @@
         <module name="lesson20-collections" />
         <module name="lesson24-xpaths" />
         <module name="lesson31-handling-drop-downs-and-static-webtables" />
+        <module name="lesson34-handling-date-pickers" />
         <module name="lesson25-xpath_axes" />
         <module name="lesson33-handling-dynamic-tables-with-pagination" />
         <module name="lesson23-css-selectors" />
