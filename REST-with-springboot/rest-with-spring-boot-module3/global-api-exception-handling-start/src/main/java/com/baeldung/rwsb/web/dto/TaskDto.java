@@ -6,6 +6,7 @@ import java.util.Objects;
 import com.baeldung.rwsb.domain.model.Campaign;
 import com.baeldung.rwsb.domain.model.Task;
 import com.baeldung.rwsb.domain.model.TaskStatus;
+import com.baeldung.rwsb.web.error.IdMismatchException;
 
 public record TaskDto( // @formatter:off
     Long id,
@@ -26,8 +27,10 @@ public record TaskDto( // @formatter:off
 
     public static class Mapper {
         public static Task toModel(TaskDto dto, Long requestedId) {
-            if (dto == null)
-                return null;
+            if (dto.id() != null && requestedId != null && !requestedId.equals(dto.id())) {
+                throw new IdMismatchException("Task body id didn't match path variable");
+            }
+
             Campaign campaign = new Campaign();
             campaign.setId(dto.campaignId());
 

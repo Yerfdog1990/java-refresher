@@ -32,19 +32,10 @@ import jakarta.servlet.http.HttpServletResponse;
 @RequestMapping(value = "/tasks")
 public class TaskController {
 
-    private TaskService taskService;
+    private final TaskService taskService;
 
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
-    }
-
-    @ExceptionHandler({ EntityNotFoundException.class })
-    public ModelAndView resolveException(JpaObjectRetrievalFailureException ex, ServletRequest request, HttpServletResponse response) {
-        request.setAttribute(RequestDispatcher.ERROR_STATUS_CODE, HttpStatus.BAD_REQUEST.value());
-        request.setAttribute(RequestDispatcher.ERROR_MESSAGE, "Associated entity not found: " + ex.getMessage());
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("/error");
-        return mav;
     }
 
     @GetMapping

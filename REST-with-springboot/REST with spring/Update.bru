@@ -5,11 +5,23 @@ meta {
 }
 
 put {
-  url: http://localhost:8080/campaigns
-  body: none
+  url: http://localhost:8080/tasks/1
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "id": 2,
+  "campaignId": 1,
+  "name": "Task 1",
+  "description": "Task 1 Description",
+  "dueDate": "2030-01-12",
+  "status": "To Do"
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
