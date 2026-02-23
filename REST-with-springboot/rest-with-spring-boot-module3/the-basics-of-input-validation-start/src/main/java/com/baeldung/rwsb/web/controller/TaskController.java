@@ -3,6 +3,7 @@ package com.baeldung.rwsb.web.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,14 +50,14 @@ public class TaskController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TaskDto create(@RequestBody TaskDto newTask) {
+    public TaskDto create(@RequestBody @Valid TaskDto newTask) {
         Task model = TaskDto.Mapper.toModel(newTask);
         Task createdModel = this.taskService.save(model);
         return TaskDto.Mapper.toDto(createdModel);
     }
 
     @PutMapping(value = "/{id}")
-    public TaskDto update(@PathVariable Long id, @RequestBody TaskDto updatedTask) {
+    public TaskDto update(@PathVariable Long id, @RequestBody @Valid TaskDto updatedTask) {
         Task model = TaskDto.Mapper.toModel(updatedTask);
         Task createdModel = this.taskService.updateTask(id, model)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

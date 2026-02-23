@@ -3,16 +3,20 @@ package com.baeldung.rwsb.web.dto;
 import java.util.Objects;
 
 import com.baeldung.rwsb.domain.model.Worker;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 public record WorkerDto( // @formatter:off
 
-    Long id,
+                         Long id,
 
-    String email,
+                         @NotBlank(message = "email can't be blank")
+                         @Email(message = "You must provide a valid email address")
+                         String email,
 
-    String firstName,
+                         String firstName,
 
-    String lastName) { // @formatter:on
+                         String lastName) { // @formatter:on
 
     public static class Mapper {
         public static Worker toModel(WorkerDto dto) {

@@ -6,25 +6,32 @@ import java.util.Objects;
 import com.baeldung.rwsb.domain.model.Campaign;
 import com.baeldung.rwsb.domain.model.Task;
 import com.baeldung.rwsb.domain.model.TaskStatus;
+import jakarta.validation.constraints.*;
 
 public record TaskDto( // @formatter:off
-    Long id,
+                       Long id,
 
-    String uuid,
+                       String uuid,
 
-    String name,
+                       @NotBlank(message = "name can't be blank")
+                       String name,
 
-    String description,
+                       @Size(min = 10, max = 50, message = "description must be between 10 and 50 characters long")
+                       String description,
 
-    LocalDate dueDate,
+                       @Future(message = "dueDate must be in the future")
+                       LocalDate dueDate,
 
-    TaskStatus status,
+                       TaskStatus status,
 
-    Long campaignId,
+                       @NotNull(message = "campaignId can't be null")
+                       Long campaignId,
 
-    WorkerDto assignee,
+                       WorkerDto assignee,
 
-    Integer estimatedHours) { // @formatter:on
+                       @Min(value = 1, message = "estimatedHours can't be less than 1")
+                       @Max(value = 40, message = "estimatedHours can't exceed 40")
+                       Integer estimatedHours) { // @formatter:on
 
     public static class Mapper {
         public static Task toModel(TaskDto dto) {
@@ -47,7 +54,7 @@ public record TaskDto( // @formatter:off
             if (model == null)
                 return null;
             TaskDto dto = new TaskDto(model.getId(), model.getUuid(), model.getName(), model.getDescription(), model.getDueDate(), model.getStatus(), model.getCampaign()
-                .getId(), WorkerDto.Mapper.toDto(model.getAssignee()), model.getEstimatedHours());
+                    .getId(), WorkerDto.Mapper.toDto(model.getAssignee()), model.getEstimatedHours());
             return dto;
         }
     }

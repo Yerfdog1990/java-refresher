@@ -3,6 +3,7 @@ package com.baeldung.rwsb.web.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,14 +48,14 @@ public class CampaignController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CampaignDto create(@RequestBody CampaignDto newCampaign) {
+    public CampaignDto create(@RequestBody @Valid CampaignDto newCampaign) {
         Campaign model = CampaignDto.Mapper.toModel(newCampaign);
         Campaign createdModel = this.campaignService.save(model);
         return CampaignDto.Mapper.toDto(createdModel);
     }
 
     @PutMapping(value = "/{id}")
-    public CampaignDto update(@PathVariable Long id, @RequestBody CampaignDto updatedCampaign) {
+    public CampaignDto update(@PathVariable Long id, @RequestBody @Valid CampaignDto updatedCampaign) {
         Campaign model = CampaignDto.Mapper.toModel(updatedCampaign);
         Campaign createdModel = this.campaignService.updateCampaign(id, model)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

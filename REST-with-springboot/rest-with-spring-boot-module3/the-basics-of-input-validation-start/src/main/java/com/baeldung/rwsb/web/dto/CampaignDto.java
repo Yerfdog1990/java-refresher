@@ -5,18 +5,24 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.baeldung.rwsb.domain.model.Campaign;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public record CampaignDto( // @formatter:off
 
-    Long id,
+                           Long id,
 
-    String code,
+                           @NotBlank(message = "code can't be null")
+                           String code,
 
-    String name,
+                           @NotBlank(message = "name can't be blank")
+                           String name,
 
-    String description,
+                           @Size(min = 10, max = 50,
+                                   message = "description must be between 10 and 50 characters long")
+                           String description,
 
-    Set<TaskDto> tasks) { // @formatter:on
+                           Set<TaskDto> tasks){ // @formatter:on
 
     public static class Mapper {
         public static Campaign toModel(CampaignDto dto) {
@@ -35,9 +41,9 @@ public record CampaignDto( // @formatter:off
             if (model == null)
                 return null;
             Set<TaskDto> tasks = model.getTasks()
-                .stream()
-                .map(TaskDto.Mapper::toDto)
-                .collect(Collectors.toSet());
+                    .stream()
+                    .map(TaskDto.Mapper::toDto)
+                    .collect(Collectors.toSet());
             CampaignDto dto = new CampaignDto(model.getId(), model.getCode(), model.getName(), model.getDescription(), tasks);
             return dto;
         }
