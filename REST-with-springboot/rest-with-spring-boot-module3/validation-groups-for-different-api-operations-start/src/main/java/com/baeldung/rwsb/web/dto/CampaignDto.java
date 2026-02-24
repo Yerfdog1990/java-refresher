@@ -25,6 +25,9 @@ public record CampaignDto( // @formatter:off
 
     Set<TaskDto> tasks) { // @formatter:on
 
+    public interface CampaignUpdateValidationData {
+    }
+
     public static class Mapper {
         public static Campaign toModel(CampaignDto dto) {
             if (dto == null)

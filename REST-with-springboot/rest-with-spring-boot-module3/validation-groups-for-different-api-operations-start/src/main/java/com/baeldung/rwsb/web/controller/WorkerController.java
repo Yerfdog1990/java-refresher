@@ -3,6 +3,7 @@ package com.baeldung.rwsb.web.controller;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +45,7 @@ public class WorkerController {
     }
 
     @PutMapping(value = "/{id}")
-    public WorkerDto update(@PathVariable Long id, @RequestBody @Valid WorkerDto updatedWorker) {
+    public WorkerDto update(@PathVariable Long id, @RequestBody @Validated(WorkerDto.WorkerUpdateValidationData.class) WorkerDto updatedWorker) {
         Worker model = WorkerDto.Mapper.toModel(updatedWorker);
         Worker createdModel = this.workerService.updateWorker(id, model)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

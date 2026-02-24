@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,7 +57,7 @@ public class CampaignController {
     }
 
     @PutMapping(value = "/{id}")
-    public CampaignDto update(@PathVariable Long id, @RequestBody @Valid CampaignDto updatedCampaign) {
+    public CampaignDto update(@PathVariable Long id, @RequestBody @Validated(CampaignDto.CampaignUpdateValidationData.class) CampaignDto updatedCampaign) {
         Campaign model = CampaignDto.Mapper.toModel(updatedCampaign);
         Campaign createdModel = this.campaignService.updateCampaign(id, model)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

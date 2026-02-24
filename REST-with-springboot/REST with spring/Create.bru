@@ -5,18 +5,17 @@ meta {
 }
 
 post {
-  url: http://localhost:8080/tasks/1
+  url: http://localhost:8080/tasks
   body: json
   auth: inherit
 }
 
 body:json {
   {
-  "campaignId": null,
-  "name": "Task 1",
-  "description": "Task 1 Description",
-  "dueDate": "2030-01-12",
-  "status": "To Do"
+  "campaignId": 1,
+  "name": "New Task",
+  "description": "New Task Description",
+  "dueDate": "2030-01-12"
   }
 }
 

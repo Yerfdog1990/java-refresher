@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,7 +59,7 @@ public class TaskController {
     }
 
     @PutMapping(value = "/{id}")
-    public TaskDto update(@PathVariable Long id, @RequestBody @Valid TaskDto updatedTask) {
+    public TaskDto update(@PathVariable Long id, @RequestBody @Validated(TaskDto.TaskUpdateValidationData.class) TaskDto updatedTask) {
         Task model = TaskDto.Mapper.toModel(updatedTask);
         Task createdModel = this.taskService.updateTask(id, model)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -66,14 +67,14 @@ public class TaskController {
     }
 
     @PutMapping(value = "/{id}/status")
-    public TaskDto updateStatus(@PathVariable Long id, @RequestBody TaskDto taskWithStatus) {
+    public TaskDto updateStatus(@PathVariable Long id, @RequestBody @Validated(TaskDto.TaskUpdateStatusValidationData.class) TaskDto taskWithStatus) {
         Task updatedModel = this.taskService.updateStatus(id, taskWithStatus.status())
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return TaskDto.Mapper.toDto(updatedModel);
     }
 
     @PutMapping(value = "/{id}/assignee")
-    public TaskDto updateAssignee(@PathVariable Long id, @RequestBody TaskDto taskWithAssignee) {
+    public TaskDto updateAssignee(@PathVariable Long id, @RequestBody @Validated(TaskDto.TaskUpdateAssigneeValidationData.class) TaskDto taskWithAssignee) {
         Task updatedModel = this.taskService.updateAssignee(id, WorkerDto.Mapper.toModel(taskWithAssignee.assignee()))
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return TaskDto.Mapper.toDto(updatedModel);
