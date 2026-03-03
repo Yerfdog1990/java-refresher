@@ -143,10 +143,12 @@ public class MouseEventActionsTest {
         String resetText = status.getText();
         assertEquals("Reset Done ✅", resetText);
     }
-
     @Test
     public void givenWebElement_whenPerformDragSliderAction_thenVerify() throws InterruptedException {
         WebElement sliderElement = driver.findElement(By.xpath("//div[@id='handle_max']"));
+
+        // Get slider location
+        log.debug("Slider location: {}", sliderElement.getLocation()); // (588, 1357)
 
         // Get the current value of the slider
         WebElement sliderValue = driver.findElement(By.xpath("//span[@id='sliderValueText']"));
@@ -155,7 +157,7 @@ public class MouseEventActionsTest {
 
         // Perform mouse action - drag the slider handle
         Actions actions = new Actions(driver);
-        // Moving by 100 pixels to the right
+        // Moving by 300 pixels to the right
         actions.dragAndDropBy(sliderElement, 300, 0).build().perform();
 
         // Wait for the slider to move
@@ -170,8 +172,7 @@ public class MouseEventActionsTest {
         WebElement sliderStatus = driver.findElement(By.xpath("//span[@id='sliderStatus']"));
         String statusText = sliderStatus.getText();
         log.debug("Slider status text: {}", statusText);
-        assertThat(statusText).contains("Value: £");
-        assertThat(statusText).contains("✅");
+        assertThat(statusText).contains("Value: £2268");
     }
 }
 
