@@ -12,21 +12,23 @@ import jakarta.validation.groups.Default;
 
 public record CampaignDto( // @formatter:off
 
-    Long id,
+                           Long id,
 
-    @NotBlank(message = "code can't be null")
-    String code,
+                           @NotBlank(message = "code can't be null")
+                           String code,
 
-    @NotBlank(groups = { CampaignUpdateValidationData.class, Default.class },
-      message = "name can't be blank")
-    String name,
+                           @NotBlank(groups = { CampaignUpdateValidationData.class, Default.class },
+                                   message = "name can't be blank")
+                           String name,
 
-    @Size(groups = { CampaignUpdateValidationData.class, Default.class },
-      min = 10, max = 50,
-      message = "description must be between 10 and 50 characters long")
-    String description,
+                           @NotBlank(groups = { CampaignUpdateValidationData.class, Default.class },
+                                   message = "description can't be blank")
+                           @Size(groups = { CampaignUpdateValidationData.class, Default.class },
+                                   min = 10, max = 50,
+                                   message = "description must be between 10 and 50 characters long")
+                           String description,
 
-    Set<TaskDto> tasks) { // @formatter:on
+                           Set<TaskDto> tasks) { // @formatter:on
 
     public static class Mapper {
         public static Campaign toModel(CampaignDto dto) {
@@ -46,9 +48,9 @@ public record CampaignDto( // @formatter:off
             if (model == null)
                 return null;
             Set<TaskDto> tasks = model.getTasks()
-                .stream()
-                .map(TaskDto.Mapper::toDto)
-                .collect(Collectors.toSet());
+                    .stream()
+                    .map(TaskDto.Mapper::toDto)
+                    .collect(Collectors.toSet());
             CampaignDto dto = new CampaignDto(model.getId(), model.getCode(), model.getName(), model.getDescription(), tasks);
             return dto;
         }

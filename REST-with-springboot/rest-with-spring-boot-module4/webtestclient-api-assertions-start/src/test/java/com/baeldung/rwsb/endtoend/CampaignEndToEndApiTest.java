@@ -1,10 +1,17 @@
 package com.baeldung.rwsb.endtoend;
 
+import com.baeldung.rwsb.web.dto.CampaignDto;
+import com.baeldung.rwsb.web.dto.TaskDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import java.util.Collections;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class CampaignEndToEndApiTest {
@@ -15,9 +22,67 @@ public class CampaignEndToEndApiTest {
     @Test
     void givenRunningService_whenGetSingleCampaign_thenExpectStatus() {
         webClient.get()
-            .uri("/campaigns/3")
-            .exchange()
-            .expectStatus()
-            .isOk();
+                .uri("/campaigns/3")
+                .exchange()
+                .expectStatus()
+                .isOk();
     }
+
+    // Asserting by Equality
+    @Test
+    void givenPreloadedData_whenGetSingleCampaign_thenResponseBodyContainsExpectedValues() {
+        webClient.get()
+                .uri("/campaigns/3")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody(CampaignDto.class)
+                .isEqualTo(new CampaignDto(3L,
+                        "C3",
+                        "Campaign 3",
+                        "About Campaign 3",
+                        Collections.emptySet()));
+    }
+
+    // Asserting Granularly
+    @Test
+    void givenPreloadedData_whenGetSingleCampaign_thenResponseFieldsMatch() {
+        webClient.get()
+                .uri("/campaigns/3")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBody(CampaignDto.class)
+                .value(campaignDto -> {
+                    assertThat(campaignDto.id()).isEqualTo(3L);
+                    assertThat(campaignDto.code()).isEqualTo("C3");
+                    assertThat(campaignDto.name()).isEqualTo("Campaign 3");
+                    assertThat(campaignDto.description()).isEqualTo("About Campaign 3");
+
+                    // Validate input data
+                    assertThat(campaignDto.code()).isNotBlank();
+                    assertThat(campaignDto.name()).isNotBlank();
+                    assertThat(campaignDto.description()).isNotBlank();
+                    assertThat(campaignDto.description()).hasSizeBetween(10,50);
+                });
+    }
+
+    // Asserting Collections
+    @Test
+    void givenPreloadedData_whenGetCampaign_thenResponseConsumeWith() {
+        webClient.get()
+                .uri("/campaigns")
+                .exchange()
+                .expectStatus()
+                .isOk()
+                .expectBodyList(CampaignDto.class)
+                .value(campaignsList -> {
+                    assertThat(campaignsList).hasSizeGreaterThanOrEqualTo(3);
+                    assertThat(campaignsList).extracting(CampaignDto::code).contains("C1", "C2", "C3");
+                    assertThat(campaignsList).flatExtracting(CampaignDto::tasks)
+                            .extracting(TaskDto::name)
+                            .contains("Task 1", "Task 2", "Task 3", "Task 4");
+                });
+    }
+
 }
