@@ -18,6 +18,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ProblemDetail;
+import org.springframework.lang.NonNull;
+import org.springframework.test.web.reactive.server.StatusAssertions;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.baeldung.rwsb.web.dto.CampaignDto;
@@ -129,11 +131,7 @@ public class CampaignEndToEndApiTest {
                 "Description of updated test campaign 1",
                 tasksListBody);
 
-        webClient.put()
-                .uri("/campaigns/2")
-                .bodyValue(updatedCampaignBody)
-                .exchange()
-                .expectStatus()
+        getStatusAssertions(updatedCampaignBody)
                 .isOk()
                 .expectBody(CampaignDto.class)
                 .value(dto -> {
@@ -144,6 +142,15 @@ public class CampaignEndToEndApiTest {
                     assertThat(dto.tasks()).isNotEmpty()
                             .noneMatch(task -> task.name().equals(taskBody.name()));
                 });
+    }
+
+    @NonNull
+    private StatusAssertions getStatusAssertions(CampaignDto updatedCampaignBody) {
+        return webClient.put()
+                .uri("/campaigns/2")
+                .bodyValue(updatedCampaignBody)
+                .exchange()
+                .expectStatus();
     }
 
     @Test
