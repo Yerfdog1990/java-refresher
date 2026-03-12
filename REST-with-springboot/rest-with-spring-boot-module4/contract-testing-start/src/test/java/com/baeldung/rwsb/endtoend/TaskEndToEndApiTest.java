@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +22,7 @@ public class TaskEndToEndApiTest {
     WebTestClient webClient;
 
     @Test
-    void createNewTask_withValidTaskObject_thenSuccess() {
+    void givenPreloadedData_whenCreateNewTask_withValidTaskObject_thenSuccess() {
 
         TaskDto newTaskBody = new TaskDto(null, null, "Test - New Task 1", "Description of New Task 1", LocalDate.of(2050, 12, 30), null, 1L, null);
 
