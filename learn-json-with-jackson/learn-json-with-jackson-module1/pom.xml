@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn JSON With Jackson' Course: Introduction to Jackson</description>
+    <name>introduction-to-jackson</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>ljj-introduction-to-jackson</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>introduction-to-jackson-start</module>
+        <module>introduction-to-jackson-end</module>
+        <module>objectmapper-configuration-start</module>
+        <module>objectmapper-configuration-end</module>
+        <module>basic-serialization-and-deserialization-start</module>
+        <module>basic-serialization-and-deserialization-end</module>
+    </modules>
+</project>
