@@ -1,11 +1,14 @@
 package com.baeldung.ljj.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class CampaignWithAnnotations {
 
     private String code;
 
     private String name;
 
+    @JsonInclude(JsonInclude.Include.ALWAYS)
     private String description;
 
     private boolean closed;
