@@ -1,4 +1,3 @@
-Excellent choice ✅ — I’ll now rewrite your **lesson notes on “Classes and Objects in Java”** in an **academic format** suitable for classroom use, incorporating both your uploaded document and the detailed content you pasted.
 
 ---
 
