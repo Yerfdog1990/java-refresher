@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="lesson21-setup-selenium-environment" />
         <module name="lesson38-screenshots-headless-ssl-adBlock-extensions" />
+        <module name="lesson40-data-driven-testing-working-with-ms-excel" />
         <module name="lesson27-waiting_methods" />
         <module name="lesson32-handling-auto-suggest-dropdown-and-web-tables" />
         <module name="lesson35-mouse-actions" />
