@@ -1,0 +1,26 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build-sample-applications:
+    strategy:
+      matrix:
+        talks: ['fixing-a-broken-window', 'things-i-wish-i-knew-spring-boot-testing', 'testing-spring-boot-applications-demystified', 'stop-fighting-your-spring-boot-tests']
+    runs-on: ubuntu-latest
+    name: Build the Maven project ${{ matrix.talks }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          java-package: jdk
+          distribution: temurin
+          cache: maven
+
+      - name: Build the Application
+        working-directory: ${{ matrix.talks }}
+        run: ./mvnw -B verify

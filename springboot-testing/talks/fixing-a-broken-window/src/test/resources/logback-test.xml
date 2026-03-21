@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+  <logger name="org.springframework.test.context" level="TRACE"/>
+
+  <!-- Noisy stack trace on shutdown -->
+  <logger name="io.awspring.cloud.messaging.listener" level="ERROR"/>
+
+  <appender name="PLAIN" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+      <charset>utf8</charset>
+    </encoder>
+  </appender>
+  <root level="info">
+    <appender-ref ref="PLAIN"/>
+  </root>
+</configuration>
