@@ -28,6 +28,10 @@ public class Campaign {
         return code;
     }
 
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     public String getName() {
         return name;
     }
