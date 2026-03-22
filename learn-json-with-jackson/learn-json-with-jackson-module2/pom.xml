@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn JSON With Jackson' Course: Common Serialization and Deserialization Scenarios</description>
+    <name>common-serialization-and-deserialization-scenarios</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>ljj-common-serialization-and-deserialization-scenarios</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>custom-property-names-order-start</module>
+        <module>custom-property-names-order-end</module>
+        <module>handling-enums-start</module>
+        <module>handling-enums-end</module>
+        <module>json-include-exclude-start</module>
+        <module>json-include-exclude-end</module>
+        <module>handling-date-and-time-values-start</module>
+        <module>handling-date-and-time-values-end</module>
+        <module>handling-unknown-properties-start</module>
+        <module>handling-unknown-properties-end</module>
+        <module>custom-serialization-and-deserialization-start</module>
+        <module>custom-serialization-and-deserialization-end</module>
+    </modules>
+</project>
