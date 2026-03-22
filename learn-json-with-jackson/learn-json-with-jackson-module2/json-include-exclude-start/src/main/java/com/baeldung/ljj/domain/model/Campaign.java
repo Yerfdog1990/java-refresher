@@ -1,18 +1,26 @@
 package com.baeldung.ljj.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.HashSet;
 import java.util.Set;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Campaign {
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String code;
 
     private String name;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String description;
 
     private Set<Task> tasks = new HashSet<>();
 
+    @JsonIgnore
     private boolean closed;
 
     public Campaign(String code, String name, String description) {

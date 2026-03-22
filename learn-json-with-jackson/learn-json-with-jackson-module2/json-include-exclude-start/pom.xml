@@ -12,11 +12,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>tools.jackson.core</groupId>
+            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>3.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.40</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -50,7 +63,7 @@
         <java.version>24</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
-        <jackson.version>3.1.0</jackson.version>
+        <jackson.version>2.21.1</jackson.version>
         <junit-jupiter.version>5.12.2</junit-jupiter.version>
         <maven-surefire.version>3.5.3</maven-surefire.version>
     </properties>
