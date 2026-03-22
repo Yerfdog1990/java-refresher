@@ -11,10 +11,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
+
         <dependency>
-            <groupId>tools.jackson.core</groupId>
+            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+            <version>2.21.2</version>
         </dependency>
 
         <!-- test -->
@@ -50,7 +51,6 @@
         <java.version>24</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
 
-        <jackson.version>3.1.0</jackson.version>
         <junit-jupiter.version>5.12.2</junit-jupiter.version>
         <maven-surefire.version>3.5.3</maven-surefire.version>
     </properties>

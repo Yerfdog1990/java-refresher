@@ -1,20 +1,21 @@
 package com.baeldung.ljj.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonEnumDefaultValue;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-public enum TaskStatus {
-
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public enum TaskStatusJsonObject {
     //@formatter:off
     @JsonEnumDefaultValue
     TO_DO("To Do"),
-    IN_PROGRESS("In Progress"), 
-    ON_HOLD("On Hold"), 
+    IN_PROGRESS("In Progress"),
+    ON_HOLD("On Hold"),
     DONE("Done");
     //@formatter:on
 
     private final String label;
 
-    private TaskStatus(String label) {
+    private TaskStatusJsonObject(String label) {
         this.label = label;
     }
 
