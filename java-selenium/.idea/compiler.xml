@@ -27,6 +27,7 @@
         <module name="lesson28-browser-navigation-commands" />
         <module name="lesson26-webelement_methods" />
         <module name="lesson29-handlingcheckboxes" />
+        <module name="lesson41-data-driven-testing-with-ms-excel" />
         <module name="lesson30-frames_nested_iFrames" />
       </profile>
     </annotationProcessing>
