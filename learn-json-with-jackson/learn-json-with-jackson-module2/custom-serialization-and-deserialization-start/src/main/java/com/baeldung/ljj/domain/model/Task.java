@@ -1,5 +1,10 @@
 package com.baeldung.ljj.domain.model;
 
+import com.baeldung.ljj.serialization.CampaignToCodeSerializer;
+import com.baeldung.ljj.serialization.CodeToCampaignDeserializer;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
+
 import java.time.LocalDate;
 
 public class Task {
@@ -14,6 +19,8 @@ public class Task {
 
     private TaskStatus status;
 
+    @JsonSerialize(using = CampaignToCodeSerializer.class)
+    @JsonDeserialize(using = CodeToCampaignDeserializer.class)
     private Campaign campaign;
 
     public Task(String code, String name, String description, LocalDate dueDate, TaskStatus status, Campaign campaign) {
