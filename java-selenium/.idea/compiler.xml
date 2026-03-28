@@ -25,6 +25,7 @@
         <module name="lesson23-css-selectors" />
         <module name="lesson22-locators" />
         <module name="lesson28-browser-navigation-commands" />
+        <module name="lesson42-testNG-integration-setup" />
         <module name="lesson26-webelement_methods" />
         <module name="lesson29-handlingcheckboxes" />
         <module name="lesson41-data-driven-testing-with-ms-excel" />
