@@ -43,6 +43,8 @@ We model a system with:
 
     * `Team` → `List<Worker> members`
 
+![img.png](img.png)
+
 ### 💡 Real-world meaning
 
 * A team can include **different types of workers**
