@@ -25,6 +25,10 @@ public class Task {
         this.campaign = campaign;
     }
 
+
+    public Task() {
+    }
+
     public String getCode() {
         return code;
     }
