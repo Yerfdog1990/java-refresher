@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn JSON With Jackson' Course: Advanced Scenarios</description>
+    <name>advanced-scenarios</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>ljj-advanced-scenarios</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>handling-nested-objects-start</module>
+        <module>handling-nested-objects-end</module>
+        <module>managing-polymorphic-types-start</module>
+        <module>managing-polymorphic-types-end</module>
+        <module>the-jackson-tree-model-start</module>
+        <module>the-jackson-tree-model-end</module>
+        <module>working-with-collections-and-maps-start</module>
+        <module>working-with-collections-and-maps-end</module>
+        <module>using-json-views-start</module>
+        <module>using-json-views-end</module>
+        <module>the-jackson-streaming-api-start</module>
+        <module>the-jackson-streaming-api-end</module>
+        <module>error-handling-start</module>
+        <module>error-handling-end</module>
+    </modules>
+</project>
