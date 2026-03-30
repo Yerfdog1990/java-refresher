@@ -1,14 +1,19 @@
 package com.baeldung.ljj.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.util.HashSet;
 import java.util.Set;
 
 public class Campaign {
 
+    @JsonView({Views.Summary.class, Views.Internal.class})
     private String code;
 
+    @JsonView(Views.Summary.class)
     private String name;
 
+    @JsonView(Views.Detail.class)
     private String description;
 
     private Set<Task> tasks = new HashSet<>();
