@@ -1,0 +1,352 @@
+openapi: 3.1.0
+info:
+  title: Baeldung API
+  description: Documentation for Baeldung REST with Spring Boot
+  version: "1.0"
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /workers/{id}:
+    get:
+      tags:
+      - worker-controller
+      operationId: findOne
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WorkerDto"
+    put:
+      tags:
+      - worker-controller
+      operationId: update
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkerDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WorkerDto"
+  /tasks/{id}:
+    get:
+      tags:
+      - task-controller
+      operationId: findOne_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TaskDto"
+    put:
+      tags:
+      - task-controller
+      operationId: update_1
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TaskDto"
+  /tasks/{id}/status:
+    put:
+      tags:
+      - task-controller
+      operationId: updateStatus
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TaskDto"
+  /tasks/{id}/assignee:
+    put:
+      tags:
+      - task-controller
+      operationId: updateAssignee
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TaskDto"
+  /campaigns/{id}:
+    get:
+      tags:
+      - campaign-controller
+      operationId: findOne_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CampaignDto"
+    put:
+      tags:
+      - campaign-controller
+      operationId: update_2
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CampaignDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CampaignDto"
+  /workers:
+    post:
+      tags:
+      - worker-controller
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkerDto"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/WorkerDto"
+  /tasks:
+    get:
+      tags:
+      - task-controller
+      operationId: searchTasks
+      parameters:
+      - name: name
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: assigneeId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TaskDto"
+    post:
+      tags:
+      - task-controller
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TaskDto"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/TaskDto"
+  /campaigns:
+    get:
+      tags:
+      - campaign-controller
+      operationId: listCampaigns
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CampaignDto"
+    post:
+      tags:
+      - campaign-controller
+      operationId: create_2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CampaignDto"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CampaignDto"
+components:
+  schemas:
+    WorkerDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+      required:
+      - email
+      - id
+    TaskDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        uuid:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+          maxLength: 50
+          minLength: 10
+        dueDate:
+          type: string
+          format: date
+        status:
+          type: string
+          enum:
+          - To Do
+          - In Progress
+          - On Hold
+          - Done
+        campaignId:
+          type: integer
+          format: int64
+        assignee:
+          $ref: "#/components/schemas/WorkerDto"
+      required:
+      - campaignId
+      - name
+      - status
+    CampaignDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        code:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+          maxLength: 50
+          minLength: 10
+        tasks:
+          type: array
+          items:
+            $ref: "#/components/schemas/TaskDto"
+          uniqueItems: true
+      required:
+      - code
+      - name
