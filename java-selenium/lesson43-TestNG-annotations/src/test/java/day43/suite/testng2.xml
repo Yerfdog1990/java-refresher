@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/godfrey/IdeaProjects/Baeldung-boot-camp/java-refresher/java-selenium/lesson43-TestNG-annotations/src/test/java/day43/suite/AllAnnotationsTest.java">
+        <classes>
+            <class name="day43.suite.AllAnnotationsTest">
+            <methods>
+                <include name="test2"/>
+                <include name="test3"/>
+            </methods>
+        </class>
+        </classes>
+    </test>
+</suite>

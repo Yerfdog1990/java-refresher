@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/godfrey/IdeaProjects/Baeldung-boot-camp/java-refresher/java-selenium/lesson43-TestNG-annotations/src/test/java/day43/suite">
+        <classes>
+            <class name="day43.suite.C1Test">
+            <methods>
+                <include name="test1"/>
+                <include name="test2"/>
+            </methods>
+            </class>
+            <class name="day43.suite.C2Test">
+                <methods>
+                    <include name="test1"/>
+                    <include name="test2"/>
+                </methods>
+            </class>
+            <class name="day43.suite.C3Test">
+                <methods>
+                    <include name="test1"/>
+                    <include name="test2"/>
+                    <include name="test3"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
