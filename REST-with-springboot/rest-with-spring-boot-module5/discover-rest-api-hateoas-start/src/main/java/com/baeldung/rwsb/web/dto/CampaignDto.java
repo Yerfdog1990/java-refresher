@@ -6,7 +6,9 @@ import java.util.Set;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.groups.Default;
+import org.springframework.hateoas.server.core.Relation;
 
+@Relation(collectionRelation = "campaignList", itemRelation = "campaign")
 public class CampaignDto { // @formatter:off
 
     private Long id;

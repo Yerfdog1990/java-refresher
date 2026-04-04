@@ -12,8 +12,11 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.groups.ConvertGroup;
 import jakarta.validation.groups.Default;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
-public class TaskDto { // @formatter:off
+@Relation(collectionRelation = "taskList", itemRelation = "task")
+public class TaskDto extends RepresentationModel<TaskDto>{ // @formatter:off
     private Long id;
 
     private String uuid;

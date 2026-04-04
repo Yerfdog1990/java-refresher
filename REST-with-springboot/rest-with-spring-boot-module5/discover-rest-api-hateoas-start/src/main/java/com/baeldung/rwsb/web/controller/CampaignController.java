@@ -7,7 +7,11 @@ import java.util.stream.Collectors;
 
 import jakarta.validation.Valid;
 
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,47 +29,62 @@ import com.baeldung.rwsb.web.dto.CampaignDto;
 import com.baeldung.rwsb.web.dto.TaskDto;
 import com.baeldung.rwsb.web.dto.CampaignDto.CampaignUpdateValidationData;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+
 @RestController
 @RequestMapping(value = "/campaigns")
 public class CampaignController {
 
-    private CampaignService campaignService;
+    private final CampaignService campaignService;
 
     public CampaignController(CampaignService campaignService) {
         this.campaignService = campaignService;
     }
 
     @GetMapping
-    public List<CampaignDto> listCampaigns() {
+    public CollectionModel<EntityModel<CampaignDto>> listCampaigns() {
         List<Campaign> models = campaignService.findCampaigns();
-        List<CampaignDto> campaignDtos = models.stream()
-            .map(Mapper::toDto)
-            .collect(Collectors.toList());
-        return campaignDtos;
+        List<EntityModel<CampaignDto>> campaignDtos = models.stream()
+                .map(Mapper::toDto)
+                .collect(Collectors.toList());
+        return CollectionModel.of(campaignDtos)
+                .add(generateCampaignCollectionSelfLink());
     }
 
     @GetMapping(value = "/{id}")
-    public CampaignDto findOne(@PathVariable Long id) {
+    public EntityModel<CampaignDto> findOne(@PathVariable Long id) {
         Campaign model = campaignService.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         return Mapper.toDto(model);
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public CampaignDto create(@RequestBody @Valid CampaignDto newCampaign) {
+    public ResponseEntity<EntityModel<CampaignDto>> create(@RequestBody @Valid CampaignDto newCampaign) {
         Campaign model = Mapper.toModel(newCampaign);
         Campaign createdModel = this.campaignService.save(model);
-        return Mapper.toDto(createdModel);
+        EntityModel<CampaignDto> dto = Mapper.toDto(createdModel);
+        return ResponseEntity.created(generateCampaignSelfLink(dto.getContent()).toUri())
+                .body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public CampaignDto update(@PathVariable Long id, @RequestBody @Validated(CampaignUpdateValidationData.class) CampaignDto updatedCampaign) {
+    public EntityModel<CampaignDto> update(
+            @PathVariable Long id, @RequestBody @Validated(CampaignUpdateValidationData.class)
+            CampaignDto updatedCampaign) {
         Campaign model = Mapper.toModel(updatedCampaign);
         Campaign createdModel = this.campaignService.updateCampaign(id, model)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return Mapper.toDto(createdModel);
+    }
+
+    private static Link generateCampaignSelfLink(CampaignDto dto) {
+        return linkTo(methodOn(CampaignController.class).findOne(dto.getId())).withSelfRel();
+    }
+
+    private static Link generateCampaignCollectionSelfLink() {
+        return linkTo(methodOn(CampaignController.class).listCampaigns()).withSelfRel();
     }
 
     public static class Mapper {
@@ -82,7 +101,7 @@ public class CampaignController {
             return model;
         }
 
-        public static CampaignDto toDto(Campaign model) {
+        public static EntityModel<CampaignDto> toDto(Campaign model) {
             if (model == null)
                 return null;
             Set<TaskDto> tasks = model.getTasks()
@@ -90,7 +109,7 @@ public class CampaignController {
                     .map(TaskController.Mapper::toDto)
                     .collect(Collectors.toSet());
             CampaignDto dto = new CampaignDto(model.getId(), model.getCode(), model.getName(), model.getDescription(), tasks);
-            return dto;
+            return EntityModel.of(dto, generateCampaignSelfLink(dto));
         }
     }
 }

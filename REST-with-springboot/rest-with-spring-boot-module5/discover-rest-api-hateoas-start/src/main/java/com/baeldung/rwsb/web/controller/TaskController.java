@@ -6,7 +6,12 @@ import java.util.stream.Collectors;
 
 import jakarta.validation.Valid;
 
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilderFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +20,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -31,14 +35,17 @@ import com.baeldung.rwsb.web.dto.TaskDto.TaskUpdateValidationData;
 @RequestMapping(value = "/tasks")
 public class TaskController {
 
+    private final WebMvcLinkBuilderFactory webMvcLinkBuilderFactory;
     private TaskService taskService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskService taskService, WebMvcLinkBuilderFactory webMvcLinkBuilderFactory) {
         this.taskService = taskService;
+        this.webMvcLinkBuilderFactory = webMvcLinkBuilderFactory;
     }
 
     @GetMapping
-    public List<TaskDto> searchTasks(@RequestParam(required = false) String name, @RequestParam(required = false) Long assigneeId) {
+    public List<TaskDto> searchTasks(@RequestParam(required = false) String name, @RequestParam(required = false)
+    Long assigneeId) {
         List<Task> models = taskService.searchTasks(name, assigneeId);
         List<TaskDto> taskDtos = models.stream()
             .map(Mapper::toDto)
@@ -55,15 +62,28 @@ public class TaskController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public TaskDto create(@RequestBody @Valid TaskDto newTask) {
+    public ResponseEntity<TaskDto> create(@RequestBody @Valid TaskDto newTask) {
         Task model = Mapper.toModel(newTask);
         Task createdModel = this.taskService.save(model);
-        return Mapper.toDto(createdModel);
+        TaskDto dto = Mapper.toDto(createdModel);
+
+        Link link = generateTaskSelfLink(dto);
+
+        return ResponseEntity.created(link.toUri()).body(dto);
     }
 
+    @NonNull
+    private static Link generateTaskSelfLink(TaskDto dto) {
+        return
+                WebMvcLinkBuilder.linkTo(
+                                WebMvcLinkBuilder.methodOn(TaskController.class).findOne(dto.getId()))
+                        .withSelfRel();
+    }
+
+
     @PutMapping(value = "/{id}")
-    public TaskDto update(@PathVariable Long id, @RequestBody @Validated(TaskUpdateValidationData.class) TaskDto updatedTask) {
+    public TaskDto update(@PathVariable Long id, @RequestBody @Validated(TaskUpdateValidationData.class)
+    TaskDto updatedTask) {
         Task model = Mapper.toModel(updatedTask);
         Task createdModel = this.taskService.updateTask(id, model)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -71,15 +91,18 @@ public class TaskController {
     }
 
     @PutMapping(value = "/{id}/status")
-    public TaskDto updateStatus(@PathVariable Long id, @RequestBody @Validated(TaskUpdateStatusValidationData.class) TaskDto taskWithStatus) {
+    public TaskDto updateStatus(@PathVariable Long id, @RequestBody @Validated(TaskUpdateStatusValidationData.class)
+    TaskDto taskWithStatus) {
         Task updatedModel = this.taskService.updateStatus(id, taskWithStatus.getStatus())
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return Mapper.toDto(updatedModel);
     }
 
     @PutMapping(value = "/{id}/assignee")
-    public TaskDto updateAssignee(@PathVariable Long id, @RequestBody @Validated(TaskUpdateAssigneeValidationData.class) TaskDto taskWithAssignee) {
-        Task updatedModel = this.taskService.updateAssignee(id, WorkerController.Mapper.toModel(taskWithAssignee.getAssignee()))
+    public TaskDto updateAssignee(@PathVariable Long id, @RequestBody @Validated(TaskUpdateAssigneeValidationData.class)
+    TaskDto taskWithAssignee) {
+        Task updatedModel = this.taskService.updateAssignee(
+                id, WorkerController.Mapper.toModel(taskWithAssignee.getAssignee()))
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return Mapper.toDto(updatedModel);
     }
@@ -105,9 +128,10 @@ public class TaskController {
         public static TaskDto toDto(Task model) {
             if (model == null)
                 return null;
-            TaskDto dto = new TaskDto(model.getId(), model.getUuid(), model.getName(), model.getDescription(), model.getDueDate(),
+            TaskDto dto = new TaskDto(
+                    model.getId(), model.getUuid(), model.getName(), model.getDescription(), model.getDueDate(),
                     model.getStatus(), model.getCampaign().getId(), WorkerController.Mapper.toDto(model.getAssignee()));
-            return dto;
+            return dto.add(generateTaskSelfLink(dto));
         }
     }
 }

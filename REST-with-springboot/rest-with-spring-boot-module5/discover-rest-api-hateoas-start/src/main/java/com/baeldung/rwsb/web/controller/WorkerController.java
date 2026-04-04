@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import jakarta.validation.Valid;
 
+import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,8 @@ public class WorkerController {
 
     private WorkerService workerService;
 
+    private WorkerModelAssembler assembler = new WorkerModelAssembler();
+
     public WorkerController(WorkerService workerService) {
         this.workerService = workerService;
     }
@@ -36,18 +40,15 @@ public class WorkerController {
     @GetMapping(value = "/{id}")
     public WorkerDto findOne(@PathVariable Long id) {
         Worker model = workerService.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-        return Mapper.toDto(model);
+        return assembler.toModel(model);
     }
 
     @GetMapping
-    public List<WorkerDto> listWorkers() {
+    public CollectionModel<WorkerDto> listWorkers() {
         List<Worker> models = workerService.findWorkers();
-        List<WorkerDto> workerDtos = models.stream()
-                .map(Mapper::toDto)
-                .collect(Collectors.toList());
-        return workerDtos;
+        return assembler.toCollectionModel(models);
     }
 
     @PostMapping
@@ -55,15 +56,34 @@ public class WorkerController {
     public WorkerDto create(@RequestBody @Valid WorkerDto newWorker) {
         Worker model = Mapper.toModel(newWorker);
         Worker createdModel = this.workerService.save(model);
-        return Mapper.toDto(createdModel);
+        return assembler.toModel(createdModel);
     }
 
     @PutMapping(value = "/{id}")
     public WorkerDto update(@PathVariable Long id, @RequestBody @Validated(WorkerUpdateValidationData.class) WorkerDto updatedWorker) {
         Worker model = Mapper.toModel(updatedWorker);
         Worker createdModel = this.workerService.updateWorker(id, model)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        return Mapper.toDto(createdModel);
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return assembler.toModel(createdModel);
+    }
+
+    public static class WorkerModelAssembler extends RepresentationModelAssemblerSupport<Worker, WorkerDto> {
+
+        public WorkerModelAssembler() {
+            super(WorkerController.class, WorkerDto.class);
+        }
+
+        @Override
+        public WorkerDto toModel(Worker worker) {
+            if (worker == null)
+                return null;
+            return this.createModelWithId(worker.getId(), worker);
+        }
+
+        @Override
+        protected WorkerDto instantiateModel(Worker worker) {
+            return Mapper.toDto(worker);
+        }
     }
 
     public static class Mapper {

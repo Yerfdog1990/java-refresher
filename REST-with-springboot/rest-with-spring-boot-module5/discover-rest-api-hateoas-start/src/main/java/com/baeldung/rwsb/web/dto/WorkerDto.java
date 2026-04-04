@@ -8,8 +8,11 @@ import com.baeldung.rwsb.web.dto.TaskDto.TaskUpdateValidationData;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.hateoas.RepresentationModel;
+import org.springframework.hateoas.server.core.Relation;
 
-public class WorkerDto { // @formatter:off
+@Relation(collectionRelation = "workerList", itemRelation = "worker")
+public class WorkerDto extends RepresentationModel<WorkerDto> { // @formatter:off
 
     @NotNull(groups = { TaskUpdateValidationData.class, TaskUpdateAssigneeValidationData.class },
       message = "Worker id can't be null")
