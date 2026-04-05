@@ -7,30 +7,31 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lesson21-setup-selenium-environment" />
-        <module name="lesson38-screenshots-headless-ssl-adBlock-extensions" />
-        <module name="lesson43-TestNG-annotations" />
         <module name="lesson40-data-driven-testing-working-with-ms-excel" />
         <module name="lesson27-waiting_methods" />
         <module name="lesson32-handling-auto-suggest-dropdown-and-web-tables" />
         <module name="lesson35-mouse-actions" />
         <module name="lesson20-collections" />
         <module name="lesson24-xpaths" />
-        <module name="lesson31-handling-drop-downs-and-static-webtables" />
         <module name="lesson37-javascriptexecutor-scrollingpages-uploadfiles" />
         <module name="lesson39-brokenlinks-svgelements-shadow-dom" />
         <module name="lesson34-handling-date-pickers" />
+        <module name="lesson23-css-selectors" />
+        <module name="lesson42-testNG-integration-setup" />
+        <module name="lesson30-frames_nested_iFrames" />
+        <module name="lesson21-setup-selenium-environment" />
+        <module name="lesson38-screenshots-headless-ssl-adBlock-extensions" />
+        <module name="lesson43-TestNG-annotations" />
+        <module name="lesson44-dependency-methods-and-grouping-tests" />
+        <module name="lesson31-handling-drop-downs-and-static-webtables" />
         <module name="lesson25-xpath_axes" />
         <module name="lesson36-Keyboard-actions-sliders-tabs-and-windows" />
         <module name="lesson33-handling-dynamic-tables-with-pagination" />
-        <module name="lesson23-css-selectors" />
         <module name="lesson22-locators" />
         <module name="lesson28-browser-navigation-commands" />
-        <module name="lesson42-testNG-integration-setup" />
         <module name="lesson26-webelement_methods" />
         <module name="lesson29-handlingcheckboxes" />
         <module name="lesson41-data-driven-testing-with-ms-excel" />
-        <module name="lesson30-frames_nested_iFrames" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
