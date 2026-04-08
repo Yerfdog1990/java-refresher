@@ -5,14 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.baeldung.rwsb.domain.model.Task;
@@ -25,8 +18,8 @@ import com.baeldung.rwsb.web.v1_contentnegotiation.dto.TaskDto.TaskUpdateValidat
 
 import jakarta.validation.Valid;
 
-//@RestController(value = "taskController.contentNegotiation.v1")
-@RequestMapping(value = "/tasks")
+@RestController(value = "taskController.contentNegotiation.v1")
+@RequestMapping(value = "/v1/tasks", produces = "application/vnd.rwsb.api.v1+json")
 public class TaskController {
 
     private TaskService taskService;
@@ -52,7 +45,7 @@ public class TaskController {
         return TaskDto.Mapper.toDto(model);
     }
 
-    @PostMapping
+    @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
     public TaskDto create(@RequestBody @Valid TaskDto newTask) {
         Task model = TaskDto.Mapper.toModel(newTask);
@@ -67,6 +60,7 @@ public class TaskController {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return TaskDto.Mapper.toDto(createdModel);
     }
+
 
     @PutMapping(value = "/{id}/status")
     public TaskDto updateStatus(@PathVariable Long id, @RequestBody @Validated(TaskUpdateStatusValidationData.class) TaskDto taskWithStatus) {

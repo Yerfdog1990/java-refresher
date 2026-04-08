@@ -23,7 +23,7 @@ import com.baeldung.rwsb.web.v1_url.dto.CampaignDto.CampaignUpdateValidationData
 import jakarta.validation.Valid;
 
 @RestController(value = "campaignController.url.v1")
-@RequestMapping(value = "/campaigns")
+@RequestMapping(value = "/v1/campaigns", produces = "application/vnd.rwsb.v1+json")
 public class CampaignController {
 
     private CampaignService campaignService;

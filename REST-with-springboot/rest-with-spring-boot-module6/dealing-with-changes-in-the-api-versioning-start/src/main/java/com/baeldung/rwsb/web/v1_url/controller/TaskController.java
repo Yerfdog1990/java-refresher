@@ -27,7 +27,7 @@ import com.baeldung.rwsb.web.v1_url.dto.TaskDto.TaskUpdateValidationData;
 import jakarta.validation.Valid;
 
 @RestController(value = "taskController.url.v1")
-@RequestMapping(value = "/tasks")
+@RequestMapping(value = "/v1/tasks")
 public class TaskController {
 
     private TaskService taskService;

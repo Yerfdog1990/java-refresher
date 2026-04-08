@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.baeldung.rwsb.domain.model.Worker;
@@ -18,8 +19,8 @@ import com.baeldung.rwsb.web.v1_contentnegotiation.dto.WorkerDto.WorkerUpdateVal
 
 import jakarta.validation.Valid;
 
-//@RestController(value = "workerController.contentNegotiation.v1")
-@RequestMapping(value = "/workers")
+@RestController(value = "workerController.contentNegotiation.v1")
+@RequestMapping(value = "/v1/workers", produces = "application/vnd.rwsb.api.v1+json")
 public class WorkerController {
 
     private WorkerService workerService;
