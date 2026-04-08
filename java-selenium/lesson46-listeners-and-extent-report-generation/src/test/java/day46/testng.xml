@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="day46.MyListener"/>
+        <listener class-name="day46.ExtentReportManager"/>
+    </listeners>
+    <test name="Listers demo test" thread-count="3" parallel="true">
+        <classes>
+            <class name="day46.ListenersDemoTest">
+                <methods>
+                    <include name="givenWebpage_whenTestLogoVisibility_thenSuccess"/>
+                    <include name="givenWebpage_whenTestTitleVisibility_thenSuccess"/>
+                    <include name="givenWebpage_whenTestURLVisibility_thenSuccess"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

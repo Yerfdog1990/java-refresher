@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="3" passed="1" failed="1" skipped="1">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-08T06:47:58 GMT+07:00" name="All Test Suite" finished-at="2026-04-08T06:48:12 GMT+07:00" duration-ms="13104">
+    <groups>
+    </groups>
+    <test started-at="2026-04-08T06:47:58 GMT+07:00" name="Listers demo test" finished-at="2026-04-08T06:48:12 GMT+07:00" duration-ms="13104">
+      <class name="day46.ListenersDemoTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day46.ListenersDemoTest@14dd7b39]" started-at="2026-04-08T06:47:59 GMT+07:00" name="setUp" finished-at="2026-04-08T06:48:08 GMT+07:00" duration-ms="8585" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenWebpage_whenTestURLVisibility_thenSuccess()[pri:3, instance:day46.ListenersDemoTest@14dd7b39]" started-at="2026-04-08T06:48:08 GMT+07:00" name="givenWebpage_whenTestURLVisibility_thenSuccess" finished-at="2026-04-08T06:48:10 GMT+07:00" duration-ms="2510" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestURLVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestLogoVisibility_thenSuccess()[pri:1, instance:day46.ListenersDemoTest@14dd7b39]" started-at="2026-04-08T06:48:08 GMT+07:00" name="givenWebpage_whenTestLogoVisibility_thenSuccess" finished-at="2026-04-08T06:48:11 GMT+07:00" duration-ms="3754" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Company branding logo should be visible]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Company branding logo should be visible
+at org.testng.AssertJUnit.fail(AssertJUnit.java:65)
+at org.testng.AssertJUnit.assertTrue(AssertJUnit.java:23)
+at org.testng.AssertJUnit.assertFalse(AssertJUnit.java:44)
+at day46.ListenersDemoTest.givenWebpage_whenTestLogoVisibility_thenSuccess(ListenersDemoTest.java:39)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestLogoVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestTitleVisibility_thenSuccess()[pri:2, instance:day46.ListenersDemoTest@14dd7b39]" started-at="2026-04-08T06:48:11 GMT+07:00" name="givenWebpage_whenTestTitleVisibility_thenSuccess" finished-at="2026-04-08T06:48:11 GMT+07:00" depends-on-methods="day46.ListenersDemoTest.givenWebpage_whenTestLogoVisibility_thenSuccess" duration-ms="1" status="SKIP">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method day46.ListenersDemoTest.givenWebpage_whenTestTitleVisibility_thenSuccess() on instance day46.ListenersDemoTest@14dd7b39 depends on not successfully finished methods 
+[day46.ListenersDemoTest.givenWebpage_whenTestLogoVisibility_thenSuccess() on instance day46.ListenersDemoTest@14dd7b39]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method day46.ListenersDemoTest.givenWebpage_whenTestTitleVisibility_thenSuccess() on instance day46.ListenersDemoTest@14dd7b39 depends on not successfully finished methods 
+[day46.ListenersDemoTest.givenWebpage_whenTestLogoVisibility_thenSuccess() on instance day46.ListenersDemoTest@14dd7b39]
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestTitleVisibility_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day46.ListenersDemoTest@14dd7b39]" started-at="2026-04-08T06:48:11 GMT+07:00" name="tearDown" finished-at="2026-04-08T06:48:12 GMT+07:00" duration-ms="217" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day46.ListenersDemoTest -->
+    </test> <!-- Listers demo test -->
+  </suite> <!-- All Test Suite -->
+</testng-results>
