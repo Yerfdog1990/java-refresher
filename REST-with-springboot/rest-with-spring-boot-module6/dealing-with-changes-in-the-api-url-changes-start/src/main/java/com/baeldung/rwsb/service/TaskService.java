@@ -9,7 +9,8 @@ import com.baeldung.rwsb.domain.model.Worker;
 
 public interface TaskService {
 
-    List<Task> searchTasks(String nameSubstring, Long assigneeId);
+
+    List<Task> searchTasks(Long campaignId, String nameSubstring, Long assigneeId);
 
     Optional<Task> findById(Long id);
 
@@ -20,4 +21,5 @@ public interface TaskService {
     Optional<Task> updateStatus(Long id, TaskStatus status);
 
     Optional<Task> updateAssignee(Long id, Worker assignee);
+
 }

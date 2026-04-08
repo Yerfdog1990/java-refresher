@@ -20,7 +20,7 @@ import com.baeldung.rwsb.web.dto.WorkerDto.WorkerUpdateValidationData;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/workers")
+@RequestMapping(value = {"/workers", "employees"})
 public class WorkerController {
 
     private WorkerService workerService;

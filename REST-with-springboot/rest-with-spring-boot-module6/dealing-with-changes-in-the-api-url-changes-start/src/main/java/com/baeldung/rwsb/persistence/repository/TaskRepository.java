@@ -9,13 +9,27 @@ import org.springframework.data.repository.query.Param;
 import com.baeldung.rwsb.domain.model.Task;
 
 public interface TaskRepository extends JpaRepository<Task, Long> {
+//    // @formatter:off
+//    @Query("SELECT t"
+//        + " FROM Task t"
+//        + " WHERE (:name IS NULL OR t.name like %:name%)"
+//        + " AND (:assigneeId IS NULL OR t.assignee.id = :assigneeId)")
+//    List<Task> findByNameContainingAndAssigneeId(
+//        @Param("name") String name,
+//        @Param("assigneeId") Long assigneeId);
+//    // @formatter:on
+
     // @formatter:off
     @Query("SELECT t"
-        + " FROM Task t"
-        + " WHERE (:name IS NULL OR t.name like %:name%)"
-        + " AND (:assigneeId IS NULL OR t.assignee.id = :assigneeId)")
-    List<Task> findByNameContainingAndAssigneeId(
-        @Param("name") String name,
-        @Param("assigneeId") Long assigneeId);
+            + " FROM Task t"
+            + " WHERE (:name IS NULL or t.name like %:name%)"
+            + " AND (:assigneeId IS NULL or t.assignee.id = :assigneeId)"
+            + " AND (:campaignId IS NULL or t.campaign.id = :campaignId)")
+    List<Task> findByCampaignIdAndNameContainingAndAssigneeId(
+            @Param("campaignId") Long campaignId,
+            @Param("name") String name,
+            @Param("assigneeId") Long assigneeId);
+
     // @formatter:on
+
 }

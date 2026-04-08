@@ -1,9 +1,15 @@
 package com.baeldung.rwsb.web.controller;
 
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +33,6 @@ import com.baeldung.rwsb.web.dto.TaskDto.TaskUpdateValidationData;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/tasks")
 public class TaskController {
 
     private TaskService taskService;
@@ -36,14 +41,42 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @GetMapping
-    public List<TaskDto> searchTasks(@RequestParam(required = false) String name, @RequestParam(required = false) Long assigneeId) {
-        List<Task> models = taskService.searchTasks(name, assigneeId);
+    // @Deprecated
+    @Operation(deprecated = true,
+            description = "Transitioning to'/campaigns/{campaignId}/tasks'")
+    @GetMapping(value = "/tasks")
+    public ResponseEntity<List<TaskDto>> searchTasks(
+            @PathVariable Long campaignId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Long assigneeId){
+        HttpHeaders headers = new HttpHeaders();
+        ZonedDateTime sunsetDateTime = ZonedDateTime.of(2050, 12, 30, 0, 0, 0, 0, ZoneOffset.UTC);
+        String sunsetHeaderValue = sunsetDateTime.format(DateTimeFormatter.RFC_1123_DATE_TIME);
+        headers.add("Sunset", sunsetHeaderValue);
+        List<TaskDto> taskDtos = processSearch(campaignId, name, assigneeId);
+        return ResponseEntity.ok().headers(headers).body(taskDtos);
+    }
+
+
+    @GetMapping(value = "campaigns/{campaignId}/tasks")
+    public List<TaskDto> searchTasksByCampaignId(
+            @PathVariable Long campaignId,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Long assigneeId){
+        return processSearch(campaignId, name, assigneeId);
+    }
+
+    private List<TaskDto> processSearch(
+            Long campaignId,
+            String name,
+            Long assigneeId) {
+        List<Task> models = taskService.searchTasks(campaignId, name, assigneeId);
         List<TaskDto> taskDtos = models.stream()
-            .map(TaskDto.Mapper::toDto)
-            .collect(Collectors.toList());
+                .map(TaskDto.Mapper::toDto)
+                .collect(Collectors.toList());
         return taskDtos;
     }
+
 
     @GetMapping(value = "/{id}")
     public TaskDto findOne(@PathVariable Long id) {
