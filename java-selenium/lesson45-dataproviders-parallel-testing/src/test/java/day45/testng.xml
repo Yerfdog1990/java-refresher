@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite" xmlns:https="https://jakarta.ee/xml/ns/persistence/orm" parallel="tests">
+    <test name="safari-test" thread-count="2">
+        <parameter name="browser" value="safari"/>
+        <parameter name="url" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"/>
+        <classes>
+            <class name="day45.DataProviderDemoTest">
+            <methods>
+                <include name="givenSingleUser_whenLogin_thenSuccess"/>
+                <include name="givenMultipleUsers_whenLogin_thenSuccess"/>
+            </methods>
+            </class>
+            <class name="day45.ParameterizedDemoTest">
+            <methods>
+                <include name="givenWebpage_whenTestLogoVisibility_thenSuccess"/>
+                <include name="givenWebpage_whenTestTitleVisibility_thenSuccess"/>
+                <include name="givenWebpage_whenTestURLVisibility_thenSuccess"/>
+            </methods>
+        </class>
+        </classes>
+    </test>
+
+    <test name="chrome-test" thread-count="2">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="url" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"/>
+        <classes>
+            <class name="day45.DataProviderDemoTest">
+                <methods>
+                    <include name="givenSingleUser_whenLogin_thenSuccess"/>
+                    <include name="givenMultipleUsers_whenLogin_thenSuccess"/>
+                </methods>
+            </class>
+            <class name="day45.ParameterizedDemoTest">
+                <methods>
+                    <include name="givenWebpage_whenTestLogoVisibility_thenSuccess"/>
+                    <include name="givenWebpage_whenTestTitleVisibility_thenSuccess"/>
+                    <include name="givenWebpage_whenTestURLVisibility_thenSuccess"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="firefox-test" thread-count="2">
+        <parameter name="browser" value="firefox"/>
+        <parameter name="url" value="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"/>
+        <classes>
+            <class name="day45.DataProviderDemoTest">
+                <methods>
+                    <include name="givenSingleUser_whenLogin_thenSuccess"/>
+                    <include name="givenMultipleUsers_whenLogin_thenSuccess"/>
+                </methods>
+            </class>
+            <class name="day45.ParameterizedDemoTest">
+                <methods>
+                    <include name="givenWebpage_whenTestLogoVisibility_thenSuccess"/>
+                    <include name="givenWebpage_whenTestTitleVisibility_thenSuccess"/>
+                    <include name="givenWebpage_whenTestURLVisibility_thenSuccess"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

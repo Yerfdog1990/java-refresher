@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="18" passed="15" failed="0" skipped="3">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-07T10:51:46 GMT+07:00" name="All Test Suite" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="43718">
+    <groups>
+    </groups>
+    <test started-at="2026-04-07T10:51:46 GMT+07:00" name="safari-test" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="30993">
+      <class name="day45.DataProviderDemoTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:51:46 GMT+07:00" name="setUp" finished-at="2026-04-07T10:51:52 GMT+07:00" duration-ms="6259" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenMultipleUsers_whenLogin_thenSuccess(java.lang.String,java.lang.String)[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:51:52 GMT+07:00" name="givenMultipleUsers_whenLogin_thenSuccess" data-provider="dp" finished-at="2026-04-07T10:51:57 GMT+07:00" duration-ms="5238" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gouma308@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[JCY#xw#y4WJ8jj]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenMultipleUsers_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:51:57 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:51:57 GMT+07:00" duration-ms="252" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:51:57 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:02 GMT+07:00" duration-ms="4839" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenMultipleUsers_whenLogin_thenSuccess(java.lang.String,java.lang.String)[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:52:02 GMT+07:00" name="givenMultipleUsers_whenLogin_thenSuccess" data-provider="dp" finished-at="2026-04-07T10:52:05 GMT+07:00" duration-ms="3186" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gouma308@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[JCY#xw#y4WJ8jj]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenMultipleUsers_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:52:05 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:05 GMT+07:00" duration-ms="119" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:52:05 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:09 GMT+07:00" duration-ms="3935" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenSingleUser_whenLogin_thenSuccess()[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:52:09 GMT+07:00" name="givenSingleUser_whenLogin_thenSuccess" finished-at="2026-04-07T10:52:15 GMT+07:00" duration-ms="5500" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenSingleUser_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@1be2019a]" started-at="2026-04-07T10:52:15 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:15 GMT+07:00" duration-ms="433" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day45.DataProviderDemoTest -->
+      <class name="day45.ParameterizedDemoTest">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:day45.ParameterizedDemoTest@49c90a9c]" started-at="2026-04-07T10:52:15 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="1126" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[safari]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://opensource-demo.orangehrmlive.com/web/index.php/auth/login]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.SessionNotCreatedException">
+            <message>
+              <![CDATA[Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:96)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:68)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:163)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:237)
+at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:164)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:84)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:80)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:57)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:48)
+at day45.ParameterizedDemoTest.setUp(ParameterizedDemoTest.java:36)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenWebpage_whenTestLogoVisibility_thenSuccess()[pri:1, instance:day45.ParameterizedDemoTest@49c90a9c]" started-at="2026-04-07T10:52:16 GMT+07:00" name="givenWebpage_whenTestLogoVisibility_thenSuccess" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="0" status="SKIP">
+          <exception class="org.openqa.selenium.SessionNotCreatedException">
+            <message>
+              <![CDATA[Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:96)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:68)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:163)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:237)
+at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:164)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:84)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:80)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:57)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:48)
+at day45.ParameterizedDemoTest.setUp(ParameterizedDemoTest.java:36)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestLogoVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestTitleVisibility_thenSuccess()[pri:2, instance:day45.ParameterizedDemoTest@49c90a9c]" started-at="2026-04-07T10:52:16 GMT+07:00" name="givenWebpage_whenTestTitleVisibility_thenSuccess" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="0" status="SKIP">
+          <exception class="org.openqa.selenium.SessionNotCreatedException">
+            <message>
+              <![CDATA[Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:96)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:68)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:163)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:237)
+at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:164)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:84)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:80)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:57)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:48)
+at day45.ParameterizedDemoTest.setUp(ParameterizedDemoTest.java:36)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestTitleVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestURLVisibility_thenSuccess()[pri:3, instance:day45.ParameterizedDemoTest@49c90a9c]" started-at="2026-04-07T10:52:16 GMT+07:00" name="givenWebpage_whenTestURLVisibility_thenSuccess" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="0" status="SKIP">
+          <exception class="org.openqa.selenium.SessionNotCreatedException">
+            <message>
+              <![CDATA[Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.SessionNotCreatedException: Could not start a new session. Response code 500. Message: Could not create a session: The Safari instance is already paired with a different session. 
+Host info: host: 'Godfreys-MacBook-Pro.local', ip: '2405:9800:b550:b229:0:0:0:2%en0'
+Build info: version: '4.16.1', revision: '9b4c83354e'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [null, newSession {capabilities=[Capabilities {browserName: safari}]}]
+Capabilities {browserName: safari}
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:140)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:96)
+at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:68)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:163)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:237)
+at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:164)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:84)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:80)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:57)
+at org.openqa.selenium.safari.SafariDriver.<init>(SafariDriver.java:48)
+at day45.ParameterizedDemoTest.setUp(ParameterizedDemoTest.java:36)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.SessionNotCreatedException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestURLVisibility_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.ParameterizedDemoTest@49c90a9c]" started-at="2026-04-07T10:52:16 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day45.ParameterizedDemoTest -->
+    </test> <!-- safari-test -->
+    <test started-at="2026-04-07T10:51:46 GMT+07:00" name="chrome-test" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="43436">
+      <class name="day45.DataProviderDemoTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:51:46 GMT+07:00" name="setUp" finished-at="2026-04-07T10:51:54 GMT+07:00" duration-ms="8894" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenMultipleUsers_whenLogin_thenSuccess(java.lang.String,java.lang.String)[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:51:54 GMT+07:00" name="givenMultipleUsers_whenLogin_thenSuccess" data-provider="dp" finished-at="2026-04-07T10:51:58 GMT+07:00" duration-ms="3982" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gouma308@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[JCY#xw#y4WJ8jj]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenMultipleUsers_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:51:58 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:05 GMT+07:00" duration-ms="6552" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:52:05 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:09 GMT+07:00" duration-ms="4388" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenMultipleUsers_whenLogin_thenSuccess(java.lang.String,java.lang.String)[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:52:09 GMT+07:00" name="givenMultipleUsers_whenLogin_thenSuccess" data-provider="dp" finished-at="2026-04-07T10:52:13 GMT+07:00" duration-ms="3512" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gouma308@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[JCY#xw#y4WJ8jj]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenMultipleUsers_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:52:13 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:13 GMT+07:00" duration-ms="201" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:52:13 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:17 GMT+07:00" duration-ms="4147" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenSingleUser_whenLogin_thenSuccess()[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:52:17 GMT+07:00" name="givenSingleUser_whenLogin_thenSuccess" finished-at="2026-04-07T10:52:20 GMT+07:00" duration-ms="2983" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenSingleUser_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@68746f22]" started-at="2026-04-07T10:52:20 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:20 GMT+07:00" duration-ms="120" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day45.DataProviderDemoTest -->
+      <class name="day45.ParameterizedDemoTest">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:day45.ParameterizedDemoTest@2f01783a]" started-at="2026-04-07T10:52:20 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:27 GMT+07:00" duration-ms="7036" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://opensource-demo.orangehrmlive.com/web/index.php/auth/login]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenWebpage_whenTestLogoVisibility_thenSuccess()[pri:1, instance:day45.ParameterizedDemoTest@2f01783a]" started-at="2026-04-07T10:52:27 GMT+07:00" name="givenWebpage_whenTestLogoVisibility_thenSuccess" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="1243" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestLogoVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestTitleVisibility_thenSuccess()[pri:2, instance:day45.ParameterizedDemoTest@2f01783a]" started-at="2026-04-07T10:52:29 GMT+07:00" name="givenWebpage_whenTestTitleVisibility_thenSuccess" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="38" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestTitleVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestURLVisibility_thenSuccess()[pri:3, instance:day45.ParameterizedDemoTest@2f01783a]" started-at="2026-04-07T10:52:29 GMT+07:00" name="givenWebpage_whenTestURLVisibility_thenSuccess" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="12" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestURLVisibility_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.ParameterizedDemoTest@2f01783a]" started-at="2026-04-07T10:52:29 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="252" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day45.ParameterizedDemoTest -->
+    </test> <!-- chrome-test -->
+    <test started-at="2026-04-07T10:51:46 GMT+07:00" name="firefox-test" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="43718">
+      <class name="day45.DataProviderDemoTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:51:46 GMT+07:00" name="setUp" finished-at="2026-04-07T10:51:52 GMT+07:00" duration-ms="6140" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenMultipleUsers_whenLogin_thenSuccess(java.lang.String,java.lang.String)[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:51:52 GMT+07:00" name="givenMultipleUsers_whenLogin_thenSuccess" data-provider="dp" finished-at="2026-04-07T10:51:58 GMT+07:00" duration-ms="6525" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gouma308@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[JCY#xw#y4WJ8jj]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenMultipleUsers_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:51:58 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:51:58 GMT+07:00" duration-ms="236" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:51:58 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:03 GMT+07:00" duration-ms="4269" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenMultipleUsers_whenLogin_thenSuccess(java.lang.String,java.lang.String)[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:52:03 GMT+07:00" name="givenMultipleUsers_whenLogin_thenSuccess" data-provider="dp" finished-at="2026-04-07T10:52:06 GMT+07:00" duration-ms="3616" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[gouma308@gmail.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[JCY#xw#y4WJ8jj]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenMultipleUsers_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:52:06 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:06 GMT+07:00" duration-ms="124" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:52:06 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:12 GMT+07:00" duration-ms="5452" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenSingleUser_whenLogin_thenSuccess()[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:52:12 GMT+07:00" name="givenSingleUser_whenLogin_thenSuccess" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="4176" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenSingleUser_whenLogin_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.DataProviderDemoTest@41488b16]" started-at="2026-04-07T10:52:16 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:16 GMT+07:00" duration-ms="273" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day45.DataProviderDemoTest -->
+      <class name="day45.ParameterizedDemoTest">
+        <test-method is-config="true" signature="setUp(java.lang.String,java.lang.String)[pri:0, instance:day45.ParameterizedDemoTest@a8ef162]" started-at="2026-04-07T10:52:16 GMT+07:00" name="setUp" finished-at="2026-04-07T10:52:26 GMT+07:00" duration-ms="9953" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[https://opensource-demo.orangehrmlive.com/web/index.php/auth/login]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="givenWebpage_whenTestLogoVisibility_thenSuccess()[pri:1, instance:day45.ParameterizedDemoTest@a8ef162]" started-at="2026-04-07T10:52:26 GMT+07:00" name="givenWebpage_whenTestLogoVisibility_thenSuccess" finished-at="2026-04-07T10:52:27 GMT+07:00" duration-ms="1098" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestLogoVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestTitleVisibility_thenSuccess()[pri:2, instance:day45.ParameterizedDemoTest@a8ef162]" started-at="2026-04-07T10:52:27 GMT+07:00" name="givenWebpage_whenTestTitleVisibility_thenSuccess" finished-at="2026-04-07T10:52:27 GMT+07:00" duration-ms="3" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestTitleVisibility_thenSuccess -->
+        <test-method signature="givenWebpage_whenTestURLVisibility_thenSuccess()[pri:3, instance:day45.ParameterizedDemoTest@a8ef162]" started-at="2026-04-07T10:52:27 GMT+07:00" name="givenWebpage_whenTestURLVisibility_thenSuccess" finished-at="2026-04-07T10:52:27 GMT+07:00" duration-ms="4" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenTestURLVisibility_thenSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day45.ParameterizedDemoTest@a8ef162]" started-at="2026-04-07T10:52:27 GMT+07:00" name="tearDown" finished-at="2026-04-07T10:52:29 GMT+07:00" duration-ms="1771" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day45.ParameterizedDemoTest -->
+    </test> <!-- firefox-test -->
+  </suite> <!-- All Test Suite -->
+</testng-results>
