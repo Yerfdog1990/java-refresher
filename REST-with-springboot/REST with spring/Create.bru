@@ -5,16 +5,18 @@ meta {
 }
 
 post {
-  url: http://localhost:8080/workers
+  url: http://localhost:8080/tasks
   body: json
   auth: inherit
 }
 
 body:json {
   {
-  "email": "john@old-worker.com",
-  "firstName": "John",
-  "lastName": "01dworkerStructureDoe"
+   "name": "New-Test- Task 2",
+  "description": "Description of new test task 3",
+  "status": "Done",
+  "dueDate": "2050-12-31",
+  "campaignId": 1
   }
 }
 

@@ -31,6 +31,7 @@
         <module name="lesson33-handling-dynamic-tables-with-pagination" />
         <module name="lesson22-locators" />
         <module name="lesson46-listeners-and-extent-report-generation" />
+        <module name="lesson48-hybrid-automation-framework-project-pom" />
         <module name="lesson28-browser-navigation-commands" />
         <module name="lesson26-webelement_methods" />
         <module name="lesson29-handlingcheckboxes" />
