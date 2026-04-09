@@ -23,6 +23,7 @@
         <module name="lesson21-setup-selenium-environment" />
         <module name="lesson38-screenshots-headless-ssl-adBlock-extensions" />
         <module name="lesson43-TestNG-annotations" />
+        <module name="lesson47-page-object-model-pattern" />
         <module name="lesson44-dependency-methods-and-grouping-tests" />
         <module name="lesson31-handling-drop-downs-and-static-webtables" />
         <module name="lesson25-xpath_axes" />

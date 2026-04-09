@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test name="Login Test">
+        <classes>
+            <class name="day47.test_case.LoginTest">
+                <methods>
+                    <include name="givenOrangeHRMWebPage_whenLoginAsAdmin_thenHomePageIsDisplayed"/>
+                </methods>
+            </class>
+            <class name="day47.test_case.PageFactoryLoginTest">
+                <methods>
+                    <include name="givenOrangeHRMWebPage_whenLoginAsAdmin_thenHomePageIsDisplayed"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
