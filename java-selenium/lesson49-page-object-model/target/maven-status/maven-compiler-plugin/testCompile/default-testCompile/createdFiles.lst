@@ -1,0 +1,4 @@
+day49/page_objects/HomePage.class
+day49/test_cases/TC001AccountRegistrationTest.class
+day49/page_objects/BasePage.class
+day49/page_objects/AccountRegistrationPage.class

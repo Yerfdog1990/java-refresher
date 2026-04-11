@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: day49.test_cases.TC001AccountRegistrationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.382 s -- in day49.test_cases.TC001AccountRegistrationTest

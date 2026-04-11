@@ -42,6 +42,8 @@
         <option value="$PROJECT_DIR$/lesson46-listeners-and-extent-report-generation/pom.xml" />
         <option value="$PROJECT_DIR$/lesson47-page-object-model-pattern/pom.xml" />
         <option value="$PROJECT_DIR$/lesson48-hybrid-automation-framework-project-pom/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson48-page-object-model/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson49-page-object-model/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -50,7 +52,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="24" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
