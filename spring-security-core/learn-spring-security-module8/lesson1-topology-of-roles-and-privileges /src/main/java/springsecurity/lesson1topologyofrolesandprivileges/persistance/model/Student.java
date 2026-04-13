@@ -3,9 +3,7 @@ package springsecurity.lesson1topologyofrolesandprivileges.persistance.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import org.hibernate.annotations.CreationTimestamp;
 import springsecurity.lesson1topologyofrolesandprivileges.validation.PasswordMatches;
@@ -15,7 +13,8 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 
 @Entity
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(of = {"email", "password"})
 @NoArgsConstructor
 @PasswordMatches
