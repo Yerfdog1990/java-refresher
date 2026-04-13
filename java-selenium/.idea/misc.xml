@@ -45,6 +45,7 @@
         <option value="$PROJECT_DIR$/lesson48-page-object-model/pom.xml" />
         <option value="$PROJECT_DIR$/lesson49-page-object-model/pom.xml" />
         <option value="$PROJECT_DIR$/lesson50-logging/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson51-data-driven-tests-and-apache-poi/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

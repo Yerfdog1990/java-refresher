@@ -8,3 +8,7 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Config files
+src/test/resources/config.properties
+# Test data files
+src/test/test_data/*

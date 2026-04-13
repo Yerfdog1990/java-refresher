@@ -28,6 +28,7 @@
         <module name="lesson47-page-object-model-pattern" />
         <module name="lesson44-dependency-methods-and-grouping-tests" />
         <module name="lesson31-handling-drop-downs-and-static-webtables" />
+        <module name="lesson51-data-driven-tests-and-apache-poi" />
         <module name="lesson25-xpath_axes" />
         <module name="lesson36-Keyboard-actions-sliders-tabs-and-windows" />
         <module name="lesson33-handling-dynamic-tables-with-pagination" />
