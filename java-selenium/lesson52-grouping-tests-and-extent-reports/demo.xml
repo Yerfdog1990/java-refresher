@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Master Suite" thread-count="3" parallel="tests">
+    <groups>
+        <run>
+            <include name="Sanity"/>
+            <include name="Regression"/>
+            <include name="Master"/>
+            <include name="Data driven"/>
+        </run>
+    </groups>
+
+    <listeners>
+        <listener class-name="day52.utilities.ExtentReportManager"/>
+    </listeners>
+
+    <test name="chrome-test">
+        <parameter name="os" value="macOS"/>
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="day52.test_cases.TC001AccountRegistrationTest">
+                <methods>
+                    <include name="givenWebpage_whenRegisterNewAccount_theSuccess"/>
+                </methods>
+            </class>
+            <class name="day52.test_cases.TC002AccountLoginTest">
+                <methods>
+                    <include name="givenWebpage_whenLogin_theSuccess"/>
+                </methods>
+            </class>
+            <class name="day52.test_cases.TC003LoginDataDrivenTest">
+                <methods>
+                    <include name="givenWebpage_whenLogin_thenVerify"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

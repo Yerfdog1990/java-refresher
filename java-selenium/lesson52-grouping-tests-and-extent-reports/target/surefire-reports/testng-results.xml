@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="0" passed="0" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-14T13:01:23 GMT+07:00" name="Master Suite (0)" finished-at="2026-04-14T13:01:23 GMT+07:00" duration-ms="0">
+    <groups>
+      <group name="Master">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@64dafeed]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@388ba540]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+      </group> <!-- Master -->
+      <group name="Sanity">
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@388ba540]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+      </group> <!-- Sanity -->
+      <group name="Regression">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@64dafeed]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+      </group> <!-- Regression -->
+    </groups>
+  </suite> <!-- Master Suite (0) -->
+  <suite started-at="2026-04-14T13:01:23 GMT+07:00" name="Master Suite" finished-at="2026-04-14T13:01:23 GMT+07:00" duration-ms="0">
+    <groups>
+      <group name="Master">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@7c2b6087]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@7b324585]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@5b40ceb]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@13c3c1e1]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@3b956878]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@36546a22]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+      </group> <!-- Master -->
+      <group name="Data driven">
+        <method signature="TC003LoginDataDrivenTest.givenWebpage_whenLogin_thenVerify(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:day52.test_cases.TC003LoginDataDrivenTest@2e11485]" name="givenWebpage_whenLogin_thenVerify" class="day52.test_cases.TC003LoginDataDrivenTest"/>
+        <method signature="TC003LoginDataDrivenTest.givenWebpage_whenLogin_thenVerify(java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:day52.test_cases.TC003LoginDataDrivenTest@1d8062d2]" name="givenWebpage_whenLogin_thenVerify" class="day52.test_cases.TC003LoginDataDrivenTest"/>
+      </group> <!-- Data driven -->
+      <group name="Sanity">
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@7b324585]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@13c3c1e1]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day52.test_cases.TC002AccountLoginTest@36546a22]" name="givenWebpage_whenLogin_theSuccess" class="day52.test_cases.TC002AccountLoginTest"/>
+      </group> <!-- Sanity -->
+      <group name="Regression">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@7c2b6087]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@5b40ceb]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day52.test_cases.TC001AccountRegistrationTest@3b956878]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day52.test_cases.TC001AccountRegistrationTest"/>
+      </group> <!-- Regression -->
+    </groups>
+  </suite> <!-- Master Suite -->
+</testng-results>
