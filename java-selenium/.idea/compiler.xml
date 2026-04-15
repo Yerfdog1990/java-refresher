@@ -19,6 +19,7 @@
         <module name="lesson50-logging" />
         <module name="lesson34-handling-date-pickers" />
         <module name="lesson23-css-selectors" />
+        <module name="lesson52-run-tests-on-selenium-grid" />
         <module name="lesson42-testNG-integration-setup" />
         <module name="lesson30-frames_nested_iFrames" />
         <module name="lesson21-setup-selenium-environment" />
@@ -39,6 +40,15 @@
         <module name="lesson26-webelement_methods" />
         <module name="lesson29-handlingcheckboxes" />
         <module name="lesson41-data-driven-testing-with-ms-excel" />
+      </profile>
+      <profile name="Annotation profile for lesson52-grouping-tests-and-extent-reports" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" />
+        </processorPath>
+        <module name="lesson52-grouping-tests-and-extent-reports" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

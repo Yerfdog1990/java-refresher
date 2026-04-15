@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Master Suite" thread-count="3" parallel="tests">
+    <groups>
+        <run>
+            <include name="Sanity"/>
+            <include name="Regression"/>
+            <include name="Master"/>
+           <include name="Data driven"/>
+        </run>
+    </groups>
+
+    <listeners>
+        <listener class-name="day53.utilities.ExtentReportManager"/>
+    </listeners>
+
+    <test name="chrome-test">
+        <parameter name="os" value="mac"/>
+        <parameter name="os" value="windows"/>
+        <parameter name="os" value="linux"/>
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="day53.test_cases.TC001AccountRegistrationTest">
+                <methods>
+                    <include name="givenWebpage_whenRegisterNewAccount_theSuccess"/>
+                </methods>
+            </class>
+            <class name="day53.test_cases.TC002AccountLoginTest">
+                <methods>
+                    <include name="givenWebpage_whenLogin_theSuccess"/>
+                </methods>
+            </class>
+<!--            <class name="day53.test_cases.TC003LoginDataDrivenTest">-->
+<!--                <methods>-->
+<!--                    <include name="givenWebpage_whenLogin_thenVerify"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+        </classes>
+    </test>
+
+    <test name="firefox-test">
+        <parameter name="os" value="mac"/>
+        <parameter name="os" value="windows"/>
+        <parameter name="os" value="linux"/>
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="day53.test_cases.TC001AccountRegistrationTest">
+                <methods>
+                    <include name="givenWebpage_whenRegisterNewAccount_theSuccess"/>
+                </methods>
+            </class>
+            <class name="day53.test_cases.TC002AccountLoginTest">
+                <methods>
+                    <include name="givenWebpage_whenLogin_theSuccess"/>
+                </methods>
+            </class>
+<!--            <class name="day53.test_cases.TC003LoginDataDrivenTest">-->
+<!--                <methods>-->
+<!--                    <include name="givenWebpage_whenLogin_thenVerify"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+        </classes>
+    </test>
+
+    <test name="safari-test">
+        <parameter name="os" value="mac"/>
+        <parameter name="os" value="windows"/>
+        <parameter name="os" value="linux"/>
+        <parameter name="browser" value="safari"/>
+        <classes>
+            <class name="day53.test_cases.TC001AccountRegistrationTest">
+                <methods>
+                    <include name="givenWebpage_whenRegisterNewAccount_theSuccess"/>
+                </methods>
+            </class>
+<!--            <class name="day53.test_cases.TC002AccountLoginTest">-->
+<!--                <methods>-->
+<!--                    <include name="givenWebpage_whenLogin_theSuccess"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+        </classes>
+    </test>
+</suite>

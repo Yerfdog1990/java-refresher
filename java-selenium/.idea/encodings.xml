@@ -68,6 +68,10 @@
     <file url="file://$PROJECT_DIR$/lesson50-logging/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lesson51-data-driven-tests-and-apache-poi/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lesson51-data-driven-tests-and-apache-poi/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson52-grouping-tests-and-extent-reports/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson52-grouping-tests-and-extent-reports/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson53-run-tests-on-selenium-grid/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson53-run-tests-on-selenium-grid/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/student.ser" charset="UTF-8" />
   </component>
 </project>
