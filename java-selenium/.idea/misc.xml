@@ -48,6 +48,7 @@
         <option value="$PROJECT_DIR$/lesson51-data-driven-tests-and-apache-poi/pom.xml" />
         <option value="$PROJECT_DIR$/lesson52-grouping-tests-and-extent-reports/pom.xml" />
         <option value="$PROJECT_DIR$/lesson53-run-tests-on-selenium-grid/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson54-docker-integration-with-selenium-grid/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

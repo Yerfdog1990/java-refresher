@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="tests" name="Failed suite [Master Suite]" guice-stage="DEVELOPMENT" verbose="0">
+  <listeners>
+    <listener class-name="day54.utilities.ExtentReportManager"/>
+  </listeners>
+  <test thread-count="3" parallel="tests" name="safari-test(failed)" verbose="0">
+    <parameter name="os" value="linux"/>
+    <parameter name="browser" value="safari"/>
+    <groups>
+      <run>
+        <include name="Sanity"/>
+        <include name="Sanity"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="day54.test_cases.TC001AccountRegistrationTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="givenWebpage_whenRegisterNewAccount_theSuccess"/>
+        </methods>
+      </class> <!-- day54.test_cases.TC001AccountRegistrationTest -->
+    </classes>
+  </test> <!-- safari-test(failed) -->
+  <test thread-count="3" parallel="tests" name="chrome-test(failed)" verbose="0">
+    <parameter name="os" value="linux"/>
+    <parameter name="browser" value="chrome"/>
+    <groups>
+      <run>
+        <include name="Sanity"/>
+        <include name="Sanity"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="day54.test_cases.TC001AccountRegistrationTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="givenWebpage_whenRegisterNewAccount_theSuccess"/>
+        </methods>
+      </class> <!-- day54.test_cases.TC001AccountRegistrationTest -->
+      <class name="day54.test_cases.TC002AccountLoginTest">
+        <methods>
+          <include name="givenWebpage_whenLogin_theSuccess"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- day54.test_cases.TC002AccountLoginTest -->
+    </classes>
+  </test> <!-- chrome-test(failed) -->
+  <test thread-count="3" parallel="tests" name="firefox-test(failed)" verbose="0">
+    <parameter name="os" value="linux"/>
+    <parameter name="browser" value="firefox"/>
+    <groups>
+      <run>
+        <include name="Sanity"/>
+        <include name="Sanity"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="day54.test_cases.TC001AccountRegistrationTest">
+        <methods>
+          <include name="setup"/>
+          <include name="tearDown"/>
+          <include name="givenWebpage_whenRegisterNewAccount_theSuccess"/>
+        </methods>
+      </class> <!-- day54.test_cases.TC001AccountRegistrationTest -->
+      <class name="day54.test_cases.TC002AccountLoginTest">
+        <methods>
+          <include name="givenWebpage_whenLogin_theSuccess"/>
+          <include name="setup"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- day54.test_cases.TC002AccountLoginTest -->
+    </classes>
+  </test> <!-- firefox-test(failed) -->
+</suite> <!-- Failed suite [Master Suite] -->
