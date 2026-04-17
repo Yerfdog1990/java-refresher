@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="11" passed="8" failed="3" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-17T05:32:53 GMT+07:00" name="Master Suite (0)" finished-at="2026-04-17T05:33:27 GMT+07:00" duration-ms="33943">
+    <groups>
+      <group name="Master">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@295eaa7c]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3918c187]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@388ba540]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@47605f2f]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7894f09b]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3d484181]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+      </group> <!-- Master -->
+      <group name="Sanity">
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3918c187]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@47605f2f]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3d484181]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+      </group> <!-- Sanity -->
+      <group name="Regression">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@295eaa7c]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@388ba540]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7894f09b]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+      </group> <!-- Regression -->
+    </groups>
+    <test started-at="2026-04-17T05:32:53 GMT+07:00" name="linux-chrome-test" finished-at="2026-04-17T05:33:14 GMT+07:00" duration-ms="21157">
+      <class name="day55.test_cases.TC001AccountRegistrationTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7894f09b]" started-at="2026-04-17T05:32:53 GMT+07:00" name="setup" finished-at="2026-04-17T05:33:00 GMT+07:00" duration-ms="6489" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[linux]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7894f09b]" started-at="2026-04-17T05:33:00 GMT+07:00" name="givenWebpage_whenRegisterNewAccount_theSuccess" finished-at="2026-04-17T05:33:03 GMT+07:00" duration-ms="3312" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenRegisterNewAccount_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7894f09b]" started-at="2026-04-17T05:33:03 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:33:07 GMT+07:00" duration-ms="4238" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC001AccountRegistrationTest -->
+      <class name="day55.test_cases.TC002AccountLoginTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3d484181]" started-at="2026-04-17T05:33:07 GMT+07:00" name="setup" finished-at="2026-04-17T05:33:12 GMT+07:00" duration-ms="4523" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[linux]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3d484181]" started-at="2026-04-17T05:33:12 GMT+07:00" name="givenWebpage_whenLogin_theSuccess" finished-at="2026-04-17T05:33:14 GMT+07:00" duration-ms="1972" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenLogin_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3d484181]" started-at="2026-04-17T05:33:14 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:33:14 GMT+07:00" duration-ms="595" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC002AccountLoginTest -->
+    </test> <!-- linux-chrome-test -->
+    <test started-at="2026-04-17T05:32:53 GMT+07:00" name="mac-chrome-test" finished-at="2026-04-17T05:33:15 GMT+07:00" duration-ms="21720">
+      <class name="day55.test_cases.TC001AccountRegistrationTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@295eaa7c]" started-at="2026-04-17T05:32:53 GMT+07:00" name="setup" finished-at="2026-04-17T05:33:00 GMT+07:00" duration-ms="6456" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[mac]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@295eaa7c]" started-at="2026-04-17T05:33:00 GMT+07:00" name="givenWebpage_whenRegisterNewAccount_theSuccess" finished-at="2026-04-17T05:33:03 GMT+07:00" duration-ms="3139" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenRegisterNewAccount_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@295eaa7c]" started-at="2026-04-17T05:33:03 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:33:08 GMT+07:00" duration-ms="5093" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC001AccountRegistrationTest -->
+      <class name="day55.test_cases.TC002AccountLoginTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3918c187]" started-at="2026-04-17T05:33:08 GMT+07:00" name="setup" finished-at="2026-04-17T05:33:12 GMT+07:00" duration-ms="4445" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[mac]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3918c187]" started-at="2026-04-17T05:33:12 GMT+07:00" name="givenWebpage_whenLogin_theSuccess" finished-at="2026-04-17T05:33:14 GMT+07:00" duration-ms="1660" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenLogin_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@3918c187]" started-at="2026-04-17T05:33:14 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:33:15 GMT+07:00" duration-ms="895" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC002AccountLoginTest -->
+    </test> <!-- mac-chrome-test -->
+    <test started-at="2026-04-17T05:32:53 GMT+07:00" name="mac-safari-test" finished-at="2026-04-17T05:33:27 GMT+07:00" duration-ms="33943">
+      <class name="day55.test_cases.TC001AccountRegistrationTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@388ba540]" started-at="2026-04-17T05:32:53 GMT+07:00" name="setup" finished-at="2026-04-17T05:32:59 GMT+07:00" duration-ms="5589" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[mac]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[safari]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@388ba540]" started-at="2026-04-17T05:32:59 GMT+07:00" name="givenWebpage_whenRegisterNewAccount_theSuccess" finished-at="2026-04-17T05:33:00 GMT+07:00" duration-ms="1247" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: 
+at org.testng.AssertJUnit.fail(AssertJUnit.java:65)
+at org.testng.AssertJUnit.fail(AssertJUnit.java:70)
+at day55.test_cases.TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess(TC001AccountRegistrationTest.java:58)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenRegisterNewAccount_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@388ba540]" started-at="2026-04-17T05:33:01 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:33:11 GMT+07:00" duration-ms="10414" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC001AccountRegistrationTest -->
+      <class name="day55.test_cases.TC002AccountLoginTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC002AccountLoginTest@47605f2f]" started-at="2026-04-17T05:33:11 GMT+07:00" name="setup" finished-at="2026-04-17T05:33:15 GMT+07:00" duration-ms="3413" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[mac]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[safari]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@47605f2f]" started-at="2026-04-17T05:33:15 GMT+07:00" name="givenWebpage_whenLogin_theSuccess" finished-at="2026-04-17T05:33:17 GMT+07:00" duration-ms="2239" status="FAIL">
+          <exception class="org.openqa.selenium.NoSuchWindowException">
+            <message>
+              <![CDATA[Build info: version: '4.43.0', revision: 'dd0f534'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4.1', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [AAB48602-6D04-4A0C-9B87-5FC1E5849330, findElement {value=//input[@id='input-email'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: Safari, browserVersion: 26.4, platformName: mac, safari:automaticInspection: false, safari:automaticProfiling: false, safari:diagnose: false, safari:experimentalWebSocketUrl: false, safari:platformBuildVersion: 25E253, safari:platformVersion: 26.4.1, safari:useSimulator: false, setWindowRect: true, strictFileInteractability: false, webkit:WebRTC: {DisableICECandidateFiltering: false, DisableInsecureMediaCapture: false}, webkit:alwaysAllowAutoplay: false}
+Session ID: AAB48602-6D04-4A0C-9B87-5FC1E5849330]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchWindowException: Build info: version: '4.43.0', revision: 'dd0f534'
+System info: os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '26.4.1', java.version: '24.0.1'
+Driver info: org.openqa.selenium.safari.SafariDriver
+Command: [AAB48602-6D04-4A0C-9B87-5FC1E5849330, findElement {value=//input[@id='input-email'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: Safari, browserVersion: 26.4, platformName: mac, safari:automaticInspection: false, safari:automaticProfiling: false, safari:diagnose: false, safari:experimentalWebSocketUrl: false, safari:platformBuildVersion: 25E253, safari:platformVersion: 26.4.1, safari:useSimulator: false, setWindowRect: true, strictFileInteractability: false, webkit:WebRTC: {DisableICECandidateFiltering: false, DisableInsecureMediaCapture: false}, webkit:alwaysAllowAutoplay: false}
+Session ID: AAB48602-6D04-4A0C-9B87-5FC1E5849330
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:223)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:606)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:166)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:429)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:423)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at jdk.proxy2/jdk.proxy2.$Proxy28.sendKeys(Unknown Source)
+at day55.page_objects.AccountLoginPage.setEmail(AccountLoginPage.java:27)
+at day55.test_cases.TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess(TC002AccountLoginTest.java:37)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenLogin_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@47605f2f]" started-at="2026-04-17T05:33:17 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:33:27 GMT+07:00" duration-ms="10028" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC002AccountLoginTest -->
+    </test> <!-- mac-safari-test -->
+  </suite> <!-- Master Suite (0) -->
+  <suite started-at="2026-04-17T05:32:15 GMT+07:00" name="Master Suite" finished-at="2026-04-17T05:32:49 GMT+07:00" duration-ms="33258">
+    <groups>
+      <group name="Master">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7c2b6087]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@7b324585]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@6c6c5427]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@618c5d94]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@1d8062d2]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+      </group> <!-- Master -->
+      <group name="Sanity">
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@7b324585]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+        <method signature="TC002AccountLoginTest.givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@618c5d94]" name="givenWebpage_whenLogin_theSuccess" class="day55.test_cases.TC002AccountLoginTest"/>
+      </group> <!-- Sanity -->
+      <group name="Regression">
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7c2b6087]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@6c6c5427]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+        <method signature="TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@1d8062d2]" name="givenWebpage_whenRegisterNewAccount_theSuccess" class="day55.test_cases.TC001AccountRegistrationTest"/>
+      </group> <!-- Regression -->
+    </groups>
+    <test started-at="2026-04-17T05:32:15 GMT+07:00" name="safari-test" finished-at="2026-04-17T05:32:36 GMT+07:00" duration-ms="20339">
+      <class name="day55.test_cases.TC001AccountRegistrationTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@1d8062d2]" started-at="2026-04-17T05:32:16 GMT+07:00" name="setup" finished-at="2026-04-17T05:32:22 GMT+07:00" duration-ms="5609" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[linux]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[safari]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@1d8062d2]" started-at="2026-04-17T05:32:22 GMT+07:00" name="givenWebpage_whenRegisterNewAccount_theSuccess" finished-at="2026-04-17T05:32:25 GMT+07:00" duration-ms="3217" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: 
+at org.testng.AssertJUnit.fail(AssertJUnit.java:65)
+at org.testng.AssertJUnit.fail(AssertJUnit.java:70)
+at day55.test_cases.TC001AccountRegistrationTest.givenWebpage_whenRegisterNewAccount_theSuccess(TC001AccountRegistrationTest.java:58)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:697)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:1005)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:463)
+at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64)
+at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+at java.base/java.lang.Thread.run(Thread.java:1447)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenRegisterNewAccount_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@1d8062d2]" started-at="2026-04-17T05:32:25 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:32:36 GMT+07:00" duration-ms="10297" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC001AccountRegistrationTest -->
+    </test> <!-- safari-test -->
+    <test started-at="2026-04-17T05:32:15 GMT+07:00" name="chrome-test" finished-at="2026-04-17T05:32:39 GMT+07:00" duration-ms="23886">
+      <class name="day55.test_cases.TC001AccountRegistrationTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7c2b6087]" started-at="2026-04-17T05:32:16 GMT+07:00" name="setup" finished-at="2026-04-17T05:32:22 GMT+07:00" duration-ms="5881" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[linux]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7c2b6087]" started-at="2026-04-17T05:32:22 GMT+07:00" name="givenWebpage_whenRegisterNewAccount_theSuccess" finished-at="2026-04-17T05:32:24 GMT+07:00" duration-ms="2689" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenRegisterNewAccount_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@7c2b6087]" started-at="2026-04-17T05:32:24 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:32:28 GMT+07:00" duration-ms="3923" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC001AccountRegistrationTest -->
+      <class name="day55.test_cases.TC002AccountLoginTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC002AccountLoginTest@7b324585]" started-at="2026-04-17T05:32:28 GMT+07:00" name="setup" finished-at="2026-04-17T05:32:35 GMT+07:00" duration-ms="6343" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[linux]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@7b324585]" started-at="2026-04-17T05:32:35 GMT+07:00" name="givenWebpage_whenLogin_theSuccess" finished-at="2026-04-17T05:32:37 GMT+07:00" duration-ms="1870" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenLogin_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@7b324585]" started-at="2026-04-17T05:32:37 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:32:39 GMT+07:00" duration-ms="2773" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC002AccountLoginTest -->
+    </test> <!-- chrome-test -->
+    <test started-at="2026-04-17T05:32:15 GMT+07:00" name="firefox-test" finished-at="2026-04-17T05:32:49 GMT+07:00" duration-ms="33253">
+      <class name="day55.test_cases.TC001AccountRegistrationTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@6c6c5427]" started-at="2026-04-17T05:32:16 GMT+07:00" name="setup" finished-at="2026-04-17T05:32:29 GMT+07:00" duration-ms="13081" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[linux]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenRegisterNewAccount_theSuccess()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@6c6c5427]" started-at="2026-04-17T05:32:29 GMT+07:00" name="givenWebpage_whenRegisterNewAccount_theSuccess" finished-at="2026-04-17T05:32:33 GMT+07:00" duration-ms="4596" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenRegisterNewAccount_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC001AccountRegistrationTest@6c6c5427]" started-at="2026-04-17T05:32:33 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:32:36 GMT+07:00" duration-ms="2413" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC001AccountRegistrationTest -->
+      <class name="day55.test_cases.TC002AccountLoginTest">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:day55.test_cases.TC002AccountLoginTest@618c5d94]" started-at="2026-04-17T05:32:36 GMT+07:00" name="setup" finished-at="2026-04-17T05:32:44 GMT+07:00" duration-ms="7873" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[linux]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[firefox]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="givenWebpage_whenLogin_theSuccess()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@618c5d94]" started-at="2026-04-17T05:32:44 GMT+07:00" name="givenWebpage_whenLogin_theSuccess" finished-at="2026-04-17T05:32:46 GMT+07:00" duration-ms="2441" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- givenWebpage_whenLogin_theSuccess -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:day55.test_cases.TC002AccountLoginTest@618c5d94]" started-at="2026-04-17T05:32:46 GMT+07:00" name="tearDown" finished-at="2026-04-17T05:32:49 GMT+07:00" duration-ms="2498" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- day55.test_cases.TC002AccountLoginTest -->
+    </test> <!-- firefox-test -->
+  </suite> <!-- Master Suite -->
+</testng-results>
