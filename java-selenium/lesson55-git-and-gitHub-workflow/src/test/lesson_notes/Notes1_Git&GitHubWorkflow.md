@@ -258,6 +258,48 @@ Maven uses **two types of entries** in `pom.xml`:
 > 💡 Place the `<build>` block **before** the `<dependencies>` section in pom.xml.
 > Change `master.xml` to whichever TestNG XML file you want to run.
 
+### maven-compiler-plugin vs. maven-surefire-plugin
+
+Both plugins are core parts of the Maven build lifecycle, but they serve entirely different purposes — one **prepares** the code, the other **validates** it through testing.
+
+| Feature | maven-compiler-plugin | maven-surefire-plugin |
+|---------|----------------------|----------------------|
+| **Primary Goal** | Compiles Java source files into bytecode | Executes unit/integration tests and generates reports |
+| **Lifecycle Phase** | `compile` and `test-compile` | `test` |
+| **Input** | Main source (`src/main/java`) and test source (`src/test/java`) | Compiled test classes |
+| **Output** | `.class` files in `target/classes` and `target/test-classes` | Test results and reports in `target/surefire-reports` |
+| **Supported Frameworks** | N/A — uses standard Java compiler (`javac`) | JUnit, TestNG, and POJO tests |
+
+#### maven-compiler-plugin — Details
+
+This plugin transforms your human-readable Java code into a format the JVM can execute.
+
+- **Two core goals:**
+    - `compiler:compile` — compiles main source files
+    - `compiler:testCompile` — compiles test source files
+- **Key configuration:** specify Java version (`source` and `target`) to ensure compatibility across environments
+- **Incremental compilation:** by default, only recompiles files that have **changed** since the last build — saves time on large projects
+
+#### maven-surefire-plugin — Details
+
+This plugin is the standard tool for running tests during the build process.
+
+- **Automatic detection:** finds and runs classes matching patterns like `**/Test*.java` or `**/*Test.java`
+- **Build failure:** if any test fails, Surefire **fails the entire build immediately** by default
+- **Reporting:** produces plain text and XML reports in `target/surefire-reports/`; pair with `maven-surefire-report-plugin` for HTML reports
+- **Parallel execution:** supports running tests in parallel to speed up large test suites
+- **TestNG XML support:** configure a specific XML suite file (like `master.xml`) under `<suiteXmlFiles>`
+
+#### Relationship in the Build Lifecycle
+
+```
+Step 1 — compile:      Compiler Plugin compiles application code  →  target/classes/
+Step 2 — test-compile: Compiler Plugin compiles test code         →  target/test-classes/
+Step 3 — test:         Surefire Plugin runs compiled test classes  →  target/surefire-reports/
+```
+
+> 💡 Think of it this way: the **Compiler Plugin builds the car**, and the **Surefire Plugin takes it for a test drive**.
+
 ### Run from Inside Eclipse
 Right-click `pom.xml` → **Run As** → **Maven test**
 
@@ -461,6 +503,8 @@ Use this token when Git asks for a password during `git push`.
 
 ## 14. CI/CD Process Overview
 
+![img.png](img.png)
+
 ### The Three Teams
 
 | Team | Responsibility |
@@ -468,8 +512,6 @@ Use this token when Git asks for a password during `git push`.
 | **Development** | Write application code, commit to Git, push to GitHub |
 | **QA / Testing** | Write automation scripts, commit to Git, push to GitHub |
 | **DevOps** | Build creation, run automation, build certification via Jenkins |
-
-![img.png](img.png)
 
 ### Daily Workflow in a Real Project
 
