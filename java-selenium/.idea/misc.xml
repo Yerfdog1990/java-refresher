@@ -49,6 +49,8 @@
         <option value="$PROJECT_DIR$/lesson52-grouping-tests-and-extent-reports/pom.xml" />
         <option value="$PROJECT_DIR$/lesson53-run-tests-on-selenium-grid/pom.xml" />
         <option value="$PROJECT_DIR$/lesson54-docker-integration-with-selenium-grid/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson55-git-and-gitHub-workflow/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson56-jenkins-ci-setup/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -57,7 +59,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="24" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

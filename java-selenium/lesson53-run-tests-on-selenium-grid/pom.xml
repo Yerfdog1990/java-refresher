@@ -131,7 +131,6 @@
                 <version>3.5.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>group.xml</suiteXmlFile>
                         <suiteXmlFile>demo.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>

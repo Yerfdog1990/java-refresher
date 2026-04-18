@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>test-automation</groupId>
-    <artifactId>lesson54-docker-integration-with-selenium-grid</artifactId>
+    <artifactId>lesson55-git-and-gitHub-workflow</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -133,7 +133,6 @@
                 <version>3.5.2</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>group.xml</suiteXmlFile>
                         <suiteXmlFile>demo.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>

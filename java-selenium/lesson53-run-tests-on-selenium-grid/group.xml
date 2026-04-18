@@ -14,10 +14,8 @@
         <listener class-name="day53.utilities.ExtentReportManager"/>
     </listeners>
 
-    <test name="chrome-test">
+    <test name="mac-chrome-test">
         <parameter name="os" value="mac"/>
-        <parameter name="os" value="windows"/>
-        <parameter name="os" value="linux"/>
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="day53.test_cases.TC001AccountRegistrationTest">
@@ -38,10 +36,8 @@
         </classes>
     </test>
 
-    <test name="firefox-test">
+    <test name="mac-firefox-test">
         <parameter name="os" value="mac"/>
-        <parameter name="os" value="windows"/>
-        <parameter name="os" value="linux"/>
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="day53.test_cases.TC001AccountRegistrationTest">
@@ -62,10 +58,8 @@
         </classes>
     </test>
 
-    <test name="safari-test">
+    <test name="mac-safari-test">
         <parameter name="os" value="mac"/>
-        <parameter name="os" value="windows"/>
-        <parameter name="os" value="linux"/>
         <parameter name="browser" value="safari"/>
         <classes>
             <class name="day53.test_cases.TC001AccountRegistrationTest">

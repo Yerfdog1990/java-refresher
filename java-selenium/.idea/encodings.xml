@@ -74,6 +74,10 @@
     <file url="file://$PROJECT_DIR$/lesson53-run-tests-on-selenium-grid/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lesson54-docker-integration-with-selenium-grid/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/lesson54-docker-integration-with-selenium-grid/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson55-git-and-gitHub-workflow/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson55-git-and-gitHub-workflow/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson56-jenkins-ci-setup/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lesson56-jenkins-ci-setup/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/student.ser" charset="UTF-8" />
   </component>
 </project>

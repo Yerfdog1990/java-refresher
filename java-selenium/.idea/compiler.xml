@@ -13,6 +13,7 @@
         <module name="lesson35-mouse-actions" />
         <module name="lesson20-collections" />
         <module name="lesson45-dataproviders-parallel-testing" />
+        <module name="lesson53-run-tests-on-selenium-grid" />
         <module name="lesson24-xpaths" />
         <module name="lesson37-javascriptexecutor-scrollingpages-uploadfiles" />
         <module name="lesson39-brokenlinks-svgelements-shadow-dom" />
@@ -20,8 +21,8 @@
         <module name="lesson50-logging" />
         <module name="lesson34-handling-date-pickers" />
         <module name="lesson23-css-selectors" />
-        <module name="lesson52-run-tests-on-selenium-grid" />
         <module name="lesson42-testNG-integration-setup" />
+        <module name="lesson56-jenkins-ci-setup" />
         <module name="lesson30-frames_nested_iFrames" />
         <module name="lesson21-setup-selenium-environment" />
         <module name="lesson38-screenshots-headless-ssl-adBlock-extensions" />
@@ -30,6 +31,7 @@
         <module name="lesson47-page-object-model-pattern" />
         <module name="lesson52-grouping-tests-and-extent-reports" />
         <module name="lesson44-dependency-methods-and-grouping-tests" />
+        <module name="lesson55-git-and-gitHub-workflow" />
         <module name="lesson31-handling-drop-downs-and-static-webtables" />
         <module name="lesson51-data-driven-tests-and-apache-poi" />
         <module name="lesson25-xpath_axes" />

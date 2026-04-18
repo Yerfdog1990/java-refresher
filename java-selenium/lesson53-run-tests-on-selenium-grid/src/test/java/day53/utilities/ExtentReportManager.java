@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.ImageHtmlEmail;
 import org.apache.commons.mail.resolver.DataSourceUrlResolver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -22,8 +24,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@Slf4j
 public class ExtentReportManager implements ITestListener {
+
+    // Logger
+    private static final Logger log = LoggerFactory.getLogger(ExtentReportManager.class);
 
     // UI of the report
     public ExtentSparkReporter sparkReporter;
