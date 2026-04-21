@@ -1,8 +1,6 @@
 package com.baeldung.lsso.web.controller;
 
-import java.time.LocalDate;
-import java.util.List;
-
+import com.baeldung.lsso.web.model.ProjectModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -11,9 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.client.HttpServerErrorException;
-
-import com.baeldung.lsso.web.model.ProjectModel;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import java.time.LocalDate;
+import java.util.List;
+
 
 @Controller
 public class ProjectClientController {
@@ -28,7 +28,7 @@ public class ProjectClientController {
         this.webClient = webClient;
     }
 
-    @GetMapping({"/projects", "/projects/"})
+    @GetMapping("/projects")
     public String getProjects(Model model) {
         List<ProjectModel> projects = this.webClient
                 .get().uri(this.projectApiUrl)
