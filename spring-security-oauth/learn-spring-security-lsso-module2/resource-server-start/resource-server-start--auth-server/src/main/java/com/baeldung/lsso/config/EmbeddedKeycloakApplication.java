@@ -29,6 +29,7 @@ public class EmbeddedKeycloakApplication extends KeycloakApplication {
             .orElseThrow(() -> new NoSuchElementException("No value present")));
     }
 
+
     public EmbeddedKeycloakApplication() {
 
         super();

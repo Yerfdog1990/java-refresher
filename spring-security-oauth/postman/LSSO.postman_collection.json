@@ -1,0 +1,3861 @@
+{
+	"info": {
+		"_postman_id": "81a947a9-6cf9-4ca3-8d5a-97a8d6bced1f",
+		"name": "LSSO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29364339"
+	},
+	"item": [
+		{
+			"name": "Intro to OAuth2 and the OAuth2 Roles",
+			"item": [
+				{
+					"name": "Setting up the Project",
+					"item": [
+						{
+							"name": "1- Script processed request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2- Automatically filled request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3- Final request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "The Basics of OAuth2",
+			"item": [
+				{
+					"name": "The New Resource Server Support",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Authorization Server with Keycloak",
+					"item": [
+						{
+							"name": "Keycloak Token Endpoint",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "<code>",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "<secret>",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OAuth2 Beyond the Basics - The Resource Server",
+			"item": [
+				{
+					"name": "Verify/Validate Claims from the JWT",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Basic Authorization with OAuth2",
+					"item": [
+						{
+							"name": "1.1. other - Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"const cookieHeaders = pm.response.headers.filter((header) => header.key === 'Set-Cookie')",
+											"  .map((header) => `${header.value.split(';')[0].trim()}`)",
+											"  .join('; ');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);",
+											"pm.collectionVariables.set(\"bael.tempCookies\", cookieHeaders);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableCookies": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=email&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "email"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1.2. other - Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false,
+								"disableCookies": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Cookie",
+										"value": "{{bael.tempCookies}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1.3. other - Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "1.4. other - Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2.1. read - Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"const cookieHeaders = pm.response.headers.filter((header) => header.key === 'Set-Cookie')",
+											"  .map((header) => `${header.value.split(';')[0].trim()}`)",
+											"  .join('; ');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);",
+											"pm.collectionVariables.set(\"bael.tempCookies\", cookieHeaders);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableCookies": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2.2. read - Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false,
+								"disableCookies": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Cookie",
+										"value": "{{bael.tempCookies}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2.3. read - Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2.4. read - Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2.5. read - Request Project by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3.1. email read - Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"const cookieHeaders = pm.response.headers.filter((header) => header.key === 'Set-Cookie')",
+											"  .map((header) => `${header.value.split(';')[0].trim()}`)",
+											"  .join('; ');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);",
+											"pm.collectionVariables.set(\"bael.tempCookies\", cookieHeaders);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableCookies": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read email&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read email"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3.2. email read - Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false,
+								"disableCookies": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Cookie",
+										"value": "{{bael.tempCookies}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3.3. email read - Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3.4. email read - Request Project by Id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Accessing Bearer Token Attributes",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"const cookieHeaders = pm.response.headers.filter((header) => header.key === 'Set-Cookie')",
+											"  .map((header) => `${header.value.split(';')[0].trim()}`)",
+											"  .join('; ');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);",
+											"pm.collectionVariables.set(\"bael.tempCookies\", cookieHeaders);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableCookies": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false,
+								"disableCookies": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Cookie",
+										"value": "{{bael.tempCookies}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Info",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/user/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"user",
+										"info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Direct User Info",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/user/info/direct",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"user",
+										"info",
+										"direct"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Accessing Bearer Token Attributes using SpEL",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"const cookieHeaders = pm.response.headers.filter((header) => header.key === 'Set-Cookie')",
+											"  .map((header) => `${header.value.split(';')[0].trim()}`)",
+											"  .join('; ');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);",
+											"pm.collectionVariables.set(\"bael.tempCookies\", cookieHeaders);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableCookies": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false,
+								"disableCookies": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Cookie",
+										"value": "{{bael.tempCookies}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Info",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/user/info",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"user",
+										"info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SPEL-1",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/user/info/spel1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"user",
+										"info",
+										"spel1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SPEL-2",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/user/info/spel2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"user",
+										"info",
+										"spel2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Custom Authorities From JWT Claims",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code - Regular Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john_test_username",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code - Email Account",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Custom Validators for JWT Claims",
+					"item": [
+						{
+							"name": "1. Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2.1. Request Authorization Code - john@test.com",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2.2. Request Authorization Code - mike@other.com",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "mike@other.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "pass",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4. Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OAuth2 Beyond the Basics - The Client",
+			"item": [
+				{
+					"name": "Refreshing a Token",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var refreshToken = pm.response.json().refresh_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.refreshToken\", refreshToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refresh Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var refreshToken = pm.response.json().refresh_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.refreshToken\", refreshToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "<grant_type>",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "refresh_token",
+											"value": "<refresh_token>",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "The Authorization Code Flow with PKCE",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"const cookieHeaders = pm.response.headers.filter((header) => header.key === 'Set-Cookie')",
+											"  .map((header) => `${header.value.split(';')[0].trim()}`)",
+											"  .join('; ');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);",
+											"pm.collectionVariables.set(\"bael.tempCookies\", cookieHeaders);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"const codeVerifier = \"5HbZh8eOMycDMNaZ4Y7_3XvnUmkRBSp557nbEDDyTrFXDMBy9GyRR0-S_i6XSbsfTaWTcAYHfyFAtqyRoCS8BWPTnyd8YGa-0Cyj97KraMDWXISGcLsZnI3qtW4FZ6L8\";",
+											"const codeChallenge = \"ibzLSj87p2x6HLqVXxw8dfzRhfXaH4Q_CwB9lXqYuWc\";",
+											"pm.collectionVariables.set(\"bael.codeVerifier\", codeVerifier);",
+											"pm.collectionVariables.set(\"bael.codeChallenge\", codeChallenge);",
+											"pm.collectionVariables.set(\"bael.codeChallengeMethod\", \"S256\");"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableCookies": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom&code_challenge={{bael.codeChallenge}}&code_challenge_method={{bael.codeChallengeMethod}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										},
+										{
+											"key": "code_challenge",
+											"value": "{{bael.codeChallenge}}"
+										},
+										{
+											"key": "code_challenge_method",
+											"value": "{{bael.codeChallengeMethod}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false,
+								"disableCookies": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Cookie",
+										"value": "{{bael.tempCookies}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access Token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var accessToken = pm.response.json().access_token;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										},
+										{
+											"key": "code_verifier",
+											"value": "{{bael.codeVerifier}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OAuth2 Beyond the Basics - Deep-Dives",
+			"item": [
+				{
+					"name": "Token revocation",
+					"item": [
+						{
+							"name": "Extract Authorization Endpoint",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const $ = cheerio.load(pm.response.text());",
+											"const formAction = $('#kc-form-login').attr('action');",
+											"",
+											"pm.collectionVariables.set(\"bael.formAction\", formAction);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/auth?response_type=code&client_id=lssoClient&scope=read&redirect_uri=http://localhost:8082/lsso-client/login/oauth2/code/custom",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"auth"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient"
+										},
+										{
+											"key": "scope",
+											"value": "read"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Authorization Code",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var redirectLocation = pm.response.headers.get(\"Location\"),",
+											"  sdk = require('postman-collection'),",
+											"  url = new sdk.Url(redirectLocation),",
+											"  code = url.query.find(param => param.key === \"code\").value;",
+											"  ",
+											"pm.collectionVariables.set(\"bael.authCode\", code);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "username",
+											"value": "john@test.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{bael.formAction}}",
+									"host": [
+										"{{bael.formAction}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Access and Refresh Tokens",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var refreshToken = pm.response.json().refresh_token;",
+											"var accessToken = pm.response.json().access_token",
+											"",
+											"pm.collectionVariables.set(\"bael.accessToken\", accessToken);",
+											"pm.collectionVariables.set(\"bael.refreshToken\", refreshToken);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8082/lsso-client/login/oauth2/code/custom",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{bael.authCode}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Revoke Refresh Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "token_type_hint",
+											"value": "refresh_token",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "{{bael.refreshToken}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/revoke",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"revoke"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Request Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/lsso-resource-server/api/projects",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"lsso-resource-server",
+										"api",
+										"projects"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Revoke Access Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										},
+										{
+											"key": "token_type_hint",
+											"value": "access_token",
+											"type": "text"
+										},
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/revoke",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"revoke"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Access Token Introspection",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "token",
+											"value": "{{bael.accessToken}}",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "lssoClient",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "lssoSecret",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token/introspect",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"auth",
+										"realms",
+										"baeldung",
+										"protocol",
+										"openid-connect",
+										"token",
+										"introspect"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "bael.form-action",
+			"value": "http://localhost:8083/auth/realms/baeldung/login-actions/authenticate?session_code=uVL9FwZnVdGXo5vDi3AYh8B7gqFOBasOYVGafJMckLo&execution=3502ea0b-98b1-4d4b-b9ba-cfc78bbc0748&client_id=lssoClient&tab_id=KyWJLfGKAwo"
+		},
+		{
+			"key": "bael.formAction",
+			"value": "http://localhost:8083/auth/realms/baeldung/login-actions/authenticate?session_code=9L4cSU2bJ4qedwneJxiSicaX0gewLhczW_cjDbU2Hbs&execution=0cd44dee-396b-4103-bbb8-136d29bf05d4&client_id=lssoClient&tab_id=9jgLoTVXni4"
+		},
+		{
+			"key": "bael.authCode",
+			"value": "82d3650a-8005-4c92-b45b-8e6755eb28ee.b67bbc0d-2220-42b5-9bf5-c5e8add78e36.b88ce206-63d6-43b6-87c9-ea09d8c02f32"
+		},
+		{
+			"key": "bael.accessToken",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJlUktVWG10TFhKMHBBNkxBS29aWko1ZlU0VDhCdmxKdERCb3pXanFFdnhjIn0.eyJleHAiOjE1OTIzMjUxODAsImlhdCI6MTU5MjMyNDg4MCwiYXV0aF90aW1lIjoxNTkyMzI0ODc4LCJqdGkiOiJkYmMxODVmOC0xMjAxLTQ1ZTQtYWNkMC0wNTMyM2MyYTk0YmIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvYXV0aC9yZWFsbXMvYmFlbGR1bmciLCJzdWIiOiJhNTQ2MTQ3MC0zM2ViLTRiMmQtODJkNC1iMDQ4NGU5NmFkN2YiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJsc3NvQ2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImI2N2JiYzBkLTIyMjAtNDJiNS05YmY1LWM1ZThhZGQ3OGUzNiIsImFjciI6IjEiLCJzY29wZSI6InByb2ZpbGUgd3JpdGUiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJqb2huQHRlc3QuY29tIn0.Y7Vk_xKp3Pa22AlKlqbu_-HZD9qmIXaNQ2XhU75DKsFrh3hwxK4QfGO5HrXX2R84mi8zYaoIp3fcaozKrP0BaLdESTThGEmI2UQQ1tr5DZztWCSb_o0pcpOLQR7Ux0N4LO8SBGeQMo1V9LAHncRwa42kPlytrhyFvyLiSsY9gGv11e_w8j_FdrOwdIwhhDJjmSDoQOKPhYoP5NK6HLEYvv5xqqbReLj5FXcfkEtQ91fT4HSQxaD-_40ohzSmOhGaO_4kUIEqyvf1O1wF9Qsnq8QupsL0BNLvmf_11H4KmJ9GAN_e8d4MZHGhLzuqsowd943v4RA-cYw6G_-OTVyF1g"
+		},
+		{
+			"key": "bael.refreshToken",
+			"value": ""
+		},
+		{
+			"key": "bael.tempCookies",
+			"value": "AUTH_SESSION_ID=b67bbc0d-2220-42b5-9bf5-c5e8add78e36; KC_RESTART=eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwZDkwY2JkNy03MTY0LTQyY2MtODhlMi1kMjE1ZTc5YWU4ZWEifQ.eyJjaWQiOiJsc3NvQ2xpZW50IiwicHR5Ijoib3BlbmlkLWNvbm5lY3QiLCJydXJpIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgyL2xzc28tY2xpZW50L2xvZ2luL29hdXRoMi9jb2RlL2N1c3RvbSIsImFjdCI6IkFVVEhFTlRJQ0FURSIsIm5vdGVzIjp7InNjb3BlIjoid3JpdGUiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODMvYXV0aC9yZWFsbXMvYmFlbGR1bmciLCJyZXNwb25zZV90eXBlIjoiY29kZSIsInJlZGlyZWN0X3VyaSI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4Mi9sc3NvLWNsaWVudC9sb2dpbi9vYXV0aDIvY29kZS9jdXN0b20ifX0.ldi5P3aUI_hmxFOH5swnLuJxTaY8xRVzSmqoXF2FDOI"
+		},
+		{
+			"key": "bael.codeVerifier",
+			"value": ""
+		},
+		{
+			"key": "bael.codeChallenge",
+			"value": ""
+		},
+		{
+			"key": "bael.codeChallengeMethod",
+			"value": ""
+		}
+	]
+}

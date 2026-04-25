@@ -15,6 +15,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-jackson</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Add Jackson 2.x explicitly -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
 
         <dependency>
@@ -22,6 +38,22 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <!-- Add Jakarta Servlet API for Spring Boot 4.x compatibility -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Add javax.servlet-api for Keycloak compatibility -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        
         <!-- persistence -->
 
         <dependency>
@@ -40,14 +72,11 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-jackson2-provider</artifactId>
-            <version>${resteasy.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-dependencies-server-all</artifactId>
-            <version>${keycloak.version}</version>
-            <type>pom</type>
+            <artifactId>keycloak-services</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -58,6 +87,16 @@
                     <artifactId>log4j</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-server-spi</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-server-spi-private</artifactId>
         </dependency>
 
         <!-- config properties processor -->
@@ -78,6 +117,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <version>5.5.7</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -87,6 +127,58 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jdk8</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-cbor</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-json-provider</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-base</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jaxb-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+                        <dependency>
+                <groupId>org.keycloak</groupId>
+                <artifactId>keycloak-dependencies-server-all</artifactId>
+                <version>${keycloak.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
@@ -118,20 +210,29 @@
     <properties>
         <!-- non-dependencies -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>13</java.version>
+        <java.version>24</java.version>
+        
+        <!-- Override Spring Framework version to fix CVE-2026-22741 -->
+        <spring-framework.version>7.0.7</spring-framework.version>
+        <!-- Override Spring Security version to fix CVE-2026-22751 -->
+        <spring-security.version>7.0.5</spring-security.version>
+        <!-- Override Jackson version to fix GHSA-2m67-wjpj-xhg9 -->
+        <jackson.version>2.18.6</jackson.version>
 
-        <keycloak.version>10.0.1</keycloak.version>
+        <keycloak.version>21.1.2</keycloak.version>
 
         <!-- these should be updated together with Keycloak -->
         <!-- check keycloak-dependencies-server-all effective pom -->
-        <infinispan.version>9.4.18.Final</infinispan.version>
-        <resteasy.version>3.11.2.Final</resteasy.version>
+        <infinispan.version>13.0.14.Final</infinispan.version>
+        <resteasy.version>5.0.4.Final</resteasy.version>
+        <!-- Override Tomcat version to fix CVE-2026-34483 -->
+        <tomcat.version>11.0.21</tomcat.version>
     </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.1.RELEASE</version>
+        <version>4.0.5</version>
         <relativePath />
     </parent>
 

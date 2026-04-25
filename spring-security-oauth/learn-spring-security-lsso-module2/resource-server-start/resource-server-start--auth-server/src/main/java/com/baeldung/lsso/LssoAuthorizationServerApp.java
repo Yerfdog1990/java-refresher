@@ -4,16 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 
 import com.baeldung.lsso.config.KeycloakServerProperties;
 
-@SpringBootApplication(exclude = LiquibaseAutoConfiguration.class)
+@SpringBootApplication
 @EnableConfigurationProperties({ KeycloakServerProperties.class })
 public class LssoAuthorizationServerApp {
 

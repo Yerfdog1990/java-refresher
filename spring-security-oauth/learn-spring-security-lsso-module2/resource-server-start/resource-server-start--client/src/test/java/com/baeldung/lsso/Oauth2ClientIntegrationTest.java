@@ -1,5 +1,6 @@
 package com.baeldung.lsso;
 
+import static java.util.Objects.requireNonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.endsWith;
 import static org.hamcrest.CoreMatchers.startsWith;
@@ -10,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -19,9 +21,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.webtestclient.autoconfigure.AutoConfigureWebTestClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -112,16 +114,17 @@ public class Oauth2ClientIntegrationTest {
             .expectStatus()
             .isFound()
             .expectHeader()
-            .value(HttpHeaders.LOCATION, endsWith("/oauth2/authorization/custom"))
+            .valueMatches(HttpHeaders.LOCATION, endsWith("/oauth2/authorization/custom").toString())
             .returnResult(Void.class);
 
         // redirects to 'custom' OAuth authorization endpoint
-        String cookieSession = result.getResponseCookies()
-            .getFirst("JSESSIONID")
+        String cookieSession = requireNonNull(result.getResponseCookies()
+                .getFirst("JSESSIONID"))
             .getValue();
         String redirectTarget = result.getResponseHeaders()
             .getFirst(HttpHeaders.LOCATION);
 
+        assert redirectTarget != null;
         result = this.webTestClient.get()
             .uri(redirectTarget)
             .cookie("JSESSIONID", cookieSession)
@@ -129,12 +132,13 @@ public class Oauth2ClientIntegrationTest {
             .expectStatus()
             .isFound()
             .expectHeader()
-            .value(HttpHeaders.LOCATION, startsWith(authServerAuthorizationURL))
+            .valueMatches(HttpHeaders.LOCATION, startsWith(authServerAuthorizationURL).toString())
             .returnResult(Void.class);
 
         // request to authorization endpoint contains state attribute
         String authorizationURL = result.getResponseHeaders()
             .getFirst(HttpHeaders.LOCATION);
+        assert authorizationURL != null;
         String state = URLDecoder.decode(authorizationURL.split("state=")[1].split("&")[0], StandardCharsets.UTF_8.toString());
 
         // prepare Access Token mocked response
@@ -167,7 +171,7 @@ public class Oauth2ClientIntegrationTest {
             .expectStatus()
             .isFound()
             .expectHeader()
-            .value(HttpHeaders.LOCATION, endsWith(CLIENT_SECURED_URL))
+            .valueMatches(HttpHeaders.LOCATION, endsWith(CLIENT_SECURED_URL).toString())
             .returnResult(Void.class);
 
         // assert that Access Token Endpoint was requested as expected
@@ -176,7 +180,7 @@ public class Oauth2ClientIntegrationTest {
         String tokenEndpointPath = new URI(configuredTokenUri).getPath();
         assertThat(capturedTokenRequest.getPath()).isEqualTo(tokenEndpointPath);
         String requestBody = URLDecoder.decode(capturedTokenRequest.getBody()
-            .readUtf8(), StandardCharsets.UTF_8.name());
+            .readUtf8(), StandardCharsets.UTF_8);
         Map<String, String> mappedBody = Arrays.stream(requestBody.split("&"))
             .collect(Collectors.toMap(param -> param.split("=")[0], param -> param.split("=")[1]));
         assertThat(mappedBody).containsEntry("grant_type", "authorization_code");
@@ -209,7 +213,7 @@ public class Oauth2ClientIntegrationTest {
             .isOk()
             .expectBody()
             .consumeWith(response -> {
-                String bodyAsString = new String(response.getResponseBodyContent());
+                String bodyAsString = new String(requireNonNull(response.getResponseBodyContent()));
                 assertThat(bodyAsString)
                     .contains("Project 1")
                     .contains("Project 2")

@@ -7,6 +7,14 @@ server:
 spring:
   jpa:
     open-in-view: false
+    defer-datasource-initialization: true
   devtools:
     livereload:
       port: 35730
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/auth/realms/baeldung/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8080/auth/realms/baeldung

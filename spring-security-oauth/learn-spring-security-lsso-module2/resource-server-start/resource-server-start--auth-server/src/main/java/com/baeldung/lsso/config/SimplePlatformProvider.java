@@ -20,14 +20,29 @@ public class SimplePlatformProvider implements PlatformProvider {
     @Override
     public void exit(Throwable cause) {
         ServicesLogger.LOGGER.fatal(cause);
-        exit(1);
+        exit();
     }
 
-    private void exit(int status) {
+    @Override
+    public ClassLoader getScriptEngineClassLoader(org.keycloak.Config.Scope scope) {
+        return getClass().getClassLoader();
+    }
+
+    @Override
+    public java.io.File getTmpDirectory() {
+        return new java.io.File(System.getProperty("java.io.tmpdir"));
+    }
+
+    @Override
+    public String name() {
+        return "spring-boot";
+    }
+
+    private void exit() {
         new Thread() {
             @Override
             public void run() {
-                System.exit(status);
+                System.exit(1);
             }
         }.start();
     }
