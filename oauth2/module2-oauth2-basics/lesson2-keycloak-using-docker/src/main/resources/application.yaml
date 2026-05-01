@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: lesson2-keycloak-using-docker
+
+server:
+  port: 8081   # Keycloak already uses 8080
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # Tells Spring who issued the token — must match the "iss" field inside the JWT.
+          # Format: http://localhost:8080/realms/<realm-name>
+          issuer-uri: http://localhost:8080/realms/Yerfdog
+
+          # Where Spring fetches Keycloak's public keys to verify JWT signatures.
+          # Providing this explicitly avoids startup failures if Keycloak is slow to start.
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+# Custom properties read by JwtAuthConverterProperties
+jwt:
+  auth:
+    converter:
+      # Must match the Client ID you created in Keycloak: "yefdog-rest-api"
+      # Spring will look inside: resource_access.yefdog-rest-api.roles
+      resource-id: yerfdog-rest-api
+
+      # Which JWT claim to use as the principal (login) name in Spring Security.
+      # "preferred_username" gives you "Cyril" instead of Keycloak's internal UUID.
+      principal-attribute: preferred_username

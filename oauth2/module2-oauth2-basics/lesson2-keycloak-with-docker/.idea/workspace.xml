@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2a2224dd-edb9-4279-9214-42554297acd0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/main/java/oauth2/authserver/config/keycloak/EmbeddedKeycloakApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/main/java/oauth2/authserver/config/keycloak/EmbeddedKeycloakConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/main/java/oauth2/authserver/config/keycloak/EmbeddedKeycloakRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/main/java/oauth2/authserver/config/keycloak/KeycloakServerProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/main/resources/META-INF/keycloak-server.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/main/resources/baeldung-realm.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/auth-server/src/test/java/oauth2/authserver/AuthorizationServerLiveTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/main/java/oauth2/client/spring/ClientSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/main/java/oauth2/client/web/controller/ProjectClientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/main/java/oauth2/client/web/model/ProjectModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/main/resources/templates/addproject.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/main/resources/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/main/resources/templates/projects.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/test/java/oauth2/client/Oauth2ClientIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/client/src/test/java/oauth2/client/Oauth2ClientLiveTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/resource-server/src/main/java/oauth2/resourceserver/persistence/model/Project.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/resource-server/src/main/java/oauth2/resourceserver/persistence/repository/IProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/resource-server/src/main/java/oauth2/resourceserver/service/IProjectService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/resource-server/src/main/java/oauth2/resourceserver/service/impl/ProjectServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/resource-server/src/main/java/oauth2/resourceserver/web/controller/ProjectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/resource-server/src/main/java/oauth2/resourceserver/web/dto/ProjectDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lesson2-keycloak/resource-server/src/test/java/oauth2/resourceserver/ResourceServerLiveTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/Module 2: The Basics of OAuth2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-authorization-code-flow/lesson_notes/Notes1_AuthIntro.md" beforeDir="false" afterPath="$PROJECT_DIR$/../lesson1-authorization-code-flow/lesson_notes/Notes1_AuthIntro.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-authorization-code-flow/lesson_notes/Notes2_StateOfOAuth2.md" beforeDir="false" afterPath="$PROJECT_DIR$/../lesson1-authorization-code-flow/lesson_notes/Notes2_StateOfOAuth2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-authorization-code-flow/lesson_notes/Notes3_PickingRightOAuthGrantType.md" beforeDir="false" afterPath="$PROJECT_DIR$/../lesson1-authorization-code-flow/lesson_notes/Notes3_PickingRightOAuthGrantType.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-authorization-code-flow/lesson_notes/img.png" beforeDir="false" afterPath="$PROJECT_DIR$/../lesson1-authorization-code-flow/lesson_notes/img.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-authorization-code-flow/lesson_notes/img1.png" beforeDir="false" afterPath="$PROJECT_DIR$/../lesson1-authorization-code-flow/lesson_notes/img1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/src/main/java/oauth2/lesson1keycloakauthorizationserver/Lesson1KeycloakAuthorizationServerApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/src/main/resources/application.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Module 2: The Basics of OAuth2/lesson1-keycloak-authorization-server/src/test/java/oauth2/lesson1keycloakauthorizationserver/Lesson1KeycloakAuthorizationServerApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/1/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/1/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1247" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1247_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1247_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1247_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1247_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1249" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1249_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1249_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1249_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1249_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1259" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1259_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1259_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1259_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/1259_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18132" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18133" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18139" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18141" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18142" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18148" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18150" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18151" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18157" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18159" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18160" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18170" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18171" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18172" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18179" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18184" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18196" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18201" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18213" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18214" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18222" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18229" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18230" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18238" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18245" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18246" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18254" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18256" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18268" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/18275" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2224" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2224" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2224_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2224_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2224_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2224_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2579" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2579" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2604" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2604" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2604_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2604_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2604_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2604_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2606" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2606" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2606_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2606_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2606_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2606_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2608" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2608_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2608_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2608_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2608_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2610" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2610" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2610_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2610_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2610_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2610_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2619" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2619" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2619_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2619_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2619_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2619_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2620" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2620" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2620_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2620_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2620_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2620_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2656" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2656" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2657" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2657" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2658" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2658" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2658_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2658_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2659" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2659" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2659_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2659_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2662" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2663" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2664" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2664" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2665" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2665" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2665_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2665_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2666" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2666" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2667" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2667" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2673" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2673" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2673_fsm" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2673_fsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2674" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2674" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2678" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2678" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2679" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2679" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2696" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2696" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2699" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2699" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2701" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2701" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2702" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2702" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2703" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2703" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2704" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2704" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2840" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2840" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2841" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/2841" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/3455" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/3455" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/5002" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/5002" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/16384/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/5/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/base/5/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/global/pg_internal.init" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_stat/pgstat.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_stat/pgstat.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_subtrans/0000" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_subtrans/0000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_wal/000000010000000000000002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_wal/000000010000000000000003" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_wal/000000010000000000000003" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /pgdata/pgdata/pg_xact/0000" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/configuration/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/configuration/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/controller/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/controller/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/customsecurity/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/customsecurity/CustomAuthenticationProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/persistance/model/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/persistance/model/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/persistance/repository/RoleRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/persistance/repository/RoleRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/persistance/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/java/springsecurity/lesson1topologyofrolesandprivileges/persistance/service/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/resources/data/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-core/learn-spring-security-module8/lesson1-topology-of-roles-and-privileges /src/main/resources/data/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../spring-security-oauth/learn-spring-security-lsso-module2/authorization-server-keycloak-end/authorization-server-keycloak-end--auth-server/src/main/java/com/baeldung/lsso/config/EmbeddedKeycloakApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../spring-security-oauth/learn-spring-security-lsso-module2/authorization-server-keycloak-end/authorization-server-keycloak-end--auth-server/src/main/java/com/baeldung/lsso/config/EmbeddedKeycloakApplication.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="19" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3D34AM1gYLJChxE2mESBbiIA3Cf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Lesson2KeycloakWithDockerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="lesson2-keycloak-with-docker.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="oauth2.lesson2keycloakwithdocker.Lesson2KeycloakWithDockerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a2224dd-edb9-4279-9214-42554297acd0" name="Changes" comment="" />
+      <created>1777497283448</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777497283448</updated>
+      <workItem from="1777497284769" duration="833000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

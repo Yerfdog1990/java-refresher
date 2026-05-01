@@ -1,0 +1,103 @@
+{
+  "info": {
+    "_postman_id": "798d009d-ecb3-4196-b37d-c28f2805e092",
+    "name": "Keycloak",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54210273",
+    "_collection_link": "https://go.postman.co/collection/54210273-798d009d-ecb3-4196-b37d-c28f2805e092?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Request token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "grant_type",
+              "value": "password",
+              "type": "text",
+              "uuid": "384be0ff-aaba-4d56-95e4-03d1007541dc"
+            },
+            {
+              "key": "client_id",
+              "value": "yerfdog-rest-api",
+              "type": "text",
+              "uuid": "ed19e987-02e3-4f61-aa72-9f1205470066"
+            },
+            {
+              "key": "username",
+              "value": "cyril",
+              "type": "text",
+              "uuid": "91fc0cd3-6464-46c2-9aae-5ad2c5f5e461"
+            },
+            {
+              "key": "password",
+              "value": "Cyril@2019",
+              "type": "text",
+              "uuid": "43f166dd-bc86-497e-a99d-c8346d223377"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8080/realms/Yerfdog/protocol/openid-connect/token",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "realms",
+            "Yerfdog",
+            "protocol",
+            "openid-connect",
+            "token"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Request resource - any authenticated user",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Request resource - admin role",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Request resource - user role",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Request resource - any (user or admin)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Request token info",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

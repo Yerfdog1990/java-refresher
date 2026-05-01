@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Keycloak Playground Lite</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 40px; background-color: #f0f2f5; color: #333; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .hidden { display: none; }
+        
+        /* Buttons */
+        .btn-group { margin: 15px 0; }
+        .btn { padding: 10px 20px; cursor: pointer; border-radius: 6px; border: none; font-weight: 600; transition: all 0.2s; margin-right: 10px; }
+        .btn-login { background: #007bff; color: white; }
+        .btn-logout { background: #6c757d; color: white; margin-top: 20px; }
+        .btn-copy { background: #28a745; color: white; }
+        .btn-refresh { background: #ffc107; color: #212529; }
+        .btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+        /* Code Displays */
+        .label { font-weight: bold; color: #555; margin-bottom: 5px; display: block; }
+        .code-box { background: #272c34; color: #abb2bf; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.5; border: 1px solid #3e4451; margin-bottom: 20px; }
+        .payload-box { color: #98c379; } /* Greenish tint for the JSON */
+        
+        h3 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔐 Keycloak Playground Lite</h1>
+        <div id="loading">Connecting...</div>
+
+        <div id="logged-out" class="hidden">
+            <p>Authentication required.</p>
+            <button class="btn btn-login" id="loginBtn">Log In</button>
+        </div>
+
+        <div id="logged-in" class="hidden">
+        
+            <p>Active Session: <strong id="user"></strong></p>
+            
+            <div class="btn-group">
+                <button class="btn btn-copy" id="copyBtn">📋 Copy Raw Token</button>
+                <button class="btn btn-refresh" id="refreshBtn">🔄 Force Refresh</button>
+                <button class="btn btn-logout" id="logoutBtn">Sign Out</button>
+            </div>
+            
+
+            <span class="label">Raw Access Token (Encoded JWT):</span>
+            <div class="code-box">
+                <code id="tokenText"></code>
+            </div>
+
+            <span class="label">Decoded Payload (JSON Content):</span>
+            <div class="code-box payload-box">
+                <pre id="tokenParsedText"></pre>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <script type="module">
+        import Keycloak from 'https://cdn.jsdelivr.net/npm/keycloak-js@26.2.3/+esm';
+
+        const keycloak = new Keycloak({
+            url: 'http://localhost:8080',
+            realm: 'master',
+            clientId: 'Cyril'
+        });
+
+        async function init() {
+            try {
+                const authenticated = await keycloak.init({
+                    onLoad: 'check-sso',
+                    pkceMethod: 'S256'
+                });
+
+                document.getElementById('loading').classList.add('hidden');
+
+                if (authenticated) {
+                    updateUI();
+                } else {
+                    document.getElementById('logged-out').classList.remove('hidden');
+                }
+            } catch (error) {
+                document.getElementById('loading').innerHTML = "<b>Connection Error:</b> Check Keycloak URL and CORS.";
+            }
+        }
+
+        function updateUI() {
+            document.getElementById('logged-in').classList.remove('hidden');
+            document.getElementById('user').innerText = keycloak.tokenParsed.preferred_username || "User";
+            
+            // Display the raw string
+            document.getElementById('tokenText').innerText = keycloak.token;
+            
+            // Display the decoded JSON object
+            document.getElementById('tokenParsedText').innerText = JSON.stringify(keycloak.tokenParsed, null, 2);
+        }
+
+        // Refresh Logic
+        document.getElementById('refreshBtn').onclick = async () => {
+            try {
+                const refreshed = await keycloak.updateToken(-1);
+                if (refreshed) updateUI();
+            } catch (err) {
+                alert("Session expired. Please log in again.");
+                keycloak.login();
+            }
+        };
+
+        // Copy Logic
+        document.getElementById('copyBtn').onclick = async () => {
+            await navigator.clipboard.writeText(keycloak.token);
+            alert("Raw token copied!");
+        };
+
+        document.getElementById('loginBtn').onclick = () => keycloak.login();
+        document.getElementById('logoutBtn').onclick = () => keycloak.logout();
+
+        init();
+    </script>
+</body>
+</html>
