@@ -14,13 +14,12 @@ import org.springframework.stereotype.Component;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Component
 public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationToken> {
-    /*
+    /**
      * Spring's built-in converter — extracts "scope" and "scp" claims as SCOPE_xxx authorities.
      * We concat these with our custom Keycloak role authorities below.
      */
@@ -103,7 +102,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
      * Keycloak JWT payload (relevant section):
      * {
      *   "resource_access": {
-     *     "yefdog-rest-api": {          ← your Client ID
+     *     "yerfdog-rest-api": {          ← your Client ID
      *       "roles": ["ADMIN", "USER"]  ← roles assigned to Cyril
      *     }
      *   }
