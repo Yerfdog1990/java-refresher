@@ -17,9 +17,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
-import org.springframework.jdbc.core.JdbcTemplate;
 import springsecurity.lesson1topologyofrolesandprivileges.customsecurity.CustomAuthenticationProvider;
 import springsecurity.lesson1topologyofrolesandprivileges.persistance.service.StudentDetailsService;
 
@@ -29,22 +27,16 @@ import java.util.List;
 @EnableMethodSecurity(jsr250Enabled = true, prePostEnabled=true, securedEnabled = true)
 public class SecurityConfig{
 
-    private final JdbcTemplate jdbcTemplate;
+    private final CustomPersistentTokenRepository persistentTokenRepository;
     private final StudentDetailsService studentDetailsService;
 
     @Autowired
-    public SecurityConfig(JdbcTemplate jdbcTemplate, StudentDetailsService studentDetailsService) {
-        this.jdbcTemplate = jdbcTemplate;
+    public SecurityConfig(CustomPersistentTokenRepository persistentTokenRepository, StudentDetailsService studentDetailsService) {
+        this.persistentTokenRepository = persistentTokenRepository;
         this.studentDetailsService = studentDetailsService;
     }
 
-    @Bean
-    public PersistentTokenRepository persistentTokenRepository() {
-        JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
-        tokenRepository.setJdbcTemplate(jdbcTemplate);
-        return tokenRepository;
-    }
-
+    
     @Bean
     public PasswordEncoder passwordEncoder() { // @formatter=off
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
@@ -66,9 +58,9 @@ public class SecurityConfig{
     // and, if using pre-post method security also add
     @Bean
     static MethodSecurityExpressionHandler methodSecurityExpressionHandler(RoleHierarchy roleHierarchy) {
-        DefaultMethodSecurityExpressionHandler expressionHandler = new DefaultMethodSecurityExpressionHandler();
-        expressionHandler.setRoleHierarchy(roleHierarchy);
-        return expressionHandler;
+        DefaultMethodSecurityExpressionHandler handler = new DefaultMethodSecurityExpressionHandler();
+        handler.setRoleHierarchy(roleHierarchy);
+        return handler;
     }
 
     @Bean
@@ -111,7 +103,7 @@ public class SecurityConfig{
                 )
                 .rememberMe(rem -> rem
                         .userDetailsService(studentDetailsService)
-                        .tokenRepository(persistentTokenRepository())
+                        .tokenRepository(persistentTokenRepository)
                 );
         return http.build();
     }

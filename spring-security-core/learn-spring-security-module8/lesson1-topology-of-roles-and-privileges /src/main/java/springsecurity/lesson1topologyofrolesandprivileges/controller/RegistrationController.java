@@ -130,12 +130,22 @@ public class RegistrationController {
     }
 
 
+    @ExceptionHandler(Exception.class)
+    public ModelAndView handleAllExceptions(Exception ex, RedirectAttributes redirectAttributes) {
+        System.out.println("[DEBUG_LOG] handleAllExceptions TRIGGERED: " + ex.getClass().getName() + " : " + ex.getMessage());
+        ex.printStackTrace();
+        redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
+        return new ModelAndView("redirect:/users?exception=" + ex.getClass().getSimpleName());
+    }
+
     @ExceptionHandler(AccessDeniedException.class)
     public ModelAndView handleAccessDeniedException(AccessDeniedException ex, RedirectAttributes redirectAttributes) {
+        System.out.println("[DEBUG_LOG] handleAccessDeniedException TRIGGERED: " + ex.getMessage());
+        ex.printStackTrace();
         String message = ex.getMessage() != null ?
                 ex.getMessage() : "You don't have permission to perform this action. Please contact your administrator.";
         redirectAttributes.addFlashAttribute("errorMessage", message);
-        return new ModelAndView("redirect:/users");
+        return new ModelAndView("redirect:/users?exception=AccessDenied");
     }
 
     @PostMapping("/users/{id}/edit")
@@ -177,7 +187,7 @@ public class RegistrationController {
             @RequestParam(value = "answer", required = false) String answer,
             @RequestParam(value = "roleNames", required = false) List<String> roleNames,
             HttpServletRequest request) {
-
+        System.out.println("[DEBUG_LOG] registerNewStudent INVOKED");
         if (result.hasErrors()) {
             Map<String, Object> model = new HashMap<>();
             model.put("student", student);
@@ -185,7 +195,9 @@ public class RegistrationController {
             return new ModelAndView("registrationPage", model);
         }
         try {
+            System.out.println("[DEBUG_LOG] registerNewStudent START");
             final Student registered = studentService.registerNewStudent(student);
+            System.out.println("[DEBUG_LOG] registerNewStudent DONE: " + (registered != null ? registered.getEmail() : "null"));
             if (questionId != null && answer != null) {
                 final SecurityQuestionDefinition questionDefinition = securityQuestionDefinitionRepository.findById(questionId).orElseThrow(() -> new RuntimeException("Security Question Definition not found"));
                 securityQuestionRepository.save(new SecurityQuestion(registered, questionDefinition, answer));

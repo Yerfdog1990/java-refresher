@@ -5,5 +5,6 @@ import org.springframework.stereotype.Repository;
 import springsecurity.lesson1topologyofrolesandprivileges.persistance.model.Role;
 
 @Repository
-public abstract class RoleRepository implements JpaRepository<Role,Long> {
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findByRole(String role);
 }

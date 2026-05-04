@@ -10,6 +10,7 @@ import springsecurity.lesson1topologyofrolesandprivileges.validation.PasswordMat
 import springsecurity.lesson1topologyofrolesandprivileges.validation.ValidPassword;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -50,7 +51,7 @@ public class Student {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "student_roles", joinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Collection<Role> roles;
+    private Collection<Role> roles = new ArrayList<>();
 
     public Student(Long id) {
         this.id = id;

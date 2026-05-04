@@ -54,6 +54,11 @@ insert into student_roles (student_id, role_id)
 values (4, 4)
 on conflict (student_id, role_id) do nothing;
 
+-- Reset sequences after explicit-ID inserts so auto-generated IDs don't collide
+SELECT setval(pg_get_serial_sequence('privilege', 'id'), (SELECT MAX(id) FROM privilege));
+SELECT setval(pg_get_serial_sequence('role', 'id'), (SELECT MAX(id) FROM role));
+SELECT setval(pg_get_serial_sequence('student', 'id'), (SELECT MAX(id) FROM student));
+
 -- Security questions
 insert into security_question_definition (id, text)
 values (1, 'What is the last name of the teacher who gave you your first failing grade?')
@@ -73,3 +78,5 @@ on conflict (id) do nothing;
 insert into security_question_definition (id, text)
 values (6, 'Who was your childhood hero?')
 on conflict (id) do nothing;
+
+SELECT setval(pg_get_serial_sequence('security_question_definition', 'id'), (SELECT MAX(id) FROM security_question_definition));

@@ -14,6 +14,7 @@ import springsecurity.lesson1topologyofrolesandprivileges.persistance.model.Stud
 import springsecurity.lesson1topologyofrolesandprivileges.persistance.model.VerificationToken;
 import springsecurity.lesson1topologyofrolesandprivileges.persistance.repository.IStudentRepository;
 import springsecurity.lesson1topologyofrolesandprivileges.persistance.repository.PasswordResetTokenRepository;
+import springsecurity.lesson1topologyofrolesandprivileges.persistance.repository.RoleRepository;
 import springsecurity.lesson1topologyofrolesandprivileges.persistance.repository.VerificationTokenRepository;
 import springsecurity.lesson1topologyofrolesandprivileges.validation.EmailExistsException;
 
@@ -28,16 +29,17 @@ public class StudentService implements IStudentService {
     private final PasswordEncoder passwordEncoder;
     private final VerificationTokenRepository verificationTokenRepository;
     private final PasswordResetTokenRepository passwordTokenRepository;
+    private final RoleRepository roleRepository;
 
     @Autowired
-    public StudentService(IStudentRepository repository, PasswordEncoder passwordEncoder, VerificationTokenRepository verificationTokenRepository, PasswordResetTokenRepository passwordTokenRepository) {
+    public StudentService(IStudentRepository repository, PasswordEncoder passwordEncoder, VerificationTokenRepository verificationTokenRepository, PasswordResetTokenRepository passwordTokenRepository, RoleRepository roleRepository) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
         this.verificationTokenRepository = verificationTokenRepository;
         this.passwordTokenRepository = passwordTokenRepository;
+        this.roleRepository = roleRepository;
     }
 
-    @PreAuthorize("hasRole('USER')")
     @Override
     public Student registerNewStudent(StudentDTO studentDTO) throws EmailExistsException {
         if (emailExist(studentDTO.getEmail())) {
@@ -52,7 +54,11 @@ public class StudentService implements IStudentService {
 
         // Set the default role if no authorities are set
         if (student.getRoles().isEmpty()) {
-            student.getRoles().add(new Role("ROLE_USER"));
+            Role userRole = roleRepository.findByRole("ROLE_USER");
+            if (userRole == null) {
+                userRole = roleRepository.save(new Role("ROLE_USER"));
+            }
+            student.getRoles().add(userRole);
         }
 
         // Save and return the entity
