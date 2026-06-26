@@ -2,42 +2,27 @@ package com.baeldung.ljl;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static java.util.Arrays.stream;
-
 class JavaLoggingUnitTest {
-    private static final Logger logger = Logger.getLogger(JavaLoggingUnitTest.class.getName());
-
     @Test
-    void givenLogger_whenLoggingAtDifferentLevels_thenLogsCorrectly() {
-        logger.severe("Critical issue occurred while processing task.");
-        logger.warning("Potential issue detected in task setup.");
-        logger.info("Task processed successfully.");
-        logger.config("Configuration loaded correctly.");
-        logger.fine("Debug details: task initialization step.");
+    void whenMessagesLoggedUsingGlobalAndPackageLogger_thenMessagesLoggedAccordingToConfiguration() {
+        Logger globalLogger = Logger.getGlobal();
+        Logger packageLogger = Logger.getLogger(JavaLoggingUnitTest.class.getName());
+
+        logAtAllLevels(globalLogger);
+        logAtAllLevels(packageLogger);
     }
 
-    @Test
-    void givenLogger_whenLoggingAtDifferentLevelsUsingLog_thenLogsCorrectly() {
-        logger.log(Level.SEVERE, "Critical issue occurred while processing task.");
-        logger.log(Level.WARNING, "Potential issue detected in task setup.");
-        logger.log(Level.INFO, "Task processed successfully.");
-        logger.log(Level.CONFIG, "Configuration loaded correctly.");
-        logger.log(Level.FINE, "Debug details: task initialization step.");
+    private void logAtAllLevels(Logger logger) {
+        String loggerName = logger.getName();
+        logger.finest("Sample FINEST log from logger: " + loggerName);
+        logger.finer("Sample FINER log from logger: " + loggerName);
+        logger.fine("Sample FINE log from logger: " + loggerName);
+        logger.config("Sample CONFIG log from logger: " + loggerName);
+        logger.info("Sample INFO log from logger: " + loggerName);
+        logger.warning("Sample WARNING log from logger: " + loggerName);
+        logger.severe("Sample SEVERE log from logger: " + loggerName);
     }
 
-    @Test
-    void givenLoggerOnFineLevel_whenLoggingAtDifferentLevels_thenLogsCorrectly() {
-        logger.setLevel(Level.FINEST); // logger gate
-        stream(Logger.getLogger("").getHandlers())
-                .forEach(handler ->handler.setLevel(Level.FINEST)); // handler gate
-
-        logger.severe("Critical issue occurred while processing task.");
-        logger.warning("Potential issue detected in task setup.");
-        logger.info("Task processed successfully.");
-        logger.config("Configuration loaded correctly.");
-        logger.fine("Debug details: task initialization step.");
-    }
 }
