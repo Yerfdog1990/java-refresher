@@ -1,0 +1,8 @@
+{"@timestamp":"2026-06-27T00:32:26.210Z","ecs.version":"1.2.0","log.level":"INFO","message":"Sample INFO log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}
+{"@timestamp":"2026-06-27T00:32:26.213Z","ecs.version":"1.2.0","log.level":"WARN","message":"Sample WARN log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}
+{"@timestamp":"2026-06-27T00:32:26.214Z","ecs.version":"1.2.0","log.level":"ERROR","message":"Sample ERROR log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}
+{"@timestamp":"2026-06-27T00:32:26.214Z","ecs.version":"1.2.0","log.level":"FATAL","message":"Sample FATAL log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}
+{"@timestamp":"2026-06-27T00:37:17.734Z","ecs.version":"1.2.0","log.level":"INFO","message":"Sample INFO log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}
+{"@timestamp":"2026-06-27T00:37:17.738Z","ecs.version":"1.2.0","log.level":"WARN","message":"Sample WARN log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}
+{"@timestamp":"2026-06-27T00:37:17.739Z","ecs.version":"1.2.0","log.level":"ERROR","message":"Sample ERROR log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}
+{"@timestamp":"2026-06-27T00:37:17.739Z","ecs.version":"1.2.0","log.level":"FATAL","message":"Sample FATAL log","process.thread.name":"main","log.logger":"LoggerWithJsonFileAppender"}

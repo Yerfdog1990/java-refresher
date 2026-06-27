@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Appenders>
+
+        <!-- Console: human-readable text for development -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c - %m%n"/>
+        </Console>
+
+        <!-- Console with MDC: includes per-request context data -->
+        <Console name="ConsoleWithMDC" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5p %c [%X{userName} - %mdc{userId}] - %m%n"/>
+        </Console>
+
+        <!-- File: simple persistent log -->
+        <File name="LogFile" fileName="logs/app.log" append="true">
+        </File>
+
+        <!-- RollingFile: auto-rotated persistent log -->
+        <RollingFile name="RollingFile"
+                     fileName="rolling-logs/app.log"
+                     filePattern="rolling-logs/app-%i.log">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10KB"/>
+            </Policies>
+        </RollingFile>
+
+        <!-- File with JSON layout: structured output for log aggregators -->
+        <File name="JsonLogFile" fileName="json-logs/app.json" append="true">
+            <JSONTemplateLayout/>
+        </File>
+
+    </Appenders>
+
+    <Loggers>
+
+        <!-- Root: catch-all, writes to Console -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+
+        <!-- Named loggers: each isolated with additivity=false -->
+        <Logger name="LoggerWithFileAppender" level="INFO" additivity="false">
+            <AppenderRef ref="LogFile"/>
+        </Logger>
+
+        <Logger name="LoggerWithRollingFileAppender" level="INFO" additivity="false">
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+
+        <Logger name="LoggerWithJsonFileAppender" level="INFO" additivity="false">
+            <AppenderRef ref="JsonLogFile"/>
+        </Logger>
+
+        <Logger name="LoggerWithMDC" level="INFO" additivity="false">
+            <AppenderRef ref="ConsoleWithMDC"/>
+        </Logger>
+
+    </Loggers>
+
+</Configuration>
