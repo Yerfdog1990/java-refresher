@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Java Collections' Course: Iteration and Comparison</description>
+    <name>iteration-and-comparison</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>learn-java-collections-module3</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>enhanced-for-loops-start</module>
+        <module>enhanced-for-loops-end</module>
+        <module>iterators-start</module>
+        <module>iterators-end</module>
+        <module>sorting-collections-start</module>
+        <module>sorting-collections-end</module>
+    </modules>
+</project>
