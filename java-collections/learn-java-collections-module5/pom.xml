@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Java Collections' Course: Working with Maps</description>
+    <name>working-with-maps</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>learn-java-collections-module5</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>introduction-hashmap-start</module>
+        <module>introduction-hashmap-end</module>
+        <module>iterating-over-hashmaps-start</module>
+        <module>iterating-over-hashmaps-end</module>
+        <module>basic-hashmap-operations-start</module>
+        <module>basic-hashmap-operations-end</module>
+        <module>treemap-start</module>
+        <module>treemap-end</module>
+        <module>linkedhashmap-start</module>
+        <module>linkedhashmap-end</module>     
+    </modules>
+</project>
