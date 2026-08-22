@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Java Collections' Course: Working with Sets</description>
+    <name>working-with-sets</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>ljc-working-with-sets</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>basic-hashset-operations-start</module>
+        <module>basic-hashset-operations-end</module>
+        <module>introduction-hashset-start</module>
+        <module>introduction-hashset-end</module>
+        <module>treeset-sorted-set-and-natural-processing-start</module>
+        <module>treeset-sorted-set-and-natural-processing-end</module>
+    </modules>
+</project>
