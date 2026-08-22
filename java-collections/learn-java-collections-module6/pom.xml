@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Java Collections' Course: Other Collection Types</description>
+    <name>other-collection-types</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>ljc-other-collection-types</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>concurrent-collections-start</module>
+        <module>concurrent-collections-end</module>
+        <module>generics-start</module>
+        <module>generics-end</module>
+        <module>legacy-collections-start</module>
+        <module>legacy-collections-end</module>
+        <module>queues-start</module>
+        <module>queues-end</module>
+        <module>the-collections-class-start</module>
+        <module>the-collections-class-end</module>
+        <module>sequenced-collections-start</module>  
+        <module>sequenced-collections-end</module>
+    </modules>
+</project>
