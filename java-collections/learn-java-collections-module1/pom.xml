@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Java Collections' Course: Overview of Java Collections</description>
+    <name>overview-of-java-collections</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>learn-java-collections-module1</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>arrays-start</module>
+        <module>arrays-end</module>
+        <module>from-arrays-to-collections-start</module>
+        <module>from-arrays-to-collections-end</module>
+    </modules>
+</project>
