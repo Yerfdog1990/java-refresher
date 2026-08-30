@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <description>The 'Learn Java Streams' Course: Intermediate Stream Operations</description>
+    <name>intermediate-stream-operations</name>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>ljs-intermediate-stream-operations</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>map-and-flatmap-start</module>
+        <module>map-and-flatmap-end</module>
+        <module>filter-start</module>
+        <module>filter-end</module>
+        <module>limit-skip-start</module>
+        <module>limit-skip-end</module>
+        <module>sorted-distinct-start</module>
+        <module>sorted-distinct-end</module>
+        <module>peek-start</module>
+        <module>peek-end</module>
+    </modules>
+</project>
